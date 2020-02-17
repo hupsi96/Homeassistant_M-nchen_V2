@@ -5,8 +5,9 @@
     to: 'on'
   action:
     service: light.turn_on
-    transition: 2
-    entity_id: light.flo_fado
+    data:
+      transition: 2
+      entity_id: light.flo_fado
 
 - alias: Turn_off_Flo
   trigger:
@@ -15,5 +16,6 @@
     to: 'off'
   action:
     service: light.turn_off
-    transition: 2
-    entity_id: light.flo_fado
+    data:
+      transition: 2
+      entity_id: light.flo_fado
