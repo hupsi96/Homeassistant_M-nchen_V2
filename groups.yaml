@@ -77,7 +77,7 @@ christianLight:
 christian:
   name: Christian
   view: true
-  entiteis:
+  entities:
     - group.christianLight
 
 simonLight:
