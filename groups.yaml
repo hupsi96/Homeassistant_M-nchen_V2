@@ -67,25 +67,53 @@ gang:
     - group.gangLight
     - group.gangMotion
 
-# christian:
-#   name: Christian
-#   view: true
-#   entiteis:
+christianDeckenlampe:
+  name: Deckenlampe
+  entities:
+    - light.christian
 
-# simon:
-#   name: simon
-#   view: true
-#   entities:
+christianLight:
+  name: Licht
+  entities:
+    - group.christianDeckenlampe
+    - light.bett
+    - light.kugel
 
-# flo:
-#   name: Flo
-#   view: true
-#   entities:
+christian:
+  name: Christian
+  view: true
+  entiteis:
+    - group.christianLight
 
-# music:
-#   name: Musik
-#   view: true
-#   entities:
+simonLight:
+  name: Licht
+  entities:
+    - light.simon
+
+simon:
+  name: simon
+  view: true
+  entities:
+    - group.simonLight
+    - media_player.simons_zimmer
+
+floLight:
+  name: Licht
+  entities:
+    - light.flo_fado
+
+flo:
+  name: Flo
+  view: true
+  entities:
+    - group.floLight
+
+music:
+  name: Musik
+  view: true
+  entities:
+    - media_player.simons_zimmer
+    - media_player.wohnzimmer
 
 dinnertable:
   name: Esstisch
@@ -116,3 +144,4 @@ livingroom:
     - group.dinnertable
     - group.sofaLamp
     - group.livingroomAmbilight
+    - media_player.wohnzimmer
