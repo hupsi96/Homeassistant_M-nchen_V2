@@ -141,6 +141,26 @@ livingroom:
     - group.livingroomAmbilight
     - media_player.wohnzimmer
 
+abstellkammerLight:
+  name: Licht
+  entities:
+    - light.abstellkammer
+
+abstellkammerMotion:
+  name: Bewegungsmelder
+  entities:
+    - binary_sensor.abstellkammer_sensor_motion
+    - sensor.abstellkammer_sensor_light_level
+    - sensor.abstellkammer_sensor_temperature
+
+
+abstellkammer:
+  name: Abstellkammer
+  view: true
+  entities:
+    - group.abstellkammerLight
+    - group.abstellkammerMotion
+
 # flat:
 #   name: Wohnung
 #   view: true
