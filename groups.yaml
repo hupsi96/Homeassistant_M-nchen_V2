@@ -17,7 +17,7 @@ kitchenMotion:
     
 
 kitchen:
-  name: Licht
+  name: Küche
   view: true
   entities:
     - group.kitchenLight
@@ -45,10 +45,27 @@ garderobe:
     - group.garderobeLight
     - group.garderobeMotion
 
-# gang:
-#   name: Gang
-#   view: true
-#   entities:
+gangLight:
+  name: Licht
+  entities:
+    - light.gang_1
+    - light.gang_2
+    - light.gang_3
+
+gangMotion:
+  name: Bewegungsmelder
+  entities:
+    - binary_sensor.gang_sensor_motion
+    - sensor.gang_sensor_light_level
+    - sensor.gang_sensor_temperature
+
+
+gang:
+  name: Gang
+  view: true
+  entities:
+    - group.gangLight
+    - group.gangMotion
 
 # christian:
 #   name: Christian
