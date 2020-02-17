@@ -1,0 +1,66 @@
+flat:
+  name: Wohnung
+  view: true
+  entities:
+  
+livingroom:
+  name: Wohnzimmer
+  view: true
+  entities:
+    - group.dinnertable
+    - group.sofaLamp
+    - light.fado
+
+kitchen:
+  name: Küche
+  view: true
+  entities:
+    - light.kuchenlampe
+
+garderobe:
+  name: Garderobe
+  view: true
+  entities:
+    - 
+
+gang:
+  name: Gang
+  view: true
+  entities:
+
+christian:
+  name: Christian
+  view: true
+  entiteis:
+
+simon:
+  name: simon
+  view: true
+  entities:
+
+flo:
+  name: Flo
+  view: true
+  entities:
+
+music:
+  name: Musik
+  view: true
+  entities:
+
+dinnertable:
+  name: Esstisch
+  entities:
+    - light.esstisch_1
+    - light.esstisch_2
+    - light.esstisch_3
+    - light.esstisch_4
+    - light.esstisch_5
+    - light.esstisch_6
+
+  sofaLamp:
+    name: Lampe Sofa
+    entities:
+      - light.sofa_1
+      - light.sofa_2
+      - light.sofa_3
