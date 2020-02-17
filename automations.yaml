@@ -1,1 +1,8 @@
-[]
+- alias: Turn_on_Flo
+  trigger:
+    platform: state
+    entity_id: sensor.0x0017880108005bb6_action
+    to: 'on'
+  action:
+    service: light.toggle
+    entity_id: light.flo_fado
