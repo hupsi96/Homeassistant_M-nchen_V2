@@ -50,12 +50,12 @@ dinnertable:
     - light.esstisch_5
     - light.esstisch_6
 
-  sofaLamp:
-    name: Lampe Sofa
-    entities:
-      - light.sofa_1
-      - light.sofa_2
-      - light.sofa_3
+sofaLamp:
+  name: Lampe Sofa
+  entities:
+    - light.sofa_1
+    - light.sofa_2
+    - light.sofa_3
 
 livingroom:
   name: Wohnzimmer
