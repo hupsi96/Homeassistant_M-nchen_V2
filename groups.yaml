@@ -2,14 +2,6 @@
 #   name: Wohnung
 #   view: true
 #   entities:
-  
-livingroom:
-  name: Wohnzimmer
-  view: true
-  entities:
-    - group.dinnertable
-    - group.sofaLamp
-    - light.fado
 
 # kitchen:
 #   name: Küche
@@ -64,3 +56,11 @@ dinnertable:
       - light.sofa_1
       - light.sofa_2
       - light.sofa_3
+
+livingroom:
+  name: Wohnzimmer
+  view: true
+  entities:
+    - group.dinnertable
+    - group.sofaLamp
+    - light.fado
