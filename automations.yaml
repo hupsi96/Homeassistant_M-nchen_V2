@@ -4,5 +4,14 @@
     entity_id: sensor.0x0017880108005bb6_action
     to: 'on'
   action:
-    service: light.toggle
+    service: light.turn_on
+    entity_id: light.flo_fado
+
+- alias: Turn_off_Flo
+  trigger:
+    platform: state
+    entity_id: sensor.0x0017880108005bb6_action
+    to: 'off'
+  action:
+    service: light.turn_off
     entity_id: light.flo_fado
