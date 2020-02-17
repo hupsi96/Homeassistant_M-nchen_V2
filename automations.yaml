@@ -4,10 +4,10 @@
     entity_id: sensor.0x0017880108005bb6_action
     to: 'on'
   action:
-    service: light.turn_on
+    service: hue.hue_activate_scene
     data:
-      transition: 2
-      entity_id: light.flo_fado
+      group_name: Flo
+      scene_name: Entspannen
 
 - alias: Turn_off_Flo
   trigger:
@@ -16,6 +16,4 @@
     to: 'off'
   action:
     service: light.turn_off
-    data:
-      transition: 2
-      entity_id: light.flo_fado
+    entity_id: light.flo_fado
