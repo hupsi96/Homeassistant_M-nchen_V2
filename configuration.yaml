@@ -21,11 +21,11 @@ input_boolean:
 device_tracker:
 #Device tracker using FritzBox -> hopefully better then the GPS thing
   - platform: fritz
-    #host: 192.168.178.1
-    #password: !secret fritz_password
-    #interval_seconds: 5
-    #consider_home: 60
-    #track_new_devices: yes
+    host: 192.168.178.1
+    password: !secret fritz_password
+    interval_seconds: 5
+    consider_home: 60
+    track_new_devices: yes
 
 # Text to speech
 tts:
