@@ -1,8 +1,3 @@
-# flat:
-#   name: Wohnung
-#   view: true
-#   entities:
-
 kitchenLight:
   name: Licht
   entities:
@@ -145,3 +140,8 @@ livingroom:
     - group.sofaLamp
     - group.livingroomAmbilight
     - media_player.wohnzimmer
+
+# flat:
+#   name: Wohnung
+#   view: true
+#   entities:
