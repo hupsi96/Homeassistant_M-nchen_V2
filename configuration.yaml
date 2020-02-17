@@ -17,7 +17,7 @@ input_boolean:
     initial: off
     icon: mdi:weather-night
 
-wake_on_lan:
+#wake_on_lan:
 
 samsungtv:
   - host: 192.168.178.40
