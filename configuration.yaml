@@ -18,7 +18,6 @@ input_boolean:
     icon: mdi:weather-night
 
 #wake_on_lan:
-
 samsungtv:
   - host: 192.168.178.40
     port: 8001
@@ -26,6 +25,17 @@ samsungtv:
     #  - service: wake_on_lan.send_magic_packet
     #    data:
     #      mac: !secret samsungTvMac
+
+#setup for zigbee2mqtt
+mqtt:
+  discovery: true
+  #broker: [YOUR MQTT BROKER]  # Remove if you want to use builtin-in MQTT broker
+  birth_message:
+    topic: 'hass/status'
+    payload: 'online'
+  will_message:
+    topic: 'hass/status'
+    payload: 'offline'
 
 device_tracker:
 #Device tracker using FritzBox -> hopefully better then the GPS thing
