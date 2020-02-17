@@ -3,17 +3,47 @@
 #   view: true
 #   entities:
 
-# kitchen:
-#   name: Küche
-#   view: true
-#   entities:
-#     - light.kuchenlampe
+kitchenLight:
+  name: Licht
+  entities:
+    - light.kuchenlampe
 
-# garderobe:
-#   name: Garderobe
-#   view: true
-#   entities:
-#     - 
+kitchenMotion:
+  name: Bewegungsmelder
+  entities:
+    - binary_sensor.kuche_sensor_motion
+    - sensor.kuche_sensor_light_level
+    - sensor.kuche_sensor_temperature
+    
+
+kitchen:
+  name: Licht
+  view: true
+  entities:
+    - group.kitchenLight
+    - group.kitchenMotion
+
+garderobeLight:
+  name: Licht
+  entities:
+    - light.gardarobe_1
+    - light.gardarobe_2
+    - light.gardarobe_3
+    - light.gardarobe_4
+
+garderobeMotion:
+  name: Bewegungsmelder
+  entities:
+    - binary_sensor.garderoben_sensor_1_motion
+    - sensor.garderoben_sensor_1_light_level
+    - sensor.garderoben_sensor_1_temperature
+
+garderobe:
+  name: Garderobe
+  view: true
+  entities:
+    - group.garderobeLight
+    - group.garderobeMotion
 
 # gang:
 #   name: Gang
@@ -57,10 +87,15 @@ sofaLamp:
     - light.sofa_2
     - light.sofa_3
 
+livingroomAmbilight:
+  name: Ambilight
+  entities:
+    - light.fado
+
 livingroom:
   name: Wohnzimmer
   view: true
   entities:
     - group.dinnertable
     - group.sofaLamp
-    - light.fado
+    - group.livingroomAmbilight
