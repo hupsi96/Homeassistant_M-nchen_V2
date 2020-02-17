@@ -2,8 +2,24 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
+#Custom switch for nighmode
+input_boolean:
+  christian_nachtmodus:
+    name: Nachtmodus von Christian
+    initial: off
+    icon: mdi:weather-night
+  simon_nachtmodus:
+    name: Nachtmodus von Simon
+    initial: off
+    icon: mdi:weather-night
+  flo_nachtmodus:
+    name: Nachtmodus von Florian
+    initial: off
+    icon: mdi:weather-night
+
 
 device_tracker:
+#Device tracker using FritzBox -> hopefully better then the GPS thing
   - platform: fritz
     host: 192.168.178.1
     password: !secret fritz_password
