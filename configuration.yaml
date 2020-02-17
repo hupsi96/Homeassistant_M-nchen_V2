@@ -21,10 +21,10 @@ wake_on_lan:
 
 samsungtv:
   - host: 192.168.178.40
-    turn_on_action:
-      - service: wake_on_lan.send_magic_packet
-        data:
-          mac: !secret samsungTvMac
+    #turn_on_action:
+    #  - service: wake_on_lan.send_magic_packet
+    #    data:
+    #      mac: !secret samsungTvMac
 
 device_tracker:
 #Device tracker using FritzBox -> hopefully better then the GPS thing
