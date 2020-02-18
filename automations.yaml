@@ -53,7 +53,7 @@
         entity_id: timer.flo_debounce
         state: active
   action:
-    - service: input_select.select_next
+    - service: select_next
       entity_id: input_select.scene_flo
     - service: hue.hue_activate_scene
       data_template: 
