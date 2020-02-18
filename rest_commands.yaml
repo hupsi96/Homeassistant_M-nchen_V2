@@ -1,0 +1,6 @@
+test_request: #{{ states.sensor.bedroom_tv_challenge.state }}
+    url: 'http://192.168.178.21/api/{{ !secret hueToken }}/groups/7/action'
+    method: PUT
+    payload: '{"on":true}'
+    #content_type:  'application/json; charset=utf-8'
+    #verify_ssl: true

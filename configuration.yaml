@@ -50,6 +50,7 @@ device_tracker:
 tts:
   - platform: google_translate
 
+rest_command: !include rest_commands.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
