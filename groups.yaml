@@ -79,6 +79,8 @@ christian:
   view: true
   entities:
     - group.christianLight
+    - device_tracker.iphonevhristian
+    - device_tracker.christian_cgi
 
 simonLight:
   name: Licht
@@ -91,6 +93,7 @@ simon:
   entities:
     - group.simonLight
     - media_player.simons_zimmer
+    - device_tracker.iphone_von_simon
 
 floLight:
   name: Licht
