@@ -17,3 +17,5 @@
   action:
     service: light.turn_off
     entity_id: light.flo_fado
+# Autmoation should call HUE API at this path: http://192.168.178.21/api/!secret huetoken/groups/7/action
+# Body: { "on": false }
