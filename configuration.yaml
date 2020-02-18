@@ -3,6 +3,7 @@
 default_config:
 
 #Custom switch for nighmode
+# When nightmode is turned on -> set scene select to "Nachtlicht"
 input_boolean:
   christian_nachtmodus:
     name: Nachtmodus von Christian
@@ -16,6 +17,27 @@ input_boolean:
     name: Nachtmodus von Florian
     initial: off
     icon: mdi:weather-night
+
+#input_number:
+#  flo_scene_selector:
+#    name: Scenen Auswahl
+#    initial: 0
+#    min: 0
+#    max: 10
+#    step: 1
+
+#Alternative to number -> if this works it is may better!!!
+input_select:
+  scene_flo:
+    name: Scene
+    options:
+      - Hell
+      - Sonnenuntergang Savanne
+      - Tropendämmerung
+      - Nordlichter
+      - Frühlingsblüten
+      - Nachtlicht
+    initial: Hell
 
 #wake_on_lan:
 samsungtv:
@@ -45,6 +67,11 @@ device_tracker:
     interval_seconds: 5
     consider_home: 60
     track_new_devices: yes
+
+#Timer to catch multible pressing of smart button
+timer:
+  flo_debounce:
+    duration: '00:0:05'
 
 # Text to speech
 tts:
