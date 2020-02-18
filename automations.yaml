@@ -30,7 +30,7 @@
         entity_id: 'light.flo_fado'
         state: 'on'
       - condition: state
-        entity_id: timer.timer.flo_debounce
+        entity_id: timer.flo_debounce
         state: idle
   action:
     service: rest_command.flo_lightOff_request
@@ -50,7 +50,7 @@
         entity_id: 'light.flo_fado'
         state: 'on'
       - condition: state
-        entity_id: timer.timer.flo_debounce
+        entity_id: timer.flo_debounce
         state: active
   action:
     - service: input_select.select_next
