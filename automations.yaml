@@ -56,10 +56,8 @@
     - service: input_select.select_next
       entity_id: input_select.scene_flo
     - service: hue.hue_activate_scene
-      data_template: 
-        group_name: "Flo"
-        scene_name: >
-          {{ input_select.scene_flo }}
+      group_name: "Flo"
+      scene_name: '{{ input_select.scene_flo }}'
     - service: timer.start
       entity_id: timer.flo_debounce
 
