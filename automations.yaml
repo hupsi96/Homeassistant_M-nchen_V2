@@ -83,3 +83,123 @@
 #     service: rest_command.flo_lightOff_request
 # Autmoation should call HUE API at this path: http://192.168.178.21/api/!secret huetoken/groups/7/action
 # Body: { "on": false }
+
+
+
+###new feature for coming home
+#Add Flo as a Condition after first login
+- alias: 'Christian Coming Home Light'
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: device_tracker.iphonevhristian
+    to: 'home'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: device_tracker.iphone_von_simon
+        state: 'not_home'
+      #Add Christian Phone GPS as a condition
+      #
+      #To be activated after troubleshooting of GPS location
+      #- condition: state
+      #  entity_id: device_tracker.simons_iphone
+      #  state: 'not_home'
+      - condition: or
+        conditions:
+          - condition: sun
+            before: sunrise
+            before_offset: "+01:00:00"
+          - condition: sun
+            after: sunset
+            after_offset: "-01:00:00"
+  action:
+    - service: hue.hue_activate_scene
+      data:
+        group_name: Wohnzimmer
+        scene_name: Entspannt
+    - service: hue.hue_activate_scene
+      data:
+        group_name: Christian
+        scene_name: Entspannen
+
+- alias: 'Christian Coming Home Light'
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: device_tracker.iphonevhristian
+    to: 'home'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: device_tracker.iphone_von_simon
+        state: 'not_home'
+      #Add Christian Phone GPS as a condition
+      #
+      #To be activated after troubleshooting of GPS location
+      #- condition: state
+      #  entity_id: device_tracker.simons_iphone
+      #  state: 'not_home'
+  action:
+    # Notifications to be sent to phones
+    #- service: notify.mobile_app_simons_iphone
+    #  data:
+    #    message: "Christian ist zu Hause"
+    #    title: "Jemand ist zu Hause"
+    #- service: notify.mobile_app_flos_iphone
+    #  data:
+    #    message: "Christian ist zu Hause"
+    #    title: "Jemand ist zu Hause"
+    #- service: notify.mobile_app_iphone_von_christian
+    #  data:
+    #    message: "Willkommen zu Hause, Christian!"
+    #    title: "Jemand ist zu Hause"
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.wohnzimmer
+        volume_level: 0.1
+    - service: media_player.media_play
+      data:
+        entity_id: media_player.wohnzimmer
+        
+- alias: 'Christian Leaving Home'
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: device_tracker.iphonevhristian
+      to: 'not_home'
+    - platform: state
+      entity_id: device_tracker.christian_cgi
+      o: 'not_home'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: device_tracker.iphone_von_simon
+        state: 'not_home'
+      #Add Christian Phone GPS as a condition
+      #
+      #Add Flos iPhone
+      #
+      #To be activated after troubleshooting of GPS location
+      #- condition: state
+      #  entity_id: device_tracker.simons_iphone
+      #  state: 'not_home'
+  action:
+    #- service: notify.mobile_app_simons_iphone
+    #   data:
+    #     message: "Christian hat die Wohnung verlassen"
+    #     title: "Keiner zu Hause"
+    # - service: notify.mobile_app_flos_iphone
+    #   data:
+    #     message: "Christian hat die Wohnung verlassen"
+    #     title: "Keiner zu Hause"
+    # - service: notify.mobile_app_iphone_von_christian
+    #   data:
+    #     message: "Türe abgesperrt? \nHerd aus? \n \nNa dann viel Erfolg und pass auf dich auf!"
+    #     title: "Tschüss"
+    - service: light.turn_off
+      data:
+        entity_id: all
