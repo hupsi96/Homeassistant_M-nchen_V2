@@ -1,6 +1,10 @@
-test_request: #Tested -> workes as it should :)
+flo_lightOn_request: #Tested -> workes as it should :)
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/7/action
     method: PUT
     payload: '{"on":true}'
     #content_type:  'application/json; charset=utf-8'
     #verify_ssl: true
+flo_lightOff_request: #Tested -> workes as it should :)
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/7/action
+    method: PUT
+    payload: '{"on":false}'
