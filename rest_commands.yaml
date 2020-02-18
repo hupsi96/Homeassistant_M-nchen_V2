@@ -1,5 +1,5 @@
 test_request: #{{ states.sensor.bedroom_tv_challenge.state }}
-    url: 'http://192.168.178.21/api/{{ !secret hueToken }}/groups/7/action'
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/7/action
     method: PUT
     payload: '{"on":true}'
     #content_type:  'application/json; charset=utf-8'
