@@ -1,4 +1,4 @@
-test_request: #{{ states.sensor.bedroom_tv_challenge.state }}
+test_request: #Tested -> workes as it should :)
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/7/action
     method: PUT
     payload: '{"on":true}'
