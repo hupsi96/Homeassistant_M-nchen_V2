@@ -59,7 +59,7 @@
       data_template: 
         group_name: "Flo"
         scene_name: >
-          states.input_select.scene_flo.state 
+          'states.input_select.scene_flo.state'
     - service: timer.start
       entity_id: timer.flo_debounce
 
