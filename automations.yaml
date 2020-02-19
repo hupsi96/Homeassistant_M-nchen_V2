@@ -92,22 +92,22 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: device_tracker.iphonevhristian
+    entity_id: device_tracker.iphonevhristian #WiFi based
     to: 'home'
   condition:
     condition: and
     conditions:
       - condition: state
-        entity_id: device_tracker.iphone_von_simon
+        entity_id: device_tracker.iphone_von_simon # Wifi Based
         state: 'not_home'
       - condition: state
-        entity_id: device_tracker.flos_iphone
+        entity_id: device_tracker.flos_iphone # Wifi Based
         state: 'not_home'
       - condition: state
-        entity_id: device_tracker.iphone_von_christian
+        entity_id: device_tracker.iphone_von_christian # GPS Based
         state: 'home' #GPS confirmation that person is home
       - condition: state
-        entity_id: device_tracker.simons_iphone
+        entity_id: device_tracker.simons_iphone # GPS Based
         state: 'not_home'
       ###################################################
       # Add Flos GPS tracking as a additional Condition
@@ -130,38 +130,34 @@
         group_name: Christian
         scene_name: Entspannen
 
-- alias: 'Christian Coming Home Light'
+- alias: 'Christian Coming Home Music'
   initial_state: true
   trigger:
     platform: state
-    entity_id: device_tracker.iphonevhristian
+    entity_id: device_tracker.iphonevhristian #WiFi based
     to: 'home'
   condition:
     condition: and
     conditions:
       - condition: state
-        entity_id: device_tracker.iphone_von_simon
+        entity_id: device_tracker.iphone_von_simon # Wifi Based
         state: 'not_home'
-      #Add Christian Phone GPS as a condition
-      #
-      #To be activated after troubleshooting of GPS location
-      #- condition: state
-      #  entity_id: device_tracker.simons_iphone
-      #  state: 'not_home'
+      - condition: state
+        entity_id: device_tracker.flos_iphone # Wifi Based
+        state: 'not_home'
+      - condition: state
+        entity_id: device_tracker.iphone_von_christian # GPS Based
+        state: 'home' #GPS confirmation that person is home
+      - condition: state
+        entity_id: device_tracker.simons_iphone # GPS Based
+        state: 'not_home'
+      ###################################################
+      # Add Flos GPS tracking as a additional Condition
+      ###################################################
   action:
-    # Notifications to be sent to phones
-    #- service: notify.mobile_app_simons_iphone
-    #  data:
-    #    message: "Christian ist zu Hause"
-    #    title: "Jemand ist zu Hause"
-    #- service: notify.mobile_app_flos_iphone
-    #  data:
-    #    message: "Christian ist zu Hause"
-    #    title: "Jemand ist zu Hause"
-    #- service: notify.mobile_app_iphone_von_christian
-    #  data:
-    #    message: "Willkommen zu Hause, Christian!"
-    #    title: "Jemand ist zu Hause"
+    ###################################################
+    # Add notification funtionallity if needed
+    ###################################################
     - service: media_player.volume_set
       data:
         entity_id: media_player.wohnzimmer
@@ -169,43 +165,47 @@
     - service: media_player.media_play
       data:
         entity_id: media_player.wohnzimmer
+    ###################################################
+    # Find a solution to first say "hello" to the person coming home and then playing a specific plylist
+    ###################################################
         
 - alias: 'Christian Leaving Home'
   initial_state: true
   trigger:
     - platform: state
-      entity_id: device_tracker.iphonevhristian
+      entity_id: device_tracker.iphonevhristian # WiFi Based
       to: 'not_home'
     - platform: state
-      entity_id: device_tracker.christian_cgi
-      o: 'not_home'
+      entity_id: device_tracker.iphone_von_christian # GPS Based
+      to: 'not_home'
   condition:
     condition: and
     conditions:
       - condition: state
-        entity_id: device_tracker.iphone_von_simon
+        entity_id: device_tracker.iphone_von_simon # Wifi Based
         state: 'not_home'
-      #Add Christian Phone GPS as a condition
-      #
-      #Add Flos iPhone
-      #
-      #To be activated after troubleshooting of GPS location
-      #- condition: state
-      #  entity_id: device_tracker.simons_iphone
-      #  state: 'not_home'
+      - condition: state
+        entity_id: device_tracker.flos_iphone # Wifi Based
+        state: 'not_home'
+      - condition: state
+        entity_id: device_tracker.iphone_von_christian # GPS Based
+        state: 'not_home' #GPS confirmation that person is home
+      - condition: state
+        entity_id: device_tracker.simons_iphone # GPS Based
+        state: 'not_home'
+      - condition: state
+        entity_id: device_tracker.iphonevhristian # GPS Based
+        state: 'not_home' #GPS confirmation that person is home
+      ###################################################
+      # Add Flos GPS tracking as a additional Condition
+      ###################################################
   action:
-    #- service: notify.mobile_app_simons_iphone
-    #   data:
-    #     message: "Christian hat die Wohnung verlassen"
-    #     title: "Keiner zu Hause"
-    # - service: notify.mobile_app_flos_iphone
-    #   data:
-    #     message: "Christian hat die Wohnung verlassen"
-    #     title: "Keiner zu Hause"
-    # - service: notify.mobile_app_iphone_von_christian
-    #   data:
-    #     message: "Türe abgesperrt? \nHerd aus? \n \nNa dann viel Erfolg und pass auf dich auf!"
-    #     title: "Tschüss"
+    ###################################################
+    # Add notification funtionallity if needed
+    ###################################################
+    - service: media_player.media_pause
+      data:
+        entity_id: media_player.wohnzimmer
     - service: light.turn_off
       data:
         entity_id: all
