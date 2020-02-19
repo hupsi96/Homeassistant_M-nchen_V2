@@ -100,12 +100,18 @@
       - condition: state
         entity_id: device_tracker.iphone_von_simon
         state: 'not_home'
-      #Add Christian Phone GPS as a condition
-      #
-      #To be activated after troubleshooting of GPS location
-      #- condition: state
-      #  entity_id: device_tracker.simons_iphone
-      #  state: 'not_home'
+      - condition: state
+        entity_id: device_tracker.flos_iphone
+        state: 'not_home'
+      - condition: state
+        entity_id: device_tracker.iphone_von_christian
+        state: 'home' #GPS confirmation that person is home
+      - condition: state
+        entity_id: device_tracker.simons_iphone
+        state: 'not_home'
+      ###################################################
+      # Add Flos GPS tracking as a additional Condition
+      ###################################################
       - condition: or
         conditions:
           - condition: sun
