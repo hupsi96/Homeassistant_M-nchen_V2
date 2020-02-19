@@ -74,6 +74,47 @@
 #           {% endif %}
 
 
+- alias: Garderobe_turn_on
+  trigger:
+    - platform: state
+      entity_id: sensor.0x0017880108005bb6_action #Replace with motion detector id
+      to: 'on' #Replace with motion detector state
+  action:
+    - service: hue.hue_activate_scene
+      data_template:
+        group_name: Garderobe
+        scene_name: >
+          {% if is_state('input_boolean.christian_nachtmodus', 'on') %}
+            Nacht 2
+          {% else %} 
+            Hell
+          {% endif %}
+    - service: timer.start
+      entity_id: timer.garderobe_debounce
+    - service: timer.start
+      entity_id: timer.garderobe_debounce_dim
+    
+- alias: Garderobe_dim
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.garderobe_debounce_dim
+  action:
+    - service: hue.hue_activate_scene
+      data:
+        group_name: Garderobe
+        scene_name: Gedimmt
+
+- alias: Garderobe_off
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.garderobe_debounce
+  action:
+    - service: rest_command.garderobe_lightoff_request
+
 # - alias: Turn_off_Flo
 #   trigger:
 #     platform: state
