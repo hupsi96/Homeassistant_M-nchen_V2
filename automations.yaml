@@ -142,7 +142,7 @@
     - service: timer.start
       entity_id: timer.gang_debounce
     - service: timer.cancel
-      entity_id: gang_debounce_dim
+      entity_id: timer.gang_debounce_dim
     - service: timer.start
       entity_id: timer.gang_debounce_dim
     
@@ -159,7 +159,7 @@
         group_name: Gang
         scene_name: Gedimmt
 
-- alias: Garderobe_off
+- alias: Gang_off
   initial_state: true
   trigger:
     - platform: event
@@ -170,7 +170,7 @@
     - service: rest_command.gang_lightoff_request
 
 
-    
+
 ###################################################
   # Comming Home automation - Christian
 ###################################################
