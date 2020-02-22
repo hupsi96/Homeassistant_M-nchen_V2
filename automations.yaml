@@ -108,9 +108,14 @@
         entity_id: timer.garderobe_debounce_dim
   action:
     - service: hue.hue_activate_scene
-      data:
+      data_template:
         group_name: Garderobe
-        scene_name: Gedimmt
+        scene_name: >
+          {% if is_state('input_boolean.christian_nachtmodus', 'on') %}
+            Nacht 2
+          {% else %} 
+            Gedimmt
+          {% endif %}
 
 - alias: Garderobe_off
   trigger:
@@ -155,9 +160,14 @@
         entity_id: timer.gang_debounce_dim
   action:
     - service: hue.hue_activate_scene
-      data:
+      data_template:
         group_name: Gang
-        scene_name: Gedimmt
+        scene_name: >
+          {% if is_state('input_boolean.christian_nachtmodus', 'on') %}
+            Nacht 2
+          {% else %} 
+            Gedimmt
+          {% endif %}
 
 - alias: Gang_off
   initial_state: true
