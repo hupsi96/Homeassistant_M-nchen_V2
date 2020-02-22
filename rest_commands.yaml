@@ -12,3 +12,8 @@ garderobe_lightoff_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
     method: PUT
     payload: '{"on":false}'
+
+gang_lightoff_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/6/action
+    method: PUT
+    payload: '{"on":false}'

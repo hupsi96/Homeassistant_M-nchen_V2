@@ -75,6 +75,7 @@
 
 
 - alias: Garderobe_turn_on
+  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.0x0017880106f68789_occupancy #Replace with motion detector id
@@ -99,6 +100,7 @@
       entity_id: timer.garderobe_debounce_dim
     
 - alias: Garderobe_dim
+  initial_state: true
   trigger:
     - platform: event
       event_type: timer.finished
@@ -119,7 +121,56 @@
   action:
     - service: rest_command.garderobe_lightoff_request
 
+- alias: Gang_turn_on
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.0x0017880106f671d9_occupancy #Replace with motion detector id
+      to: 'on' #Replace with motion detector state
+  action:
+    - service: hue.hue_activate_scene
+      data_template:
+        group_name: Gang
+        scene_name: >
+          {% if is_state('input_boolean.christian_nachtmodus', 'on') %}
+            Nacht 2
+          {% else %} 
+            Hell
+          {% endif %}
+    - service: timer.cancel
+      entity_id: timer.gang_debounce
+    - service: timer.start
+      entity_id: timer.gang_debounce
+    - service: timer.cancel
+      entity_id: gang_debounce_dim
+    - service: timer.start
+      entity_id: timer.gang_debounce_dim
+    
+- alias: Gang_dim
+  initial_state: true
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.gang_debounce_dim
+  action:
+    - service: hue.hue_activate_scene
+      data:
+        group_name: Gang
+        scene_name: Gedimmt
 
+- alias: Garderobe_off
+  initial_state: true
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.gang_debounce
+  action:
+    - service: rest_command.gang_lightoff_request
+
+
+    
 ###################################################
   # Comming Home automation - Christian
 ###################################################
