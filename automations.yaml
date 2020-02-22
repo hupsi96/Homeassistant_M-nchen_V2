@@ -77,7 +77,7 @@
 - alias: Garderobe_turn_on
   trigger:
     - platform: state
-      entity_id: sensor.0x0017880108005bb6_action #Replace with motion detector id
+      entity_id: binary_sensor.0x0017880106f69179_occupancy #Replace with motion detector id
       to: 'on' #Replace with motion detector state
   action:
     - service: hue.hue_activate_scene
@@ -89,8 +89,12 @@
           {% else %} 
             Hell
           {% endif %}
+    - service: timer.cancel
+      entity_id: timer.garderobe_debounce
     - service: timer.start
       entity_id: timer.garderobe_debounce
+    - service: timer.cancel
+      entity_id: timer.garderobe_debounce_dim
     - service: timer.start
       entity_id: timer.garderobe_debounce_dim
     
