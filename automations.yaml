@@ -93,19 +93,13 @@
           {% else %} 
             Hell
           {% endif %}
-    - service_template: >
-        {% if is_state('timer.garderobe_debounce', 'active') %}
-          timer.restart
-        {% else %} 
-          timer.start
-        {% endif %}
+    - service: timer.cancel
       entity_id: timer.garderobe_debounce
-    - service_template: >
-        {% if is_state('timer.garderobe_debounce_dim', 'active') %}
-          timer.restart
-        {% else %} 
-          timer.start
-        {% endif %}
+    - service: timer.start
+      entity_id: timer.garderobe_debounce
+    - service: timer.cancel
+      entity_id: timer.garderobe_debounce_dim
+    - service: timer.start
       entity_id: timer.garderobe_debounce_dim
     
 - alias: Garderobe_dim
