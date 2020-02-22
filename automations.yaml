@@ -80,6 +80,12 @@
     - platform: state
       entity_id: binary_sensor.0x0017880106f68789_occupancy #Replace with motion detector id
       to: 'on' #Replace with motion detector state
+  condition:
+    condition: numeric_state
+    entity_id: binary_sensor.0x0017880106f68789_occupancy
+    above: 100
+    # If your sensor value needs to be adjusted
+    value_template: '{{ states('binary_sensor.0x0017880106f68789_occupancy.illuminance_lux') }}'
   action:
     - service: hue.hue_activate_scene
       data_template:
