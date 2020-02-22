@@ -93,13 +93,13 @@
           {% else %} 
             Hell
           {% endif %}
-    - service: timer.cancel
+    #- service: timer.cancel
+    #  entity_id: timer.garderobe_debounce
+    - service: timer.restart
       entity_id: timer.garderobe_debounce
-    - service: timer.start
-      entity_id: timer.garderobe_debounce
-    - service: timer.cancel
-      entity_id: timer.garderobe_debounce_dim
-    - service: timer.start
+    #- service: timer.cancel
+    #  entity_id: timer.garderobe_debounce_dim
+    - service: timer.restart
       entity_id: timer.garderobe_debounce_dim
     
 - alias: Garderobe_dim
