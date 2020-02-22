@@ -115,17 +115,6 @@
   action:
     - service: rest_command.garderobe_lightoff_request
 
-# - alias: Turn_off_Flo
-#   trigger:
-#     platform: state
-#     entity_id: sensor.0x0017880108005bb6_action
-#     to: 'off'
-#   action:
-#     service: rest_command.flo_lightOff_request
-# Autmoation should call HUE API at this path: http://192.168.178.21/api/!secret huetoken/groups/7/action
-# Body: { "on": false }
-
-
 
 ###################################################
   # Comming Home automation - Christian
