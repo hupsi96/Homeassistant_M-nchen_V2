@@ -106,9 +106,9 @@
       - condition: state
         entity_id: device_tracker.iphone_von_christian # GPS Based
         state: 'home' #GPS confirmation that person is home
-      - condition: state
-        entity_id: device_tracker.simons_iphone # GPS Based
-        state: 'not_home'
+      #- condition: state ###############################################Problem Solving needed
+      #  entity_id: device_tracker.simons_iphone # GPS Based
+      #  state: 'not_home'
       ###################################################
       # Add Flos GPS tracking as a additional Condition
       ###################################################
@@ -148,9 +148,9 @@
       - condition: state
         entity_id: device_tracker.iphone_von_christian # GPS Based
         state: 'home' #GPS confirmation that person is home
-      - condition: state
-        entity_id: device_tracker.simons_iphone # GPS Based
-        state: 'not_home'
+      #- condition: state ###############################################Problem Solving needed
+      #  entity_id: device_tracker.simons_iphone # GPS Based
+      #  state: 'not_home'
       ###################################################
       # Add Flos GPS tracking as a additional Condition
       ###################################################
@@ -190,9 +190,9 @@
       - condition: state
         entity_id: device_tracker.iphone_von_christian # GPS Based
         state: 'not_home' #GPS confirmation that person is home
-      - condition: state
-        entity_id: device_tracker.simons_iphone # GPS Based
-        state: 'not_home'
+      #- condition: state ###############################################Problem Solving needed
+      #  entity_id: device_tracker.simons_iphone # GPS Based
+      #  state: 'not_home'
       - condition: state
         entity_id: device_tracker.iphonevhristian # GPS Based
         state: 'not_home' #GPS confirmation that person is home
