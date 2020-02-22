@@ -18,15 +18,7 @@ input_boolean:
     initial: off
     icon: mdi:weather-night
 
-#input_number:
-#  flo_scene_selector:
-#    name: Scenen Auswahl
-#    initial: 0
-#    min: 0
-#    max: 10
-#    step: 1
-
-#Alternative to number -> if this works it is may better!!!
+#selector for scene in Flo´s room
 input_select:
   scene_flo:
     name: Scene
