@@ -65,13 +65,13 @@ timer:
   flo_debounce:
     duration: '00:0:05'
   garderobe_debounce_dim: #after 45 secounds the light should be dimmed in Garderobe
-    duration: '00:00:45'
+    duration: '00:01:00'
   garderobe_debounce: # after 1 minute the light should be turned off in Garderobe
-    duration: '00:01:00'
+    duration: '00:01:30'
   gang_debounce_dim: #after 45 secounds the light should be dimmed in Garderobe
-    duration: '00:00:45'
-  gang_debounce: # after 1 minute the light should be turned off in Garderobe
     duration: '00:01:00'
+  gang_debounce: # after 1 minute the light should be turned off in Garderobe
+    duration: '00:01:30'
 
 # Text to speech
 tts:
