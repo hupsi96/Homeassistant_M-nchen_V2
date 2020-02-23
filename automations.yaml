@@ -112,7 +112,7 @@
           {% if is_state('input_boolean.christian_nachtmodus', 'on') %}
             Nacht 2
           {% else %} 
-            Hel1
+            Hell
           {% endif %}
     - service: timer.cancel
       entity_id: timer.garderobe_debounce
