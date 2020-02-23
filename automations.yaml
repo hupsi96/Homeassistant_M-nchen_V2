@@ -104,8 +104,6 @@
   condition:
     - condition: template
       value_template: "{{ (state_attr('binary_sensor.0x0017880106f68789_occupancy', 'illuminance_lux')|int) < 100 }}"
-    #- condition: template
-    #  value_template: "{{ (state_attr('binary_sensor.0x0017880106f68789_occupancy', 'occupancy')) == true }}""
     - condition: template
       value_template: "{{ (state_attr('binary_sensor.0x0017880106f68789_occupancy', 'occupancy')) }}"
   action:
@@ -174,6 +172,11 @@
     - platform: state
       entity_id: binary_sensor.0x0017880106f671d9_occupancy #Replace with motion detector id
       #to: 'on' #Replace with motion detector state
+  condition:
+    - condition: template
+      value_template: "{{ (state_attr('binary_sensor.0x0017880106f671d9_occupancy', 'illuminance_lux')|int) < 100 }}"
+    - condition: template
+      value_template: "{{ (state_attr('binary_sensor.0x0017880106f671d9_occupancy', 'occupancy')) }}"
   action:
     - service: hue.hue_activate_scene
       data_template:
