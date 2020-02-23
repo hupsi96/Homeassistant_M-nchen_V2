@@ -106,8 +106,8 @@
     #   entity_id: binary_sensor.0x0017880106f68789_occupancy #Replace with motion detector id
       #to: 'on' #Replace with motion detector state
   condition:
-    - condition: template
-      value_template: "{{ (state_attr('binary_sensor.0x0017880106f68789_occupancy', 'illuminance_lux')|int) < 100 }}"
+    condition: template
+    value_template: "{{ (state_attr('binary_sensor.0x0017880106f68789_occupancy', 'illuminance_lux')|int) < 100 }}"
     #- condition: template
     #  value_template: "{{ (state_attr('binary_sensor.0x0017880106f68789_occupancy', 'occupancy')) == true }}""
     #condition: state
