@@ -107,7 +107,7 @@
     #- condition: template
     #  value_template: "{{ (state_attr('binary_sensor.0x0017880106f68789_occupancy', 'occupancy')) == true }}""
     - condition: template
-      evalue_template: "{{ (state_attr('binary_sensor.0x0017880106f68789_occupancy', 'occupancy')| string) == 'true' }}"
+      evalue_template: "{{ (state_attr('binary_sensor.0x0017880106f68789_occupancy', 'occupancy') }}"
   action:
           # {% (if is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian', 'home')) or 
           # (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('input_boolean.simon_nachtmodus', 'on') 
