@@ -106,8 +106,8 @@
       value_template: "{{ (state_attr('binary_sensor.0x0017880106f68789_occupancy', 'illuminance_lux')|int) < 100 }}"
     #- condition: template
     #  value_template: "{{ (state_attr('binary_sensor.0x0017880106f68789_occupancy', 'occupancy')) == true }}""
-    - condition: template
-      evalue_template: "{{ (state_attr('binary_sensor.0x0017880106f68789_occupancy', 'occupancy')) == true }}"
+    #- condition: template
+    #  evalue_template: "{{ (state_attr('binary_sensor.0x0017880106f68789_occupancy', 'occupancy')) == 'true' }}"
   action:
     - service: hue.hue_activate_scene
       data_template:
