@@ -102,14 +102,23 @@
       entity_id: binary_sensor.0x0017880106f68789_occupancy #Replace with motion detector id
       #to: 'on' #Replace with motion detector state
   condition:
-    condition: template
-    value_template: "{{ (state_attr('binary_sensor.0x0017880106f68789_occupancy', 'illuminance_lux')|int) < 100 }}"
+    - condition: template
+      value_template: "{{ (state_attr('binary_sensor.0x0017880106f68789_occupancy', 'illuminance_lux')|int) < 100 }}"
+    - condition: state
+      entitiy_id: binary_sensor.0x0017880106f68789_occupancy
+      state: 'on'
   action:
     - service: hue.hue_activate_scene
       data_template:
         group_name: Garderobe
         scene_name: >
-          {% if is_state('input_boolean.christian_nachtmodus', 'on') %}
+          {% (if is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian', 'home')) or 
+          (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('input_boolean.simon_nachtmodus', 'on') 
+          and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'home')) or
+          (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on')  
+          and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'not_home')) or 
+          (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.simon_nachtmodus', 'on')  
+          and is_state('device_tracker.flos_iphone', 'not_home') and is_state('device_tracker.iphone_von_simon', 'home')) %}
             Nacht 2
           {% else %} 
             Hell
@@ -135,7 +144,13 @@
       data_template:
         group_name: Garderobe
         scene_name: >
-          {% if is_state('input_boolean.christian_nachtmodus', 'on') %}
+          {% (if is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian', 'home')) or 
+          (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('input_boolean.simon_nachtmodus', 'on') 
+          and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'home')) or
+          (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on')  
+          and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'not_home')) or 
+          (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.simon_nachtmodus', 'on')  
+          and is_state('device_tracker.flos_iphone', 'not_home') and is_state('device_tracker.iphone_von_simon', 'home')) %}
             Nacht 2
           {% else %} 
             Gedimmt
