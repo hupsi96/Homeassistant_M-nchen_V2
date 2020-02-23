@@ -155,7 +155,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.0x0017880106f671d9_occupancy #Replace with motion detector id
-      to: 'on' #Replace with motion detector state
+      #to: 'on' #Replace with motion detector state
   action:
     - service: hue.hue_activate_scene
       data_template:
