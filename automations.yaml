@@ -106,15 +106,12 @@
     - condition: template
       value_template: "{{ (state_attr('binary_sensor.0x0017880106f68789_occupancy', 'occupancy')) }}"
   action:
-    - service: hue.hue_activate_scene
-      data_template:
-        group_name: Garderobe
-        scene_name: >
-          {% if (is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian', 'home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'not_home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'not_home') and is_state('device_tracker.iphone_von_simon', 'home')) %}
-            Nacht 2
-          {% else %} 
-            Hell
-          {% endif %}
+    - service_template: >
+        {% if (is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian', 'home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'not_home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'not_home') and is_state('device_tracker.iphone_von_simon', 'home')) %}
+          rest_command.garderobe_lightonnight_request
+        {% else %} 
+          rest_command.garderobe_lighton_request
+        {% endif %}
     - service: timer.cancel
       entity_id: timer.garderobe_debounce
     - service: timer.start
@@ -132,15 +129,12 @@
       event_data:
         entity_id: timer.garderobe_debounce_dim
   action:
-    - service: hue.hue_activate_scene
-      data_template:
-        group_name: Garderobe
-        scene_name: >
-          {% if (is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian', 'home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'not_home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'not_home') and is_state('device_tracker.iphone_von_simon', 'home')) %}
-            Nacht 2
-          {% else %} 
-            Gedimmt
-          {% endif %}
+    - service_template: >
+        {% if (is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian', 'home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'not_home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'not_home') and is_state('device_tracker.iphone_von_simon', 'home')) %}
+          rest_command.garderobe_lightonnight_request
+        {% else %} 
+          rest_command.garderobe_lighton_request
+        {% endif %}
 
 - alias: Garderobe_off
   trigger:
