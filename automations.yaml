@@ -340,8 +340,131 @@
             Flo
           {% end if %}
           
-
-
+- alias: 'Comming Home Music'
+#rework sonos setting to pla music when coming home and say hello
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: device_tracker.iphonevhristian #WiFi based
+      to: 'home'
+    - platform: state
+      entity_id: device_tracker.iphone_von_simon #WiFi based
+      to: 'home'
+    - platform: state
+      entity_id: device_tracker.flos_iphone #WiFi based
+      to: 'home'
+    - platform: state
+      entity_id: device_tracker.iphonevranziska #WiFi based
+      to: 'home'
+  condition:
+    condition: or
+    conditions:
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: device_tracker.iphone_von_simon # Wifi
+            state: 'not_home'
+          - condition: state
+            entity_id: device_tracker.flos_iphone # Wifi
+            state: 'not_home'
+          - condition: state
+            entity_id: device_tracker.iphonevranziska # Wifi
+            state: 'not_home'
+          - condition: state
+            entity_id: device_tracker.iphone_von_christian # GPS
+            state: 'home' #GPS
+          - condition: state
+            entity_id: device_tracker.simons_iphone
+            state: 'not_home' # GPS
+          - condition: state
+            entity_id: device_tracker.flos_iphone_2
+            state: 'not_home' # GPS
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: device_tracker.iphonevhristian # Wifi
+            state: 'not_home'
+          - condition: state
+            entity_id: device_tracker.flos_iphone # Wifi
+            state: 'not_home'
+          - condition: state
+            entity_id: device_tracker.iphonevranziska # Wifi
+            state: 'not_home'
+          - condition: state
+            entity_id: device_tracker.iphone_von_christian # GPS
+            state: 'not_home' #GPS
+          - condition: state
+            entity_id: device_tracker.simons_iphone
+            state: 'home' # GPS
+          - condition: state
+            entity_id: device_tracker.flos_iphone_2
+            state: 'not_home' # GPS
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: device_tracker.iphonevhristian # Wifi
+            state: 'not_home'
+          - condition: state
+            entity_id: device_tracker.iphone_von_simon # Wifi
+            state: 'not_home'
+          - condition: state
+            entity_id: device_tracker.iphonevranziska # Wifi
+            state: 'not_home'
+          - condition: state
+            entity_id: device_tracker.iphone_von_christian # GPS
+            state: 'not_home' #GPS
+          - condition: state
+            entity_id: device_tracker.simons_iphone
+            state: 'not_home' # GPS
+          - condition: state
+            entity_id: device_tracker.flos_iphone_2
+            state: 'home' # GPS
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: device_tracker.iphonevhristian # Wifi
+            state: 'not_home'
+          - condition: state
+            entity_id: device_tracker.iphone_von_simon # Wifi
+            state: 'not_home'
+          - condition: state
+            entity_id: device_tracker.flos_iphone # Wifi
+            state: 'not_home'
+          - condition: state
+            entity_id: device_tracker.iphone_von_christian # GPS
+            state: 'not_home' #GPS
+          - condition: state
+            entity_id: device_tracker.simons_iphone
+            state: 'not_home' # GPS
+          - condition: state
+            entity_id: device_tracker.flos_iphone_2
+            state: 'not_home' # GPS
+  action:
+    ###################################################
+    # TODO: Add notification funtionallity if needed
+    ###################################################
+    - service: hue.hue_activate_scene
+      data:
+        group_name: Wohnzimmer
+        scene_name: Entspannt
+    - service: hue.hue_activate_scene
+      data_template:
+        group_name: >
+          {% if  {{ trigger.entity_id }} == 'device_tracker.iphonevhristian' %}
+            Christian
+          {% elif  {{ trigger.entity_id }} == 'device_tracker.iphone_von_simon' %}
+            Simon
+          {% elif  {{ trigger.entity_id }} == 'device_tracker.flos_iphone' or {{ trigger.entity_id }} == 'entity_id: device_tracker.iphonevranziska'%}
+            Flo
+          {% end if %}
+        scene_name: > 
+          {% if  {{ trigger.entity_id }} == 'device_tracker.iphonevhristian' %}
+            Christian
+          {% elif  {{ trigger.entity_id }} == 'device_tracker.iphone_von_simon' %}
+            Simon
+          {% elif  {{ trigger.entity_id }} == 'device_tracker.flos_iphone' or {{ trigger.entity_id }} == 'entity_id: device_tracker.iphonevranziska'%}
+            Flo
+          {% end if %}
 
 ###################################################
 # Comming Home automation - Christian
