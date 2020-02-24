@@ -13,6 +13,11 @@ garderobe_lightoff_request:
     method: PUT
     payload: '{"on":false}'
 
+garderobe_lighton_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
+    method: PUT
+    payload: '{"on":false,"scene":"kHds0secOOdYNwi"}'
+
 gang_lightoff_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/6/action
     method: PUT
