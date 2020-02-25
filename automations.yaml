@@ -214,6 +214,29 @@
     - service: timer.start
       entity_id: timer.gang_debounce_dim
     
+- alias: Gang_keep_turn_on
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.0x0017880106f671d9_occupancy
+  condition:
+    - condition: template
+      value_template: "{{ (state_attr('binary_sensor.0x0017880106f671d9_occupancy', 'illuminance_lux')|int) < 100 }}"
+    - condition: template
+      value_template: "{{ (state_attr('binary_sensor.0x0017880106f671d9_occupancy', 'occupancy')) }}"
+    - condition: state
+      entity_id:  timer.gang_debounce_dim
+      state: 'active'
+  action:
+    - service: timer.cancel
+      entity_id: timer.gang_debounce
+    - service: timer.start
+      entity_id: timer.gang_debounce
+    - service: timer.cancel
+      entity_id: timer.gang_debounce_dim
+    - service: timer.start
+      entity_id: timer.gang_debounce_dim
+
 - alias: Gang_dim
   initial_state: true
   trigger:
