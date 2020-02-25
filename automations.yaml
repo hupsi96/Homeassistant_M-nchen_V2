@@ -246,10 +246,14 @@
         entity_id: timer.gang_debounce_dim
   action:
     - service_template: >
-        {% if (is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian', 'home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'not_home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'not_home') and is_state('device_tracker.iphone_von_simon', 'home')) %}
+        {% if (is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian', 'home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'not_home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'not_home') and is_state('device_tracker.iphone_von_simon', 'home'))and (is_state('group.gang', 'off')) %}
           rest_command.gang_lightonnight_request
-        {% else %} 
-          rest_command.gang_lighton_request
+        {% elif (is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian', 'home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'not_home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'not_home') and is_state('device_tracker.iphone_von_simon', 'home'))and (is_state('group.gang', 'on')) %}
+          rest_command.gang_lightonnight_recall_request
+        {% elif (is_state('group.gang', 'off')) %} 
+          rest_command.gang_lightonnight_request
+        {% else %}
+          rest_command.gang_lightonnight_recall_request
         {% endif %}
 
 - alias: Gang_off
