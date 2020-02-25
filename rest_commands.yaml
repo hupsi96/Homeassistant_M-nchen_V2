@@ -53,7 +53,17 @@ gang_lighton_request:
     method: PUT
     payload: '{"on":false,"scene":"VG9tRvQe2MwFSNQ"}'
 
+gang_lighton_recall_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/6/action
+    method: PUT
+    payload: '{"scene":"VG9tRvQe2MwFSNQ"}'
+
 gang_lightonnight_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/6/action
     method: PUT
     payload: '{"on":false,"scene":"IRj4BTeOMVygqLL"}'
+
+gang_lightonnight_recall_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/6/action
+    method: PUT
+    payload: '{"scene":"IRj4BTeOMVygqLL"}'
