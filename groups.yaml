@@ -16,6 +16,7 @@ kitchen:
   entities:
     - group.kitchenLight
     - group.kitchenMotion
+    - media_player.unnamed_room
 
 garderobeLight:
   name: Licht
@@ -100,6 +101,8 @@ christian:
     - group.christianLight
     - device_tracker.iphonevhristian
     - device_tracker.christian_cgi
+    - device_tracker.iphone_von_christian_2
+    - device_tracker.iphone_von_christian
 
 simonLight:
   name: Licht
@@ -113,17 +116,34 @@ simon:
     - group.simonLight
     - media_player.simons_zimmer
     - device_tracker.iphone_von_simon
+    - device_tracker.simons_iphone
 
 floLight:
   name: Licht
   entities:
     - light.flo_fado
 
+flosmartswitch:
+  name: Smart Switch
+  entities:
+    - sensor.0x0017880108005bb6_action
+    - sensor.0x0017880108005bb6_battery
+    - sensor.0x0017880108005bb6_linkquality
+
+
+floautomationsSwitch:
+  name: Automationen Switch
+  entities:
+    - automation.turn_on_flo
+    - automation.turn_off_flo
+    - automation.switch_flo
+    - automation.night_switch_flo
 flo:
   name: Flo
   view: true
   entities:
     - group.floLight
+    - group.flosmartswitch
 
 music:
   name: Musik
