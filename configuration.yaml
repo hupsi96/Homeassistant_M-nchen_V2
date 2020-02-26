@@ -17,6 +17,10 @@ input_boolean:
     name: Nachtmodus von Florian
     initial: off
     icon: mdi:weather-night
+  test_mode:
+    name: test modus
+    initial: off
+    icon: mdi:weather-night
 
 #selector for scene in Flo´s room
 input_select:

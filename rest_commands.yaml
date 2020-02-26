@@ -13,7 +13,67 @@ garderobe_lightoff_request:
     method: PUT
     payload: '{"on":false}'
 
+garderobe_lighton_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
+    method: PUT
+    payload: '{"on":false,"scene":"kHds0secOOdYNwi"}'
+
+garderobe_lighton_recall_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
+    method: PUT
+    payload: '{"scene":"kHds0secOOdYNwi"}'
+
+garderobe_lighton_dim_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
+    method: PUT
+    payload: '{"on":false,"scene":"vcJB9jTyHaqpUNc"}'
+
+garderobe_lighton_recall_dim_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
+    method: PUT
+    payload: '{"scene":"vcJB9jTyHaqpUNc"}'
+
+garderobe_lightonnight_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
+    method: PUT
+    payload: '{"on":false,"scene":"5bnWJJIACKjQ-Cf"}'
+
+garderobe_lightonnight_recall_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
+    method: PUT
+    payload: '{"scene":"5bnWJJIACKjQ-Cf"}'
+
 gang_lightoff_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/6/action
     method: PUT
     payload: '{"on":false}'
+
+gang_lighton_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/6/action
+    method: PUT
+    payload: '{"on":false,"scene":"VG9tRvQe2MwFSNQ"}'
+
+gang_lighton_recall_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/6/action
+    method: PUT
+    payload: '{"scene":"VG9tRvQe2MwFSNQ"}'
+
+gang_lightonnight_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/6/action
+    method: PUT
+    payload: '{"on":false,"scene":"IRj4BTeOMVygqLL"}'
+
+gang_lightonnight_recall_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/6/action
+    method: PUT
+    payload: '{"scene":"IRj4BTeOMVygqLL"}'
+
+gang_lighton_dim_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/6/action
+    method: PUT
+    payload: '{"on":false,"scene":"mF10HcTDiZgIteV"}'
+
+gang_lighton_dim_recall_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/6/action
+    method: PUT
+    payload: '{"scene":"mF10HcTDiZgIteV"}'
