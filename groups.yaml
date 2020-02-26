@@ -50,7 +50,6 @@ gangLight:
 
 gangMotion:
   name: Bewegungsmelder
-  show_header_toggle: false
   entities:
     - binary_sensor.0x0017880106f671d9_occupancy
     - sensor.0x0017880106f671d9_battery
