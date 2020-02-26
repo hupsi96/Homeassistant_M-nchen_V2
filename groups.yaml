@@ -34,12 +34,21 @@ garderobeMotion:
     - sensor.0x0017880106f68789_linkquality
     - sensor.0x0017880106f68789_temperature
 
+garderobeAutomation:
+  name: Automationen
+  entities:
+    - automation.garderobe_turn_on
+    - automation.garderobe_keep_turn_on
+    - automation.garderobe_dim
+    - automation.garderobe_off
+
 garderobe:
   name: Garderobe
   view: true
   entities:
     - group.garderobeLight
     - group.garderobeMotion
+    - group.garderobeAutomation
 
 gangLight:
   name: Licht
