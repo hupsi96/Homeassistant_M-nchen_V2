@@ -8,8 +8,7 @@ kitchenMotion:
   entities:
     - binary_sensor.kuche_sensor_motion
     - sensor.kuche_sensor_light_level
-    - sensor.kuche_sensor_temperature
-    
+    - sensor.kuche_sensor_temperature    
 
 kitchen:
   name: Küche
@@ -29,9 +28,11 @@ garderobeLight:
 garderobeMotion:
   name: Bewegungsmelder
   entities:
-    - binary_sensor.garderoben_sensor_1_motion
-    - sensor.garderoben_sensor_1_light_level
-    - sensor.garderoben_sensor_1_temperature
+    - binary_sensor.0x0017880106f68789_occupancy
+    - sensor.0x0017880106f68789_battery
+    - sensor.0x0017880106f68789_illuminance
+    - sensor.0x0017880106f68789_linkquality
+    - sensor.0x0017880106f68789_temperature
 
 garderobe:
   name: Garderobe
@@ -49,11 +50,13 @@ gangLight:
 
 gangMotion:
   name: Bewegungsmelder
+  show_header_toggle: false
   entities:
-    - binary_sensor.gang_sensor_motion
-    - sensor.gang_sensor_light_level
-    - sensor.gang_sensor_temperature
-
+    - binary_sensor.0x0017880106f671d9_occupancy
+    - sensor.0x0017880106f671d9_battery
+    - sensor.0x0017880106f671d9_illuminance
+    - sensor.0x0017880106f671d9_linkquality
+    - sensor.0x0017880106f671d9_temperature
 
 gang:
   name: Gang
