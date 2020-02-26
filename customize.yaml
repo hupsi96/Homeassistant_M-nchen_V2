@@ -1,0 +1,14 @@
+binary_sensor.0x0017880106f68789_occupancy:
+  friendly_name: Garderobe Bewegung
+
+sensor.0x0017880106f68789_battery:
+  friendly_name: Garderobe Batterie
+
+sensor.0x0017880106f68789_illuminance:
+  friendly_name: Garderobe Lux
+
+sensor.0x0017880106f68789_linkquality:
+  friendly_name: Garderobe Verbindung
+
+sensor.0x0017880106f68789_temperature:
+  friendly_name: Garderobe Termperatur
