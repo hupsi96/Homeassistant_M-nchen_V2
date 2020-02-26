@@ -66,6 +66,14 @@ gangMotion:
     - sensor.0x0017880106f671d9_linkquality
     - sensor.0x0017880106f671d9_temperature
 
+garderobeAutomation:
+  name: Automationen
+  entities:
+    - automation.gang_turn_on
+    - automation.gang_keep_turn_on
+    - automation.gang_dim
+    - automation.gang_off
+
 gang:
   name: Gang
   view: true
