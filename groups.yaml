@@ -1,3 +1,24 @@
+allLight:
+  name: Licht
+  entities:
+    - group.christianLight
+    - group.simonLight
+    - group.floLight
+    - group.gangLight
+    - group.garderobeLight
+    - group.abstellkammerLight
+    - group.livingroomLight
+    - group.kitchenLight
+
+mainMenue:
+  name: Allgemein
+  view: true
+  entities:
+    - group.allLight
+    - sun.sun
+    - weather.home
+
+
 kitchenLight:
   name: Licht
   entities:
@@ -210,6 +231,13 @@ livingroomAmbilight:
   name: Ambilight
   entities:
     - light.fado
+
+livingroomLight:
+  name: Wohnzimmer Licht
+  entities:
+    - group.dinnertable
+    - group.sofaLamp
+    - group.livingroomAmbilight
 
 livingroom:
   name: Wohnzimmer
