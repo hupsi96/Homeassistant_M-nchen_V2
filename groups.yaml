@@ -71,7 +71,7 @@ gangMotion:
     - timer.gang_debounce_dim
     - timer.gang_debounce
 
-garderobeAutomation:
+gangAutomation:
   name: Automationen
   entities:
     - automation.gang_turn_on
