@@ -115,6 +115,8 @@ christianTracking:
     - device_tracker.iphonevhristian
     - device_tracker.christian_cgi
     - device_tracker.iphone_von_christian_2
+    - input_boolean.christian_nachtmodus
+
 christian:
   name: Christian
   view: true
@@ -134,6 +136,7 @@ simonTracking:
   entities:
     - device_tracker.iphone_von_simon
     - device_tracker.simons_iphone_2
+    - input_boolean.simon_nachtmodus
 
 simon:
   name: simon
@@ -157,6 +160,7 @@ flosmartswitch:
     - sensor.0x0017880108005bb6_battery
     - sensor.0x0017880108005bb6_linkquality
     - timer.flo_debounce
+    - input_select.scene_flo
 
 
 floautomationsSwitch:
@@ -173,6 +177,7 @@ floTracking:
   entities:
     - device_tracker.flos_iphone_2
     - device_tracker.flos_iphone_3
+    - input_boolean.flo_nachtmodus
 flo:
   name: Flo
   view: true
@@ -243,7 +248,11 @@ music:
     - media_player.wohnzimmer
     - media_player.unnamed_room
     - media_player.unnamed_room_2
-
+test:
+  name: Testing
+  view: true
+  entities:
+    - input_boolean.test_mode
 # flat:
 #   name: Wohnung
 #   view: true
