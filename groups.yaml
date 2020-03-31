@@ -121,6 +121,7 @@ christian:
   entities:
     - group.christianLight
     - group.christianTracking
+    - sensor.geocoded_location_4
 
 simonLight:
   name: Licht
@@ -141,6 +142,7 @@ simon:
     - group.simonLight
     - group.simonTracking
     - media_player.simons_zimmer
+    - sensor.geocoded_location_6
 
 floLight:
   name: Licht
@@ -178,6 +180,7 @@ flo:
     - group.flosmartswitch
     - group.floautomationsSwitch
     - group.floTracking
+    - sensor.geocoded_location_5
 
 dinnertable:
   name: Esstisch
