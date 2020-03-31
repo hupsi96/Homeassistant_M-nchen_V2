@@ -187,6 +187,7 @@ flo:
     - group.floautomationsSwitch
     - group.floTracking
     - sensor.geocoded_location_5
+    - media_player.samsung_tv
 
 dinnertable:
   name: Esstisch
