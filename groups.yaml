@@ -149,6 +149,7 @@ floLight:
 
 flosmartswitch:
   name: Smart Switch
+  control: hidden
   entities:
     - sensor.0x0017880108005bb6_action
     - sensor.0x0017880108005bb6_battery
@@ -162,12 +163,21 @@ floautomationsSwitch:
     - automation.turn_off_flo
     - automation.switch_flo
     - automation.night_switch_flo
+
+floTracking:
+  name: Tracking
+  control: hidden
+  entities:
+    - device_tracker.flos_iphone_2
+    - device_tracker.flos_iphone_3
 flo:
   name: Flo
   view: true
   entities:
     - group.floLight
     - group.flosmartswitch
+    - group.floautomationsSwitch
+    - group.floTracking
 
 music:
   name: Musik
