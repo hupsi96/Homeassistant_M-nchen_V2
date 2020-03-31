@@ -125,16 +125,22 @@ christian:
 simonLight:
   name: Licht
   entities:
-    - light.simon
+    - light.hue_ambiance_ceiling_1
+
+simonTracking:
+  name: Tracking
+  control: hidden
+  entities:
+    - device_tracker.iphone_von_simon
+    - device_tracker.simons_iphone_2
 
 simon:
   name: simon
   view: true
   entities:
     - group.simonLight
+    - group.simonTracking
     - media_player.simons_zimmer
-    - device_tracker.iphone_von_simon
-    #- device_tracker.simons_iphone
 
 floLight:
   name: Licht
