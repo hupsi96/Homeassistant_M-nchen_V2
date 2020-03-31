@@ -249,6 +249,25 @@ music:
     - media_player.wohnzimmer
     - media_player.unnamed_room
     - media_player.unnamed_room_2
+
+locationAutomation:
+  name: Location Automation
+  entities:
+    - automation.christian_coming_home_light
+    - automation.christian_coming_home_music
+    - automation.christian_leaving_home
+    - automation.flo_coming_home_light
+    - automation.flo_coming_home_music
+    - automation.flo_leaving_home
+    - automation.simon_coming_home_light
+    - automation.simon_coming_home_music
+    - automation.simon_leaving_home
+
+auto:
+  name: Automatisierungen
+  view: true
+  entities:
+    - group.locationAutomation
 test:
   name: Testing
   view: true
