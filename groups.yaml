@@ -179,13 +179,6 @@ flo:
     - group.floautomationsSwitch
     - group.floTracking
 
-music:
-  name: Musik
-  view: true
-  entities:
-    - media_player.simons_zimmer
-    - media_player.wohnzimmer
-
 dinnertable:
   name: Esstisch
   entities:
@@ -216,6 +209,7 @@ livingroom:
     - group.sofaLamp
     - group.livingroomAmbilight
     - media_player.wohnzimmer
+    - media_player.unnamed_room_2
 
 abstellkammerLight:
   name: Licht
@@ -236,6 +230,15 @@ abstellkammer:
   entities:
     - group.abstellkammerLight
     - group.abstellkammerMotion
+
+music:
+  name: Musik
+  view: true
+  entities:
+    - media_player.simons_zimmer
+    - media_player.wohnzimmer
+    - media_player.unnamed_room
+    - media_player.unnamed_room_2
 
 # flat:
 #   name: Wohnung
