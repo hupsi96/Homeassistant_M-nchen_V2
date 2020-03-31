@@ -81,6 +81,7 @@ timer:
 tts:
   - platform: google_translate
 
+#customize: !include customize.yaml
 rest_command: !include rest_commands.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
