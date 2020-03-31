@@ -14,10 +14,10 @@ mainMenue:
   name: Allgemein
   view: true
   entities:
+    - weather.home
     - group.allLight
     - sun.sun
-    - weather.home
-
+    
 
 kitchenLight:
   name: Licht
@@ -233,7 +233,7 @@ livingroomAmbilight:
     - light.fado
 
 livingroomLight:
-  name: Wohnzimmer Licht
+  name: Licht
   entities:
     - group.dinnertable
     - group.sofaLamp
