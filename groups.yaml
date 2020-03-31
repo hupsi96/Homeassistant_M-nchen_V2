@@ -62,6 +62,7 @@ gangLight:
 
 gangMotion:
   name: Bewegungsmelder
+  control: hidden
   entities:
     - binary_sensor.0x0017880106f671d9_occupancy
     - sensor.0x0017880106f671d9_battery
@@ -102,7 +103,7 @@ christianLight:
   name: Licht
   entities:
     - group.christianDeckenlampe
-    - light.bett
+    - light.bettv
     - group.christianBett
 
 christian:
