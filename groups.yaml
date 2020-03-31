@@ -85,6 +85,7 @@ gang:
   entities:
     - group.gangLight
     - group.gangMotion
+    - group.gangAutomation
 
 christianDeckenlampe:
   name: Deckenlampe
