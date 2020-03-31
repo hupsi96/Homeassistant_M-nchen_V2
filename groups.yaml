@@ -5,6 +5,7 @@ kitchenLight:
 
 kitchenMotion:
   name: Bewegungsmelder
+  control: hidden
   entities:
     - binary_sensor.kuche_sensor_motion
     - sensor.kuche_sensor_light_level
@@ -28,6 +29,7 @@ garderobeLight:
 
 garderobeMotion:
   name: Bewegungsmelder
+  control: hidden
   entities:
     - binary_sensor.0x0017880106f68789_occupancy
     - sensor.0x0017880106f68789_battery
@@ -103,18 +105,22 @@ christianLight:
   name: Licht
   entities:
     - group.christianDeckenlampe
-    - light.bettv
+    - light.bett
     - group.christianBett
 
+christianTracking:
+  name: Tracking
+  control: hidden
+  entities:
+    - device_tracker.iphonevhristian
+    - device_tracker.christian_cgi
+    - device_tracker.iphone_von_christian_2
 christian:
   name: Christian
   view: true
   entities:
     - group.christianLight
-    - device_tracker.iphonevhristian
-    - device_tracker.christian_cgi
-    - device_tracker.iphone_von_christian_2
-    - device_tracker.iphone_von_christian
+    - group.christianTracking
 
 simonLight:
   name: Licht
