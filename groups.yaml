@@ -120,7 +120,7 @@ simon:
     - group.simonLight
     - media_player.simons_zimmer
     - device_tracker.iphone_von_simon
-    - device_tracker.simons_iphone
+    #- device_tracker.simons_iphone
 
 floLight:
   name: Licht
