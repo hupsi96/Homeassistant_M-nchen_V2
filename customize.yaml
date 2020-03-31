@@ -12,3 +12,9 @@ sensor.0x0017880106f68789_linkquality:
 
 sensor.0x0017880106f68789_temperature:
   friendly_name: Garderobe Termperatur
+
+light.dimmable_light_1:
+  friendly_name: Bett White
+
+light.extended_color_light_1:
+  friendly_name: Bett Color

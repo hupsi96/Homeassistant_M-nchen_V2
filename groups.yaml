@@ -92,12 +92,18 @@ christianDeckenlampe:
   entities:
     - light.christian
 
+christianBett:
+  name: Bett
+  entiteis:
+    - light.dimmable_light_1
+    - light.extended_color_light_1
+
 christianLight:
   name: Licht
   entities:
     - group.christianDeckenlampe
     - light.bett
-    - light.kugel
+    - group.christianBett
 
 christian:
   name: Christian
