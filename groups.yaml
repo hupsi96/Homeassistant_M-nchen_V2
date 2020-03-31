@@ -94,7 +94,7 @@ christianDeckenlampe:
 
 christianBett:
   name: Bett
-  entiteis:
+  entities:
     - light.dimmable_light_1
     - light.extended_color_light_1
 
