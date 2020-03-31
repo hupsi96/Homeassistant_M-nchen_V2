@@ -156,6 +156,7 @@ flosmartswitch:
     - sensor.0x0017880108005bb6_action
     - sensor.0x0017880108005bb6_battery
     - sensor.0x0017880108005bb6_linkquality
+    - timer.flo_debounce
 
 
 floautomationsSwitch:
