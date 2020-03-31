@@ -1,3 +1,24 @@
+allLight:
+  name: Licht
+  entities:
+    - group.christianLight
+    - group.simonLight
+    - group.floLight
+    - group.gangLight
+    - group.garderobeLight
+    - group.abstellkammerLight
+    - group.livingroomLight
+    - group.kitchenLight
+
+mainMenue:
+  name: Allgemein
+  view: true
+  entities:
+    - weather.home
+    - group.allLight
+    - sun.sun
+    
+
 kitchenLight:
   name: Licht
   entities:
@@ -5,6 +26,7 @@ kitchenLight:
 
 kitchenMotion:
   name: Bewegungsmelder
+  control: hidden
   entities:
     - binary_sensor.kuche_sensor_motion
     - sensor.kuche_sensor_light_level
@@ -28,6 +50,7 @@ garderobeLight:
 
 garderobeMotion:
   name: Bewegungsmelder
+  control: hidden
   entities:
     - binary_sensor.0x0017880106f68789_occupancy
     - sensor.0x0017880106f68789_battery
@@ -62,6 +85,7 @@ gangLight:
 
 gangMotion:
   name: Bewegungsmelder
+  control: hidden
   entities:
     - binary_sensor.0x0017880106f671d9_occupancy
     - sensor.0x0017880106f671d9_battery
@@ -105,29 +129,44 @@ christianLight:
     - light.bett
     - group.christianBett
 
+christianTracking:
+  name: Tracking
+  control: hidden
+  entities:
+    - device_tracker.iphonevhristian
+    - device_tracker.christian_cgi
+    - device_tracker.iphone_von_christian_2
+    - input_boolean.christian_nachtmodus
+
 christian:
   name: Christian
   view: true
   entities:
     - group.christianLight
-    - device_tracker.iphonevhristian
-    - device_tracker.christian_cgi
-    - device_tracker.iphone_von_christian_2
-    - device_tracker.iphone_von_christian
+    - group.christianTracking
+    - sensor.geocoded_location_4
 
 simonLight:
   name: Licht
   entities:
-    - light.simon
+    - light.hue_ambiance_ceiling_1
+
+simonTracking:
+  name: Tracking
+  control: hidden
+  entities:
+    - device_tracker.iphone_von_simon
+    - device_tracker.simons_iphone_2
+    - input_boolean.simon_nachtmodus
 
 simon:
   name: simon
   view: true
   entities:
     - group.simonLight
+    - group.simonTracking
     - media_player.simons_zimmer
-    - device_tracker.iphone_von_simon
-    #- device_tracker.simons_iphone
+    - sensor.geocoded_location_6
 
 floLight:
   name: Licht
@@ -136,10 +175,13 @@ floLight:
 
 flosmartswitch:
   name: Smart Switch
+  control: hidden
   entities:
     - sensor.0x0017880108005bb6_action
     - sensor.0x0017880108005bb6_battery
     - sensor.0x0017880108005bb6_linkquality
+    - timer.flo_debounce
+    - input_select.scene_flo
 
 
 floautomationsSwitch:
@@ -149,19 +191,24 @@ floautomationsSwitch:
     - automation.turn_off_flo
     - automation.switch_flo
     - automation.night_switch_flo
+
+floTracking:
+  name: Tracking
+  control: hidden
+  entities:
+    - device_tracker.flos_iphone_2
+    - device_tracker.flos_iphone_3
+    - input_boolean.flo_nachtmodus
 flo:
   name: Flo
   view: true
   entities:
     - group.floLight
     - group.flosmartswitch
-
-music:
-  name: Musik
-  view: true
-  entities:
-    - media_player.simons_zimmer
-    - media_player.wohnzimmer
+    - group.floautomationsSwitch
+    - group.floTracking
+    - sensor.geocoded_location_5
+    - media_player.samsung_tv
 
 dinnertable:
   name: Esstisch
@@ -185,6 +232,13 @@ livingroomAmbilight:
   entities:
     - light.fado
 
+livingroomLight:
+  name: Licht
+  entities:
+    - group.dinnertable
+    - group.sofaLamp
+    - group.livingroomAmbilight
+
 livingroom:
   name: Wohnzimmer
   view: true
@@ -193,6 +247,7 @@ livingroom:
     - group.sofaLamp
     - group.livingroomAmbilight
     - media_player.wohnzimmer
+    - media_player.unnamed_room_2
 
 abstellkammerLight:
   name: Licht
@@ -214,6 +269,38 @@ abstellkammer:
     - group.abstellkammerLight
     - group.abstellkammerMotion
 
+music:
+  name: Musik
+  view: true
+  entities:
+    - media_player.simons_zimmer
+    - media_player.wohnzimmer
+    - media_player.unnamed_room
+    - media_player.unnamed_room_2
+
+locationAutomation:
+  name: Location Automation
+  entities:
+    - automation.christian_coming_home_light
+    - automation.christian_coming_home_music
+    - automation.christian_leaving_home
+    - automation.flo_coming_home_light
+    - automation.flo_coming_home_music
+    - automation.flo_leaving_home
+    - automation.simon_coming_home_light
+    - automation.simon_coming_home_music
+    - automation.simon_leaving_home
+
+auto:
+  name: Automatisierungen
+  view: true
+  entities:
+    - group.locationAutomation
+test:
+  name: Testing
+  view: true
+  entities:
+    - input_boolean.test_mode
 # flat:
 #   name: Wohnung
 #   view: true
