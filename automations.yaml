@@ -1,3 +1,10 @@
+##################################################################################################
+# Smart Button Automation
+#
+#
+# Flo
+##################################################################################################
+
 - alias: Turn_on_Flo
   trigger:
     - platform: state
@@ -95,6 +102,11 @@
 #           {% endif %}
 
 #{% if (is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian', 'home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'not_home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'not_home') and is_state('device_tracker.iphone_von_simon', 'home')) %}
+
+##################################################################################################
+# Garderobe Motion Detection
+##################################################################################################
+
 - alias: Garderobe_turn_on
   initial_state: true
   trigger:
@@ -179,6 +191,10 @@
         entity_id: timer.garderobe_debounce
   action:
     - service: rest_command.garderobe_lightoff_request
+
+##################################################################################################
+# Gang Motion Detection
+##################################################################################################
 
 - alias: Gang_turn_on
   initial_state: true
@@ -266,6 +282,20 @@
   action:
     - service: rest_command.gang_lightoff_request
 
+##################################################################################################
+# Wifi Down automation
+##################################################################################################
+
+- alias: Wifi_down
+  initial_state: true
+  trigger:
+    platform: state
+      entity_id: input_boolean.wifi_down
+      from: "off"
+      to: "on"
+  action:
+    - service: homeassistant.turn_off
+      entity_id: automation.flo_coming_home_light
 ###################################################
 # Comming Home automation - All
 ###################################################
