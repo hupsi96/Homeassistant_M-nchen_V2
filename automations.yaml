@@ -317,6 +317,92 @@
 ##################################################################################################
 # Smart Button Christian
 ##################################################################################################
+- alias: Turn_on_Chris
+  trigger:
+    - platform: state
+      entity_id: sensor.0x0017880108005baf_action
+      to: 'on'
+    - platform: state
+      entity_id: sensor.0x0017880108005baf_action
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: 'light.christian_2'
+      state: 'off'
+  action:
+    - service: rest_command.chris_lighton_request
+    - service: timer.start
+      entity_id: timer.chris_debounce
+
+- alias: Turn_off_Chris
+  trigger:
+    - platform: state
+      entity_id: sensor.0x0017880108005baf_action
+      to: 'on'
+    - platform: state
+      entity_id: sensor.0x0017880108005baf_action
+      to: 'off'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: 'light.christian_2'
+        state: 'on'
+      - condition: state
+        entity_id: timer.chris_debounce
+        state: idle
+  action:
+    service: rest_command.chris_lightoff_request
+
+- alias: Switch_Chris
+  trigger:
+    - platform: state
+      entity_id: sensor.0x0017880108005baf_action
+      to: 'on'
+    - platform: state
+      entity_id: sensor.0x0017880108005baf_action
+      to: 'off'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: 'light.christian_2'
+        state: 'on'
+      - condition: state
+        entity_id: timer.chris_debounce
+        state: active
+  action:
+    - service: input_select.select_next
+      entity_id: input_select.scene_chris
+    - service: hue.hue_activate_scene
+      data_template: 
+        group_name: "Christian"
+        scene_name: >
+          {{ states('input_select.scene_chris') }}
+    - service: timer.cancel
+      entity_id: timer.chris_debounce
+    - service: timer.start
+      entity_id: timer.chris_debounce
+
+- alias: Night_Switch_Chris
+  trigger:
+    - platform: state
+      entity_id: sensor.0x0017880108005baf_action
+      to: 'skip_backward'
+  action:
+    - service_template: >
+        {% if is_state('input_boolean.christian_nachtmodus', 'off') %}
+          rest_command.chris_lightoff_request
+        {% else %} 
+          rest_command.chris_lighton_request
+        {% endif %}
+    - service_template: >
+        {% if is_state('input_boolean.christian_nachtmodus', 'off') %}
+          input_boolean.turn_on
+        {% else %} 
+          input_boolean.turn_off
+        {% endif %}
+      entity_id: input_boolean.christian_nachtmodus
 
 ##################################################################################################
 # Smart Button Simon

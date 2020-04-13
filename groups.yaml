@@ -138,6 +138,16 @@ christianTracking:
     - device_tracker.iphone_von_christian_2
     - input_boolean.christian_nachtmodus
 
+chrissmartswitch:
+  name: Smart Switch
+  control: hidden
+  entities:
+    - sensor.0x0017880108005baf_action
+    - sensor.0x0017880108005baf_battery
+    - sensor.0x0017880108005baf_linkquality
+    - timer.chris_debounce
+    - input_select.scene_chris
+
 christian:
   name: Christian
   view: true
@@ -145,6 +155,7 @@ christian:
     - group.christianLight
     - group.christianTracking
     - sensor.geocoded_location_4
+    - group.chrissmartswitch
 
 simonLight:
   name: Licht
