@@ -18,6 +18,3 @@ light.dimmable_light_1:
 
 light.extended_color_light_1:
   friendly_name: Bett Color
-
-group.all_lights:
-  hidden: false
