@@ -170,6 +170,16 @@ simonTracking:
     - device_tracker.simons_iphone_2
     - input_boolean.simon_nachtmodus
 
+simonsmartswitch:
+  name: Smart Switch
+  control: hidden
+  entities:
+    - sensor.0x0017880108005f02_action
+    - sensor.0x0017880108005f02_battery
+    - sensor.0x0017880108005f02_linkquality
+    - timer.simon_debounce
+    - input_select.scene_simon
+
 simon:
   name: simon
   view: true
@@ -178,6 +188,7 @@ simon:
     - group.simonTracking
     - media_player.simons_zimmer
     - sensor.geocoded_location_6
+    - group.simonsmartswitch
 
 floLight:
   name: Licht
