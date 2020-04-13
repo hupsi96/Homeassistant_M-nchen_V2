@@ -25,6 +25,10 @@ input_boolean:
     name: WLAN Störung
     initial: off
     icon: mdi:wifi-strength-alert-outline
+  garderobe_nachtmodus:
+    name: Garderobe Nachtmodus
+    initial: off
+    icon: mdi:weather-night
 
 #selector for scene in Flo´s room
 input_select:
@@ -61,10 +65,6 @@ input_select:
 samsungtv:
   - host: 192.168.178.40
     port: 8001
-    #turn_on_action:
-    #  - service: wake_on_lan.send_magic_packet
-    #    data:
-    #      mac: !secret samsungTvMac
 
 #setup for zigbee2mqtt
 mqtt:
