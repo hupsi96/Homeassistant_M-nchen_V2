@@ -29,6 +29,10 @@ input_boolean:
     name: Garderobe Nachtmodus
     initial: off
     icon: mdi:weather-night
+  gang_nachtmodus:
+    name: Gang Nachtmodus
+    initial: off
+    icon: mdi:weather-night
 
 #selector for scene in Flo´s room
 input_select:
