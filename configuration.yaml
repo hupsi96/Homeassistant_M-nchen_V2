@@ -29,7 +29,7 @@ input_boolean:
 #selector for scene in Flo´s room
 input_select:
   scene_flo:
-    name: Scene
+    name: Scene Flo
     options:
       - Hell
       - Sonnenuntergang Savanne
@@ -39,7 +39,7 @@ input_select:
       - Nachtlicht
     initial: Hell
   scene_chris:
-    name: Scene
+    name: Scene Chris
     options:
       - Standard
       - Sonnenuntergang Savanne

@@ -348,7 +348,7 @@
   action:
     service: rest_command.chris_lightoff_request
 
-- alias: Switch_Flo
+- alias: Switch_Chris
   trigger:
     - platform: state
       entity_id: sensor.0x0017880108005baf_action
@@ -367,14 +367,16 @@
         state: active
   action:
     - service: input_select.select_next
-      entity_id: input_select.scene_flo
+      entity_id: input_select.scene_chris
     - service: hue.hue_activate_scene
       data_template: 
-        group_name: "Flo"
+        group_name: "Christian"
         scene_name: >
-          {{ states('input_select.scene_flo') }}
+          {{ states('input_select.scene_chris') }}
+    - service: timer.cancel
+      entity_id: timer.chris_debounce
     - service: timer.start
-      entity_id: timer.flo_debounce
+      entity_id: timer.chris_debounce
 
 - alias: Night_Switch_Flo
   trigger:
