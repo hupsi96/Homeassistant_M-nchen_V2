@@ -15,7 +15,7 @@ mainMenue:
   view: true
   entities:
     - weather.home
-    - group.allLight
+    - group.all_lights
     - sun.sun
     
 
