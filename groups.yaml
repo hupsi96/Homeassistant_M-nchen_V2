@@ -15,7 +15,7 @@ mainMenue:
   view: true
   entities:
     - weather.home
-    - group.all_lights
+    - script.light_off_script
     - sun.sun
     
 
