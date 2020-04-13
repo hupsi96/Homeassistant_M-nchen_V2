@@ -1,5 +1,5 @@
 light_off_script:
-  alias: Licht Aus
-  service: light.turn_off
-  data:
-    entity_id: all
+  sequence:
+  - service: light.turn_off
+    data:
+      entity_id: all
