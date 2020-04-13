@@ -286,16 +286,16 @@
 # Wifi Down automation
 ##################################################################################################
 
-# - alias: Wifi_down
-#   initial_state: true
-#   trigger:
-#     service: state
-#       entity_id: input_boolean.wifi_down
-#       from: "off"
-#       to: "on"
-#   action:
-#     - service: homeassistant.turn_off
-#       entity_id: automation.flo_coming_home_light
+- alias: Wifi_down
+  initial_state: true
+  trigger:
+    - service: state
+      entity_id: input_boolean.wifi_down
+      from: "off"
+      to: "on"
+  action:
+    - service: homeassistant.turn_off
+      entity_id: automation.flo_coming_home_light
 ###################################################
 # Comming Home automation - All
 ###################################################
