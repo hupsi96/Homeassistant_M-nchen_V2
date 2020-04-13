@@ -81,6 +81,10 @@
     - platform: state
       entity_id: sensor.0x0017880108005bb6_action
       to: 'skip_backward'
+  condition:
+    - condition: state
+      entity_id: timer.flo_debounce
+      state: idle
   action:
     - service_template: >
         {% if is_state('input_boolean.flo_nachtmodus', 'off') %}
@@ -95,6 +99,10 @@
           input_boolean.turn_off
         {% endif %}
       entity_id: input_boolean.flo_nachtmodus
+    - service: timer.cancel
+      entity_id: timer.flo_debounce
+    - service: timer.start
+      entity_id: timer.flo_debounce
 
 
 # Template for using data_tamplate {{ trigger.from_state.state }}
@@ -391,6 +399,10 @@
     - platform: state
       entity_id: sensor.0x0017880108005baf_action
       to: 'skip_backward'
+  condition:
+    - condition: state
+      entity_id: timer.chris_debounce
+      state: idle
   action:
     - service_template: >
         {% if is_state('input_boolean.christian_nachtmodus', 'off') %}
@@ -405,6 +417,10 @@
           input_boolean.turn_off
         {% endif %}
       entity_id: input_boolean.christian_nachtmodus
+    - service: timer.cancel
+      entity_id: timer.chris_debounce
+    - service: timer.start
+      entity_id: timer.chris_debounce
 
 ##################################################################################################
 # Smart Button Simon
