@@ -21,4 +21,3 @@ light.extended_color_light_1:
 
 group.all_lights:
   hidden: false
-  friendly_name: Licht Gesamt
