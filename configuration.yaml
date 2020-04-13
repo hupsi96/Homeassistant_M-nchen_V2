@@ -24,7 +24,7 @@ input_boolean:
   wifi_down:
     name: WLAN Störung
     initial: off
-    icon: mdi:wifi-off
+    icon: mdi:wifi-strength-alert-outline
 
 #selector for scene in Flo´s room
 input_select:
