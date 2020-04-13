@@ -38,6 +38,17 @@ input_select:
       - Frühlingsblüten
       - Nachtlicht
     initial: Hell
+  scene_chris:
+    name: Scene
+    options:
+      - Standard
+      - Sonnenuntergang Savanne
+      - Frühlingsblüten
+      - Goldener Teich
+      - Fernsehen
+      - Weglicht
+    initial: Standard
+    
 
 #wake_on_lan:
 samsungtv:
