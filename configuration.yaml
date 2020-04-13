@@ -28,6 +28,13 @@ input_boolean:
 
 #selector for scene in Flo´s room
 input_select:
+  scene_simon:
+    name: Scene Simon
+    options:
+      - Hell
+      - Gedimmt
+      - Nachtlicht
+    initial: Hell
   scene_flo:
     name: Scene
     options:
