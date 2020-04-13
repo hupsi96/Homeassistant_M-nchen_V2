@@ -301,7 +301,9 @@ test:
   view: true
   entities:
     - input_boolean.test_mode
-# flat:
-#   name: Wohnung
-#   view: true
-#   entities:
+
+setting:
+  name: Einstellungen
+  view: true
+  entities:
+    - input_boolean.wifi_down

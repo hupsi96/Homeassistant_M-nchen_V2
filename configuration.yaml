@@ -21,6 +21,10 @@ input_boolean:
     name: test modus
     initial: off
     icon: mdi:weather-night
+  wifi_down:
+    name: WLAN Störung
+    initial: off
+    icon: mdi:wifi-off
 
 #selector for scene in Flo´s room
 input_select:
