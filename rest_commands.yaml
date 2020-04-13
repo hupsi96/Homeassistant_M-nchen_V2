@@ -8,6 +8,16 @@ flo_lightoff_request: #Tested -> workes as it should :)
     method: PUT
     payload: '{"on":false}'
 
+chris_lighton_request: #Tested -> workes as it should :)
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/3/action
+    method: PUT
+    payload: '{"on":true}'
+
+chris_lightoff_request: #Tested -> workes as it should :)
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/3/action
+    method: PUT
+    payload: '{"on":false}'
+
 garderobe_lightoff_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
     method: PUT
