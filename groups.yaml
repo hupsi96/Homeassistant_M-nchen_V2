@@ -75,6 +75,7 @@ garderobe:
     - group.garderobeLight
     - group.garderobeMotion
     - group.garderobeAutomation
+    - input_boolean.garderobe_nachtmodus
 
 gangLight:
   name: Licht
@@ -102,6 +103,7 @@ gangAutomation:
     - automation.gang_keep_turn_on
     - automation.gang_dim
     - automation.gang_off
+    - input_boolean.gang_nachtmodus
 
 gang:
   name: Gang
