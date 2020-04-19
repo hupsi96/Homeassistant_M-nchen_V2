@@ -97,3 +97,57 @@ gang_lighton_dim_recall_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/6/action
     method: PUT
     payload: '{"scene":"mF10HcTDiZgIteV"}'
+
+#############################################################################################
+# Coming Home Automation
+#############################################################################################
+
+flo_lightoff_request: #Wohnzimmer
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/1/action
+    method: PUT
+    payload: '{"on":false}'
+
+flo_lightoff_request: #Abstellkammer
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/2/action
+    method: PUT
+    payload: '{"on":false}'
+    
+flo_lightoff_request: #Christian
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/3/action
+    method: PUT
+    payload: '{"on":false}'
+
+flo_lightoff_request: #Simon
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/4/action
+    method: PUT
+    payload: '{"on":false}'
+
+flo_lightoff_request: #Garderobe
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
+    method: PUT
+    payload: '{"on":false}'
+
+flo_lightoff_request: #Gang
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/6/action
+    method: PUT
+    payload: '{"on":false}'
+
+flo_lightoff_request: #Flo
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/7/action
+    method: PUT
+    payload: '{"on":false}'
+
+flo_lightoff_request: #Küche
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/8/action
+    method: PUT
+    payload: '{"on":false}'
+
+flo_lightoff_request: #Custom group for $lights
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/9/action
+    method: PUT
+    payload: '{"on":false}'
+
+flo_lightoff_request: #Esstisch
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/10/action
+    method: PUT
+    payload: '{"on":false}'
