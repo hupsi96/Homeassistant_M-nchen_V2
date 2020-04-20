@@ -717,19 +717,19 @@
     - service: hue.hue_activate_scene
       data_template:
         group_name: >
-          {% if  {{ trigger.entity_id }} == 'device_tracker.iphonevhristian' %}
+          {% if ({{ trigger.entity_id }} == 'device_tracker.iphonevhristian') %}
             Christian
-          {% elif  {{ trigger.entity_id }} == 'device_tracker.iphone_von_simon' or {{ trigger.entity_id }} == 'device_tracker.steffi_sugar' %}
+          {% elif ({{ trigger.entity_id }} == 'device_tracker.iphone_von_simon' or {{ trigger.entity_id }} == 'device_tracker.steffi_sugar') %}
             Simon
-          {% elif  {{ trigger.entity_id }} == 'device_tracker.flos_iphone_2' or {{ trigger.entity_id }} == 'entity_id: device_tracker.iphonevranziska'%}
+          {% elif ({{ trigger.entity_id }} == 'device_tracker.flos_iphone_2' or {{ trigger.entity_id }} == 'entity_id: device_tracker.iphonevranziska') %}
             Flo
           {% end if %}
         scene_name: > 
-          {% if  {{ trigger.entity_id }} == 'device_tracker.iphonevhristian' %}
+          {% if ({{ trigger.entity_id }} == 'device_tracker.iphonevhristian') %}
             Standard
-          {% elif  {{ trigger.entity_id }} == 'device_tracker.iphone_von_simon' or {{ trigger.entity_id }} == 'device_tracker.steffi_sugar' %}
+          {% elif ({{ trigger.entity_id }} == 'device_tracker.iphone_von_simon' or {{ trigger.entity_id }} == 'device_tracker.steffi_sugar') %}
             Hell
-          {% elif  {{ trigger.entity_id }} == 'device_tracker.flos_iphone_2' or {{ trigger.entity_id }} == 'entity_id: device_tracker.iphonevranziska'%}
+          {% elif ({{ trigger.entity_id }} == 'device_tracker.flos_iphone_2' or {{ trigger.entity_id }} == 'entity_id: device_tracker.iphonevranziska') %}
             Hell
           {% end if %}
 
