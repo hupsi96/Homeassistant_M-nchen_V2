@@ -862,13 +862,37 @@
         value: '{{ range(0, 4) | random | float }}'
     - service_template: >
         {% if is_state('input_number.box1', '0.0' ) %}
-          rest_command.sonos_playlist_chris_1
+          {% if trigger.entity_id == 'device_tracker.iphonevhristian' %}
+            rest_command.sonos_playlist_chris_1
+          {% elif trigger.entity_id == 'device_tracker.flos_iphone_2' or trigger.entity_id == 'entity_id: device_tracker.iphonevranziska' %}
+            rest_command.sonos_playlist_flo_1
+          {% else %}
+            rest_command.sonos_playlist_simon_1
+          {% endif %}
         {% elif is_state('input_number.box1', '1.0' ) %}
-          rest_command.sonos_playlist_chris_2
+          {% if trigger.entity_id == 'device_tracker.iphonevhristian' %}
+            rest_command.sonos_playlist_chris_2
+          {% elif trigger.entity_id == 'device_tracker.flos_iphone_2' or trigger.entity_id == 'entity_id: device_tracker.iphonevranziska' %}
+            rest_command.sonos_playlist_flo_2
+          {% else %}
+            rest_command.sonos_playlist_simon_2
+          {% endif %}
         {% elif is_state('input_number.box1', '2.0' ) %}
-          rest_command.sonos_playlist_chris_3
+          {% if trigger.entity_id == 'device_tracker.iphonevhristian' %}
+            rest_command.sonos_playlist_chris_3
+          {% elif trigger.entity_id == 'device_tracker.flos_iphone_2' or trigger.entity_id == 'entity_id: device_tracker.iphonevranziska' %}
+            rest_command.sonos_playlist_flo_3
+          {% else %}
+            rest_command.sonos_playlist_simon_3
+          {% endif %}
         {% else %}
-          rest_command.sonos_playlist_chris_4
+          {% if trigger.entity_id == 'device_tracker.iphonevhristian' %}
+            rest_command.sonos_playlist_chris_4
+          {% elif trigger.entity_id == 'device_tracker.flos_iphone_2' or trigger.entity_id == 'entity_id: device_tracker.iphonevranziska' %}
+            rest_command.sonos_playlist_flo_4
+          {% else %}
+            rest_command.sonos_playlist_simon_4
+          {% endif %}
         {% endif %}
     - service: rest_command.sonos_playlist_play
     
