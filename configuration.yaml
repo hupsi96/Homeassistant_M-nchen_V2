@@ -115,8 +115,8 @@ speedtestdotnet:
 
 input_number:
   box1:
-    name: Random Playlist
-    inital: 0
+    name: 'Playlist'
+    initial: 0
     min: 0
     max: 3
     step: 1
