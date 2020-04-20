@@ -118,8 +118,8 @@ http:
 
 #spotify integration
 spotify:
-  client_id: !secret spotifyClient
-  client_secret: !secret spotifySecret
+  client_id: !secret spotifyClient2
+  client_secret: !secret spotifySecret2
 
 #customize: !include customize.yaml
 rest_command: !include rest_commands.yaml
