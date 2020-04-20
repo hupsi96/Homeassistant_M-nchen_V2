@@ -855,6 +855,10 @@
       entity_id: media_player.unnamed_room_2
       data:
         volume_level: 0.15
+    - service: input_slider.set_value
+      data_template:
+        entity_id: input_number.box1
+        value: '{{ (range(0, 3)|random) }}'
       #http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1DWTlzJXLRpd4a?si=YTl1WZsRR5KniTjm6XQSWA api request to start playlist on sonos
       #source for documtation: https://github.com/jishi/node-sonos-http-api
 
