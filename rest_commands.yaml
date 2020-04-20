@@ -152,18 +152,22 @@ esstisch_auto_lightoff_request: #Esstisch
     method: PUT
     payload: '{"on":false}'
 
+sonos_playlist_clear:
+    url: http://192.168.178.73:5005/wohnzimmer/clearqueue
+    method: GET
+
 sonos_playlist_chris_1:
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1DWTlzJXLRpd4a
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/queue/spotify:user:spotify:playlist:37i9dQZF1DWTlzJXLRpd4a
     method: GET
 
 sonos_playlist_chris_2:
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:4BpSSoOmR47lRI4oNYgSg4
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/queue/spotify:user:spotify:playlist:4BpSSoOmR47lRI4oNYgSg4
     method: GET
 
 sonos_playlist_chris_3:
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1E4EzccfqXgcAE
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/queue/spotify:user:spotify:playlist:37i9dQZF1E4EzccfqXgcAE
     method: GET
 
 sonos_playlist_chris_4:
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:5BygwTQ3OrbiwVsQhXFHMz
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/queue/spotify:user:spotify:playlist:5BygwTQ3OrbiwVsQhXFHMz
     method: GET

@@ -855,6 +855,7 @@
       entity_id: media_player.unnamed_room_2
       data:
         volume_level: 0.10
+    - service: rest_command.sonos_playlist_clear
     - service: input_number.set_value
       data_template:
         entity_id: input_number.box1
