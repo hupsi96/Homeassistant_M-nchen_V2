@@ -111,6 +111,9 @@ timer:
 tts:
   - platform: google_translate
 
+#internet connection testing:
+speedtestdotnet:
+
 #customize: !include customize.yaml
 rest_command: !include rest_commands.yaml
 group: !include groups.yaml
