@@ -151,3 +151,7 @@ esstisch_auto_lightoff_request: #Esstisch
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/10/action
     method: PUT
     payload: '{"on":false}'
+
+sonos_playlist_chris_1:
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1DWTlzJXLRpd4a?si=YTl1WZsRR5KniTjm6XQSWA
+    method: GET
