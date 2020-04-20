@@ -113,13 +113,13 @@ tts:
 #internet connection testing:
 speedtestdotnet:
 
-http:
-  base_url: 'https://1n9cjmfsjljrwj776nv3ev2ncba9kf91.ui.nabu.casa'
+#http:
+#  base_url: 'https://1n9cjmfsjljrwj776nv3ev2ncba9kf91.ui.nabu.casa'
 
 #spotify integration
-spotify:
-  client_id: !secret spotifyClient2
-  client_secret: !secret spotifySecret2
+#spotify:
+#  client_id: !secret spotifyClient2
+#  client_secret: !secret spotifySecret2
 
 #customize: !include customize.yaml
 rest_command: !include rest_commands.yaml
