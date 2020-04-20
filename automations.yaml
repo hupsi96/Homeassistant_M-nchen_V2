@@ -723,6 +723,8 @@
             Simon
           {% elif ({{ trigger.entity_id }} == 'device_tracker.flos_iphone_2' or {{ trigger.entity_id }} == 'entity_id: device_tracker.iphonevranziska') %}
             Flo
+          {% else %}
+            Wohnzimmer
           {% endif %}
         scene_name: >
           {% if ({{ trigger.entity_id }} == 'device_tracker.iphonevhristian') %}
@@ -731,6 +733,8 @@
             Hell
           {% elif ({{ trigger.entity_id }} == 'device_tracker.flos_iphone_2' or {{ trigger.entity_id }} == 'entity_id: device_tracker.iphonevranziska') %}
             Hell
+          {% else %}
+            Entspannt
           {% endif %}
 
 - alias: 'Comming Home Music'
