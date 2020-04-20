@@ -152,6 +152,11 @@ esstisch_auto_lightoff_request: #Esstisch
     method: PUT
     payload: '{"on":false}'
 
+###################################################
+#Sonos
+#source for documtation: https://github.com/jishi/node-sonos-http-api
+###################################################
+
 sonos_playlist_clear:
     url: http://192.168.178.73:5005/wohnzimmer/clearqueue
     method: GET
