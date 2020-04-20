@@ -113,6 +113,15 @@ tts:
 #internet connection testing:
 speedtestdotnet:
 
+input_number:
+  box1:
+    name: Random Playlist
+    inital: 0
+    min: 0
+    max: 3
+    step: 1
+    mode: box
+
 #http:
 #  base_url: 'https://1n9cjmfsjljrwj776nv3ev2ncba9kf91.ui.nabu.casa'
 
