@@ -592,33 +592,170 @@
 #             Hell
 #           {% endif %}
 
-#{% if (is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian', 'home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'home') and is_state('device_tracker.iphone_von_simon', 'not_home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone', 'not_home') and is_state('device_tracker.iphone_von_simon', 'home')) %}
+#{% if (is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian', 'home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone_2', 'home') and is_state('device_tracker.iphone_von_simon', 'home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.flos_iphone_2', 'home') and is_state('device_tracker.iphone_von_simon', 'not_home')) or (is_state('device_tracker.iphonevhristian', 'not_home') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone_2', 'not_home') and is_state('device_tracker.iphone_von_simon', 'home')) %}
 
 ###################################################
 # Comming Home automation - All
 ###################################################
 
- - alias: 'Comming Home'
-    initial_state: true
-    trigger:
+- alias: 'Comming Home Light'
+  initial_state: true
+  trigger:
     - platform: state
       entity_id: device_tracker.iphonevhristian #WiFi based
     - platform: state
       entity_id: device_tracker.iphone_von_simon #WiFi based
     - platform: state
-      entity_id: device_tracker.flos_iphone #WiFi based
+      entity_id: device_tracker.flos_iphone_2 #WiFi based
     - platform: state
       entity_id: device_tracker.iphonevranziska #WiFi based
-    condition:
-      condition: or
-      conditions:
+    - platform: state
+      entity_id: device_tracker.steffi_sugar #WiFi based
+  condition:
+    condition: and
+    conditions:
+      - condition: or
+        conditions:
+          - condition: sun
+            before: sunrise
+            before_offset: "+01:00:00"
+          - condition: sun
+            after: sunset
+            after_offset: "-01:00:00"
+      - condition: or
+        conditions:
+        - condition: and
+          conditions: # Chris
+            - condition: state
+              entity_id: device_tracker.iphone_von_simon # Wifi
+              state: 'not_home'
+            - condition: state
+              entity_id: device_tracker.flos_iphone_2 # Wifi
+              state: 'not_home'
+            - condition: state
+              entity_id: device_tracker.iphonevranziska # Wifi
+              state: 'not_home'
+            - condition: state
+              entity_id: device_tracker.iphonevhristian # Wifi
+              state: 'home'
+            - condition: state
+              entity_id: device_tracker.steffi_sugar # Wifi
+              state: 'not_home'
+        - condition: and
+          conditions: # Franzi
+            - condition: state
+              entity_id: device_tracker.iphone_von_simon # Wifi
+              state: 'not_home'
+            - condition: state
+              entity_id: device_tracker.flos_iphone_2 # Wifi
+              state: 'not_home'
+            - condition: state
+              entity_id: device_tracker.iphonevranziska # Wifi
+              state: 'home'
+            - condition: state
+              entity_id: device_tracker.iphonevhristian # Wifi
+              state: 'not_home'
+            - condition: state
+              entity_id: device_tracker.steffi_sugar # Wifi
+              state: 'not_home'
+        - condition: and
+          conditions: # Flo
+            - condition: state
+              entity_id: device_tracker.iphone_von_simon # Wifi
+              state: 'not_home'
+            - condition: state
+              entity_id: device_tracker.flos_iphone_2 # Wifi
+              state: 'home'
+            - condition: state
+              entity_id: device_tracker.iphonevranziska # Wifi
+              state: 'not_home'
+            - condition: state
+              entity_id: device_tracker.iphonevhristian # Wifi
+              state: 'not_home'
+            - condition: state
+              entity_id: device_tracker.steffi_sugar # Wifi
+              state: 'not_home'
+        - condition: and
+          conditions: # Simon
+            - condition: state
+              entity_id: device_tracker.iphone_von_simon # Wifi
+              state: 'home'
+            - condition: state
+              entity_id: device_tracker.flos_iphone_2 # Wifi
+              state: 'not_home'
+            - condition: state
+              entity_id: device_tracker.iphonevranziska # Wifi
+              state: 'not_home'
+            - condition: state
+              entity_id: device_tracker.iphonevhristian # Wifi
+              state: 'not_home'
+            - condition: state
+              entity_id: device_tracker.steffi_sugar # Wifi
+              state: 'not_home'
+        - condition: and
+          conditions: # Steffi
+            - condition: state
+              entity_id: device_tracker.iphone_von_simon # Wifi
+              state: 'not_home'
+            - condition: state
+              entity_id: device_tracker.flos_iphone_2 # Wifi
+              state: 'not_home'
+            - condition: state
+              entity_id: device_tracker.iphonevranziska # Wifi
+              state: 'not_home'
+            - condition: state
+              entity_id: device_tracker.iphonevhristian # Wifi
+              state: 'not_home'
+            - condition: state
+              entity_id: device_tracker.steffi_sugar # Wifi
+              state: 'home'
+  action:
+    - service: hue.hue_activate_scene
+      data:
+        group_name: Wohnzimmer
+        scene_name: Entspannt
+    - service: hue.hue_activate_scene
+      data_template:
+        group_name: >
+          {% if  {{ trigger.entity_id }} == 'device_tracker.iphonevhristian' %}
+            Christian
+          {% elif  {{ trigger.entity_id }} == 'device_tracker.iphone_von_simon' or {{ trigger.entity_id }} == 'device_tracker.steffi_sugar' %}
+            Simon
+          {% elif  {{ trigger.entity_id }} == 'device_tracker.flos_iphone_2' or {{ trigger.entity_id }} == 'entity_id: device_tracker.iphonevranziska'%}
+            Flo
+          {% end if %}
+        scene_name: > 
+          {% if  {{ trigger.entity_id }} == 'device_tracker.iphonevhristian' %}
+            Standard
+          {% elif  {{ trigger.entity_id }} == 'device_tracker.iphone_von_simon' or {{ trigger.entity_id }} == 'device_tracker.steffi_sugar' %}
+            Hell
+          {% elif  {{ trigger.entity_id }} == 'device_tracker.flos_iphone_2' or {{ trigger.entity_id }} == 'entity_id: device_tracker.iphonevranziska'%}
+            Hell
+          {% end if %}
+
+- alias: 'Comming Home Music'
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: device_tracker.iphonevhristian #WiFi based
+    - platform: state
+      entity_id: device_tracker.iphone_von_simon #WiFi based
+    - platform: state
+      entity_id: device_tracker.flos_iphone_2 #WiFi based
+    - platform: state
+      entity_id: device_tracker.iphonevranziska #WiFi based
+    - platform: state
+      entity_id: device_tracker.steffi_sugar #WiFi based
+  condition:
+    condition: or
+    conditions:
       - condition: and
         conditions: # Chris
           - condition: state
             entity_id: device_tracker.iphone_von_simon # Wifi
             state: 'not_home'
           - condition: state
-            entity_id: device_tracker.flos_iphone # Wifi
+            entity_id: device_tracker.flos_iphone_2 # Wifi
             state: 'not_home'
           - condition: state
             entity_id: device_tracker.iphonevranziska # Wifi
@@ -635,7 +772,7 @@
             entity_id: device_tracker.iphone_von_simon # Wifi
             state: 'not_home'
           - condition: state
-            entity_id: device_tracker.flos_iphone # Wifi
+            entity_id: device_tracker.flos_iphone_2 # Wifi
             state: 'not_home'
           - condition: state
             entity_id: device_tracker.iphonevranziska # Wifi
@@ -652,7 +789,7 @@
             entity_id: device_tracker.iphone_von_simon # Wifi
             state: 'not_home'
           - condition: state
-            entity_id: device_tracker.flos_iphone # Wifi
+            entity_id: device_tracker.flos_iphone_2 # Wifi
             state: 'home'
           - condition: state
             entity_id: device_tracker.iphonevranziska # Wifi
@@ -669,7 +806,7 @@
             entity_id: device_tracker.iphone_von_simon # Wifi
             state: 'home'
           - condition: state
-            entity_id: device_tracker.flos_iphone # Wifi
+            entity_id: device_tracker.flos_iphone_2 # Wifi
             state: 'not_home'
           - condition: state
             entity_id: device_tracker.iphonevranziska # Wifi
@@ -681,12 +818,12 @@
             entity_id: device_tracker.steffi_sugar # Wifi
             state: 'not_home'
       - condition: and
-        conditions: # Simon
+        conditions: # Steffi
           - condition: state
             entity_id: device_tracker.iphone_von_simon # Wifi
             state: 'not_home'
           - condition: state
-            entity_id: device_tracker.flos_iphone # Wifi
+            entity_id: device_tracker.flos_iphone_2 # Wifi
             state: 'not_home'
           - condition: state
             entity_id: device_tracker.iphonevranziska # Wifi
@@ -697,30 +834,30 @@
           - condition: state
             entity_id: device_tracker.steffi_sugar # Wifi
             state: 'home'
-    action:
-      - service: hue.hue_activate_scene
-        data:
-          group_name: Wohnzimmer
-          scene_name: Entspannt
-      - service: hue.hue_activate_scene
-        data_template:
-          group_name: >
-            {% if  {{ trigger.entity_id }} == 'device_tracker.iphonevhristian' %}
-              Christian
-            {% elif  {{ trigger.entity_id }} == 'device_tracker.iphone_von_simon' %}
-              Simon
-            {% elif  {{ trigger.entity_id }} == 'device_tracker.flos_iphone' or {{ trigger.entity_id }} == 'entity_id: device_tracker.iphonevranziska'%}
-              Flo
-            {% end if %}
-          scene_name: > 
-            {% if  {{ trigger.entity_id }} == 'device_tracker.iphonevhristian' %}
-              Standard
-            {% elif  {{ trigger.entity_id }} == 'device_tracker.iphone_von_simon' %}
-              Hell
-            {% elif  {{ trigger.entity_id }} == 'device_tracker.flos_iphone' or {{ trigger.entity_id }} == 'entity_id: device_tracker.iphonevranziska'%}
-              Hell
-            {% end if %}
-          
+  action:
+    - service: hue.hue_activate_scene
+      data:
+        group_name: Wohnzimmer
+        scene_name: Entspannt
+    - service: hue.hue_activate_scene
+      data_template:
+        group_name: >
+          {% if  {{ trigger.entity_id }} == 'device_tracker.iphonevhristian' %}
+            Christian
+          {% elif  {{ trigger.entity_id }} == 'device_tracker.iphone_von_simon' or {{ trigger.entity_id }} == 'device_tracker.steffi_sugar' %}
+            Simon
+          {% elif  {{ trigger.entity_id }} == 'device_tracker.flos_iphone_2' or {{ trigger.entity_id }} == 'entity_id: device_tracker.iphonevranziska'%}
+            Flo
+          {% end if %}
+        scene_name: > 
+          {% if  {{ trigger.entity_id }} == 'device_tracker.iphonevhristian' %}
+            Standard
+          {% elif  {{ trigger.entity_id }} == 'device_tracker.iphone_von_simon' or {{ trigger.entity_id }} == 'device_tracker.steffi_sugar' %}
+            Hell
+          {% elif  {{ trigger.entity_id }} == 'device_tracker.flos_iphone_2' or {{ trigger.entity_id }} == 'entity_id: device_tracker.iphonevranziska'%}
+            Hell
+          {% end if %}
+      
 # - alias: 'Comming Home Music'
 # #rework sonos setting to play music when coming home and say hello
 #   initial_state: false
@@ -732,7 +869,7 @@
 #       entity_id: device_tracker.iphone_von_simon #WiFi based
 #       to: 'home'
 #     - platform: state
-#       entity_id: device_tracker.flos_iphone #WiFi based
+#       entity_id: device_tracker.flos_iphone_2 #WiFi based
 #       to: 'home'
 #     - platform: state
 #       entity_id: device_tracker.iphonevranziska #WiFi based
@@ -746,7 +883,7 @@
 #             entity_id: device_tracker.iphone_von_simon # Wifi
 #             state: 'not_home'
 #           - condition: state
-#             entity_id: device_tracker.flos_iphone # Wifi
+#             entity_id: device_tracker.flos_iphone_2 # Wifi
 #             state: 'not_home'
 #           - condition: state
 #             entity_id: device_tracker.iphonevranziska # Wifi
@@ -766,7 +903,7 @@
 #             entity_id: device_tracker.iphonevhristian # Wifi
 #             state: 'not_home'
 #           - condition: state
-#             entity_id: device_tracker.flos_iphone # Wifi
+#             entity_id: device_tracker.flos_iphone_2 # Wifi
 #             state: 'not_home'
 #           - condition: state
 #             entity_id: device_tracker.iphonevranziska # Wifi
@@ -809,7 +946,7 @@
 #             entity_id: device_tracker.iphone_von_simon # Wifi
 #             state: 'not_home'
 #           - condition: state
-#             entity_id: device_tracker.flos_iphone # Wifi
+#             entity_id: device_tracker.flos_iphone_2 # Wifi
 #             state: 'not_home'
 #           - condition: state
 #             entity_id: device_tracker.iphone_von_christian # GPS
@@ -835,7 +972,7 @@
 #             Christian
 #           {% elif  {{ trigger.entity_id }} == 'device_tracker.iphone_von_simon' %}
 #             Simon
-#           {% elif  {{ trigger.entity_id }} == 'device_tracker.flos_iphone' or {{ trigger.entity_id }} == 'entity_id: device_tracker.iphonevranziska'%}
+#           {% elif  {{ trigger.entity_id }} == 'device_tracker.flos_iphone_2' or {{ trigger.entity_id }} == 'entity_id: device_tracker.iphonevranziska'%}
 #             Flo
 #           {% end if %}
 #         scene_name: > 
@@ -843,7 +980,7 @@
 #             Christian
 #           {% elif  {{ trigger.entity_id }} == 'device_tracker.iphone_von_simon' %}
 #             Simon
-#           {% elif  {{ trigger.entity_id }} == 'device_tracker.flos_iphone' or {{ trigger.entity_id }} == 'entity_id: device_tracker.iphonevranziska'%}
+#           {% elif  {{ trigger.entity_id }} == 'device_tracker.flos_iphone_2' or {{ trigger.entity_id }} == 'entity_id: device_tracker.iphonevranziska'%}
 #             Flo
 #           {% end if %}
 
@@ -872,7 +1009,7 @@
 #         entity_id: device_tracker.iphone_von_christian_2 # GPS Chris
 #         state: 'home' #GPS confirmation that person is home
 #       - condition: state
-#         entity_id: Based device_tracker.flos_iphone_3 # GPS Based Flo
+#         entity_id: Based device_tracker.flos_iphone_2_3 # GPS Based Flo
 #         state: 'not_home' #GPS confirmation that person is not home
 #       - condition: state
 #         entity_id: device_tracker.simons_iphone_2 # GPS Based Simon
@@ -917,7 +1054,7 @@
 #         entity_id: device_tracker.iphone_von_christian_2 # GPS Chris
 #         state: 'home' #GPS confirmation that person is home
 #       - condition: state
-#         entity_id: Based device_tracker.flos_iphone_3 # GPS Based Flo
+#         entity_id: Based device_tracker.flos_iphone_2_3 # GPS Based Flo
 #         state: 'not_home' #GPS confirmation that person is not home
 #       - condition: state
 #         entity_id: device_tracker.simons_iphone_2 # GPS Based Simon
@@ -965,7 +1102,7 @@
 #         entity_id: device_tracker.iphone_von_christian_2 # GPS Chris
 #         state: 'not_home' #GPS confirmation that person is home
 #       - condition: state
-#         entity_id: Based device_tracker.flos_iphone_3 # GPS Based Flo
+#         entity_id: Based device_tracker.flos_iphone_2_3 # GPS Based Flo
 #         state: 'not_home' #GPS confirmation that person is not home
 #       - condition: state
 #         entity_id: device_tracker.simons_iphone_2 # GPS Based Simon
@@ -991,7 +1128,7 @@
 #   initial_state: true
 #   trigger:
 #     platform: state
-#     entity_id: device_tracker.flos_iphone # Wifi Based
+#     entity_id: device_tracker.flos_iphone_2 # Wifi Based
 #     to: 'home'
 #   condition:
 #     condition: and
@@ -1037,7 +1174,7 @@
 #   initial_state: true
 #   trigger:
 #     platform: state
-#     entity_id: device_tracker.flos_iphone #WiFi based
+#     entity_id: device_tracker.flos_iphone_2 #WiFi based
 #     to: 'home'
 #   condition:
 #     condition: and
@@ -1076,7 +1213,7 @@
 #   initial_state: true
 #   trigger:
 #     - platform: state
-#       entity_id: device_tracker.flos_iphone # WiFi Based
+#       entity_id: device_tracker.flos_iphone_2 # WiFi Based
 #       to: 'not_home'
 #     #- platform: state #####TODO:  as Flo GPS 
 #     #  entity_id: device_tracker.iphone_von_christian # GPS Based
@@ -1127,7 +1264,7 @@
 #     condition: and
 #     conditions:
 #       - condition: state
-#         entity_id: device_tracker.flos_iphone # Wifi Based
+#         entity_id: device_tracker.flos_iphone_2 # Wifi Based
 #         state: 'not_home'
 #       - condition: state
 #         entity_id: device_tracker.iphonevhristian #WiFi based
@@ -1169,7 +1306,7 @@
 #     condition: and
 #     conditions:
 #       - condition: state
-#         entity_id: device_tracker.flos_iphone # Wifi Based
+#         entity_id: device_tracker.flos_iphone_2 # Wifi Based
 #         state: 'not_home'
 #       - condition: state
 #         entity_id: device_tracker.iphonevhristian # Wifi Based
@@ -1211,7 +1348,7 @@
 #     condition: and
 #     conditions:
 #       - condition: state
-#         entity_id: device_tracker.flos_iphone # Wifi Based
+#         entity_id: device_tracker.flos_iphone_2 # Wifi Based
 #         state: 'not_home'
 #       - condition: state
 #         entity_id: device_tracker.iphonevhristian # Wifi Based
