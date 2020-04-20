@@ -155,3 +155,6 @@ esstisch_auto_lightoff_request: #Esstisch
 sonos_playlist_chris_1:
     url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1DWTlzJXLRpd4a?si=YTl1WZsRR5KniTjm6XQSWA
     method: GET
+
+sonso_playlist_chris_2:
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:4BpSSoOmR47lRI4oNYgSg4
