@@ -858,7 +858,7 @@
     - service: input_number.set_value
       data_template:
         entity_id: input_number.box1
-        value: '{{ (range(0.0, 3.0)|random) }}'
+        value: '{{ range(0, 3)|random | int }}'
     - service_template: >
         {% if is_state('input_number.box1', '0.0' ) %}
           rest_command.sonos_playlist_chris_1
