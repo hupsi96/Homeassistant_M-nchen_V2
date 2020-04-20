@@ -64,7 +64,6 @@ input_select:
       - Weglicht
     initial: Standard
     
-
 #wake_on_lan:
 samsungtv:
   - host: 192.168.178.40
@@ -110,6 +109,9 @@ timer:
 # Text to speech
 tts:
   - platform: google_translate
+
+#internet connection testing:
+speedtestdotnet:
 
 #customize: !include customize.yaml
 rest_command: !include rest_commands.yaml
