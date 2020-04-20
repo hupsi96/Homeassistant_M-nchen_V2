@@ -870,6 +870,7 @@
         {% else %}
           rest_command.sonos_playlist_chris_4
         {% endif %}
+    - service: rest_command.sonos_playlist_play
     
       #http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1DWTlzJXLRpd4a?si=YTl1WZsRR5KniTjm6XQSWA api request to start playlist on sonos
       #source for documtation: https://github.com/jishi/node-sonos-http-api

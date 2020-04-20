@@ -171,3 +171,7 @@ sonos_playlist_chris_3:
 sonos_playlist_chris_4:
     url: http://192.168.178.73:5005/wohnzimmer/spotify/queue/spotify:user:spotify:playlist:5BygwTQ3OrbiwVsQhXFHMz
     method: GET
+
+sonos_playlist_play:
+    url: http://192.168.178.73:5005/wohnzimmer/play
+    method: GET
