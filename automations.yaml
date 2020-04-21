@@ -461,6 +461,7 @@
         {% endif %}
 
 - alias: Garderobe_off
+  initial_state: true
   trigger:
     - platform: event
       event_type: timer.finished
