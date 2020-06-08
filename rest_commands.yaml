@@ -97,3 +97,122 @@ gang_lighton_dim_recall_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/6/action
     method: PUT
     payload: '{"scene":"mF10HcTDiZgIteV"}'
+
+#############################################################################################
+# Coming Home Automation
+#############################################################################################
+
+woznzimmer_auto_lightoff_request: #Wohnzimmer
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/1/action
+    method: PUT
+    payload: '{"on":false}'
+
+abstellkammer_auto_lightoff_request: #Abstellkammer
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/2/action
+    method: PUT
+    payload: '{"on":false}'
+    
+christian_auto_lightoff_request: #Christian
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/3/action
+    method: PUT
+    payload: '{"on":false}'
+
+simon_auto_lightoff_request: #Simon
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/4/action
+    method: PUT
+    payload: '{"on":false}'
+
+garderobe_auto_lightoff_request: #Garderobe
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
+    method: PUT
+    payload: '{"on":false}'
+
+gang_auto_lightoff_request: #Gang
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/6/action
+    method: PUT
+    payload: '{"on":false}'
+
+flo_auto_lightoff_request: #Flo
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/7/action
+    method: PUT
+    payload: '{"on":false}'
+
+kueche_auto_lightoff_request: #Küche
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/8/action
+    method: PUT
+    payload: '{"on":false}'
+
+custom_auto_lightoff_request: #Custom group for $lights
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/9/action
+    method: PUT
+    payload: '{"on":false}'
+
+esstisch_auto_lightoff_request: #Esstisch
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/10/action
+    method: PUT
+    payload: '{"on":false}'
+
+###################################################
+#Sonos
+#source for documtation: https://github.com/jishi/node-sonos-http-api
+###################################################
+
+sonos_playlist_clear:
+    url: http://192.168.178.73:5005/wohnzimmer/clearqueue
+    method: GET
+
+sonos_playlist_preset:
+    url: http://192.168.178.73:5005/preset/comingHomePreset
+    method: GET
+
+sonos_playlist_chris_1:
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1DWTlzJXLRpd4a
+    method: GET
+
+sonos_playlist_chris_2:
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:4BpSSoOmR47lRI4oNYgSg4
+    method: GET
+
+sonos_playlist_chris_3:
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1E4EzccfqXgcAE
+    method: GET
+
+sonos_playlist_chris_4:
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:5BygwTQ3OrbiwVsQhXFHMz
+    method: GET
+
+sonos_playlist_flo_1: #UEFA
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:5eZtdy2eSMgRAAC8wKbtE8
+    method: GET
+
+sonos_playlist_flo_2: #All Out 90s
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1DXbTxeAdrVG2l
+    method: GET
+
+sonos_playlist_flo_3: # seiler & Speer
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:6xp8gFUWTjXxpmacxT8zsX
+    method: GET
+
+sonos_playlist_flo_4: # Eminem
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:4WgkYzOPr7cq1mcduC54qc
+    method: GET
+
+sonos_playlist_simon_1:
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1DWTlzJXLRpd4a
+    method: GET
+
+sonos_playlist_simon_2:
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:4BpSSoOmR47lRI4oNYgSg4
+    method: GET
+
+sonos_playlist_simon_3:
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1E4EzccfqXgcAE
+    method: GET
+
+sonos_playlist_simon_4:
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:5BygwTQ3OrbiwVsQhXFHMz
+    method: GET
+
+sonos_playlist_play:
+    url: http://192.168.178.73:5005/wohnzimmer/play
+    method: GET
