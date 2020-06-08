@@ -197,17 +197,20 @@
           input_boolean.turn_off
         {% endif %}
       entity_id: input_boolean.christian_nachtmodus
-    - service_template: >
-        {% if is_state('input_boolean.christian_nachtmodus', 'off') %}
-          timer.start
-        {% else %} 
-          timer.cancel
-        {% endif %}
-      entity_id: timer.christian_nightmode_counter
     - service: timer.cancel
       entity_id: timer.chris_debounce
     - service: timer.start
       entity_id: timer.chris_debounce
+
+- alias: Night_mode_timer_start
+  trigger:
+    - platform: state
+      entity_id: input_boolean.christian_nachtmodus
+      from: 'off'
+      to: 'on'
+  action:
+    - service: timer.start
+      entity_id: timer.christian_nightmode_counter
 
 - alias: Night_mode_timer_expired
   trigger:
