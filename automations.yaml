@@ -952,3 +952,32 @@
       data:
         transition: 900
         brightness: 200
+
+###################################################
+# TV turn_on
+###################################################
+
+- alias: 'Fernseher Wohnzimmer anschalten'
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: device_tracker.tizen
+    from: 'not_home'
+    to: 'home'
+  condition:
+    - condition: state
+      entity_id: light.wohnzimmer
+      state: 'on'
+  action:
+    - service: hue.hue_activate_scene
+      data:
+        group_name: Wohnzimmer
+        scene_name: Kino Start
+    - service: rest_command.sonos_kueche_pause
+    - service: rest_command.sonos_esstisch_pause
+    - service: light.turn_on
+      entity_id: light.wohnzimmer
+      data:
+        transition: 10
+        brightness: 20
+    
