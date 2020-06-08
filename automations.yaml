@@ -945,6 +945,5 @@
     - service: light.turn_on
       entity_id: light.wohnzimmer
       data:
-        
-        transition: 20
+        transition: 900
         brightness: 200
