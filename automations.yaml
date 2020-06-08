@@ -101,6 +101,36 @@
     - service: timer.start
       entity_id: timer.flo_debounce
 
+- alias: chris_Night_mode_timer_start
+  trigger:
+    - platform: state
+      entity_id: input_boolean.flo_nachtmodus
+      from: 'off'
+      to: 'on'
+  action:
+    - service: timer.start
+      entity_id: timer.flo_nightmode_counter
+
+- alias: chris_Night_mode_timer_stop
+  trigger:
+    - platform: state
+      entity_id: input_boolean.flo_nachtmodus
+      from: 'on'
+      to: 'off'
+  action:
+    - service: timer.cancel
+      entity_id: timer.flo_nightmode_counter
+
+- alias: chris_Night_mode_timer_expired
+  trigger:
+    - platform: state
+      entity_id: timer.flo_nightmode_counter
+      from: active
+      to: idle
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.flo_nachtmodus
+
 ##################################################################################################
 # Smart Button Christian
 ##################################################################################################
@@ -201,6 +231,38 @@
       entity_id: timer.chris_debounce
     - service: timer.start
       entity_id: timer.chris_debounce
+
+- alias: chris_Night_mode_timer_start
+  trigger:
+    - platform: state
+      entity_id: input_boolean.christian_nachtmodus
+      from: 'off'
+      to: 'on'
+  action:
+    - service: timer.start
+      entity_id: timer.christian_nightmode_counter
+
+- alias: chris_Night_mode_timer_stop
+  trigger:
+    - platform: state
+      entity_id: input_boolean.christian_nachtmodus
+      from: 'on'
+      to: 'off'
+  action:
+    - service: timer.cancel
+      entity_id: timer.christian_nightmode_counter
+
+- alias: chris_Night_mode_timer_expired
+  trigger:
+    - platform: state
+      entity_id: timer.christian_nightmode_counter
+      from: active
+      to: idle
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.christian_nachtmodus
+
+  
 
 ##################################################################################################
 # Smart Button Simon
@@ -303,6 +365,35 @@
     - service: timer.start
       entity_id: timer.simon_debounce
 
+- alias: simon_Night_mode_timer_start
+  trigger:
+    - platform: state
+      entity_id: input_boolean.simon_nachtmodus
+      from: 'off'
+      to: 'on'
+  action:
+    - service: timer.start
+      entity_id: timer.simon_nightmode_counter
+
+- alias: simon_Night_mode_timer_stop
+  trigger:
+    - platform: state
+      entity_id: input_boolean.simon_nachtmodus
+      from: 'on'
+      to: 'off'
+  action:
+    - service: timer.cancel
+      entity_id: timer.simon_nightmode_counter
+
+- alias: simon_Night_mode_timer_expired
+  trigger:
+    - platform: state
+      entity_id: timer.simon_nightmode_counter
+      from: active
+      to: idle
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.simon_nachtmodus
 ##################################################################################################
 # Garderobe & Gang Status Change
 ##################################################################################################

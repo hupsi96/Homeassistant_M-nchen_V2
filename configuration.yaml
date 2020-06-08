@@ -93,10 +93,16 @@ device_tracker:
 timer:
   flo_debounce:
     duration: '00:0:05'
+  flo_nightmode_counter:
+    duration: '07:00:00'
   chris_debounce:
     duration: '00:0:05'
+  christian_nightmode_counter:
+    duration: '07:00:00'
   simon_debounce:
     duration: '00:0:05'
+  simon_nightmode_counter:
+    duration: '07:00:00'
   garderobe_debounce_dim: #after 45 secounds the light should be dimmed in Garderobe
     duration: '00:01:00'
   garderobe_debounce: # after 1 minute the light should be turned off in Garderobe
