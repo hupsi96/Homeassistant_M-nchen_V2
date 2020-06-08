@@ -952,8 +952,27 @@
             state: 'home'
   action:
     - service: rest_command.sonos_playlist_clear
-    - service: rest_command.sonos_playlist_preset
+    - service: rest_command.sonos_speech_preset
     - delay: 00:00:03
+    - service: rest_command.sonos_speech_preset
+    - service: tts.google_translate_say
+      entity_id: media_player.wohnzimmer
+      data_template: 
+        message: >
+          {% if trigger.entity_id == 'device_tracker.iphonevhristian' %}
+            'Hallo Chris, schön dass du Daheim bist.'
+          {% elif trigger.entity_id == 'device_tracker.steffi_sugar' %}
+            'Hallo Steffi, schön dass du den weiten Weg von Amsterdam bis zu uns in die WG gefunden hast! Willkommen!'
+          {% elif trigger.entity_id == 'device_tracker.iphone_von_simon' %}
+            'Hallo Simon, schön dass du Daheim bist.'
+          {% elif trigger.entity_id == 'device_tracker.flos_iphone_2' %}
+            'Hallo Flo, schön dass du Daheim bist.'
+          {% elif trigger.entity_id == 'device_tracker.iphonevranziska' %}
+            'Hallo Franzi, schön dass du wieder bei uns in der WG bist.'
+          {% else %} 
+            'Hallo und herzlich willkommen!'
+          {% endif %}
+    - delay: 00:00:05
     - service: rest_command.sonos_playlist_preset
     - service: input_number.set_value
       data_template:
