@@ -161,52 +161,56 @@ sonos_playlist_clear:
     url: http://192.168.178.73:5005/wohnzimmer/clearqueue
     method: GET
 
+sonos_playlist_preset:
+    url: http://192.168.178.73:5005/preset/comingHomePreset
+    method: GET
+
 sonos_playlist_chris_1:
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/queue/spotify:user:spotify:playlist:37i9dQZF1DWTlzJXLRpd4a
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1DWTlzJXLRpd4a
     method: GET
 
 sonos_playlist_chris_2:
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/queue/spotify:user:spotify:playlist:4BpSSoOmR47lRI4oNYgSg4
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:4BpSSoOmR47lRI4oNYgSg4
     method: GET
 
 sonos_playlist_chris_3:
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/queue/spotify:user:spotify:playlist:37i9dQZF1E4EzccfqXgcAE
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1E4EzccfqXgcAE
     method: GET
 
 sonos_playlist_chris_4:
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/queue/spotify:user:spotify:playlist:5BygwTQ3OrbiwVsQhXFHMz
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:5BygwTQ3OrbiwVsQhXFHMz
     method: GET
 
 sonos_playlist_flo_1: #UEFA
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/queue/spotify:user:spotify:playlist:5eZtdy2eSMgRAAC8wKbtE8
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:5eZtdy2eSMgRAAC8wKbtE8
     method: GET
 
 sonos_playlist_flo_2: #All Out 90s
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/queue/spotify:user:spotify:playlist:37i9dQZF1DXbTxeAdrVG2l
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1DXbTxeAdrVG2l
     method: GET
 
 sonos_playlist_flo_3: # seiler & Speer
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/queue/spotify:user:spotify:playlist:6xp8gFUWTjXxpmacxT8zsX
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:6xp8gFUWTjXxpmacxT8zsX
     method: GET
 
 sonos_playlist_flo_4: # Eminem
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/queue/spotify:user:spotify:playlist:4WgkYzOPr7cq1mcduC54qc
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:4WgkYzOPr7cq1mcduC54qc
     method: GET
 
 sonos_playlist_simon_1:
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/queue/spotify:user:spotify:playlist:37i9dQZF1DWTlzJXLRpd4a
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1DWTlzJXLRpd4a
     method: GET
 
 sonos_playlist_simon_2:
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/queue/spotify:user:spotify:playlist:4BpSSoOmR47lRI4oNYgSg4
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:4BpSSoOmR47lRI4oNYgSg4
     method: GET
 
 sonos_playlist_simon_3:
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/queue/spotify:user:spotify:playlist:37i9dQZF1E4EzccfqXgcAE
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1E4EzccfqXgcAE
     method: GET
 
 sonos_playlist_simon_4:
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/queue/spotify:user:spotify:playlist:5BygwTQ3OrbiwVsQhXFHMz
+    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:5BygwTQ3OrbiwVsQhXFHMz
     method: GET
 
 sonos_playlist_play:
