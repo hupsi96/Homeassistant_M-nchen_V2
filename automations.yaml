@@ -201,7 +201,7 @@
         {% if is_state('input_boolean.christian_nachtmodus', 'off') %}
           timer.start
         {% else %} 
-          timer.stop
+          timer.cancel
         {% endif %}
       entity_id: timer.christian_nightmode_counter
     - service: timer.cancel
