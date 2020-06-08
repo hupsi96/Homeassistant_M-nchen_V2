@@ -969,4 +969,13 @@
       entity_id: light.wohnzimmer
       state: 'on'
   action:
+    - service: hue.hue_activate_scene
+      data:
+        group_name: Wohnzimmer
+        scene_name: Kino Start
+    - service: light.turn_on
+      entity_id: light.wohnzimmer
+      data:
+        transition: 10
+        brightness: 20
     
