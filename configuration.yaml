@@ -89,11 +89,6 @@ device_tracker:
     consider_home: 60
     track_new_devices: yes
 
-fritzbox_tools:
-  host: 192.168.178.1
-  username: "admin"
-  password: !secret fritz_password
-
 #Timer to catch multible pressing of smart button
 timer:
   flo_debounce:
