@@ -106,17 +106,6 @@ timer:
   gang_debounce: # after 1 minute the light should be turned off in Garderobe
     duration: '00:01:30'
 
-light:
-  - platform: group
-    name: test Lights
-    entities:
-      - light.esstisch_1
-      - light.esstisch_2
-      - light.esstisch_3
-      - light.esstisch_4
-      - light.esstisch_5
-      - light.esstisch_6
-
 # Text to speech
 tts:
   - platform: google_translate
@@ -142,6 +131,7 @@ input_number:
 #  client_secret: !secret spotifySecret2
 
 #customize: !include customize.yaml
+#light: !include light.yaml
 rest_command: !include rest_commands.yaml
 group: !include groups.yaml
 automation: !include automations.yaml

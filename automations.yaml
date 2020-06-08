@@ -942,3 +942,8 @@
       data:
         group_name: Wohnzimmer
         scene_name: Sunset
+    - service: light.turn_on
+      data:
+        - entity_id: light.wohnzimmer
+        - transition: 20
+        - brightness: 200

@@ -1,0 +1,9 @@
+- platform: group
+  name: Esstisch
+  entities:
+    - light.esstisch_1
+    - light.esstisch_2
+    - light.esstisch_3
+    - light.esstisch_4
+    - light.esstisch_5
+    - light.esstisch_6
