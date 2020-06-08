@@ -131,6 +131,7 @@ input_number:
 #  client_secret: !secret spotifySecret2
 
 #customize: !include customize.yaml
+#light: !include light.yaml
 rest_command: !include rest_commands.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
