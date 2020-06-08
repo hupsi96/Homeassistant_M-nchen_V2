@@ -165,6 +165,14 @@ sonos_playlist_preset:
     url: http://192.168.178.73:5005/preset/comingHomePreset
     method: GET
 
+sonos_kueche_pause:
+    url: http://192.168.178.73:5005/küche/pause
+    method: GET
+
+sonos_esstisch_pause:
+    url: http://192.168.178.73:5005/esstisch/pause
+    method: GET
+
 sonos_playlist_chris_1:
     url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1DWTlzJXLRpd4a
     method: GET

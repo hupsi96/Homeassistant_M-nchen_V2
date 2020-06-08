@@ -973,6 +973,8 @@
       data:
         group_name: Wohnzimmer
         scene_name: Kino Start
+    - service: rest_command.sonos_kueche_pause
+    - service: rest_command.sonos_esstisch_pause
     - service: light.turn_on
       entity_id: light.wohnzimmer
       data:
