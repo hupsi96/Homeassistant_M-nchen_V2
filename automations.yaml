@@ -952,3 +952,21 @@
       data:
         transition: 900
         brightness: 200
+
+###################################################
+# TV turn_on
+###################################################
+
+- alias: 'Fernseher Wohnzimmer anschalten'
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: device_tracker.tizen
+    from: 'not_home'
+    to: 'home'
+  condition:
+    - condition: state
+      entity_id: light.wohnzimmer
+      state: 'on'
+  action:
+    
