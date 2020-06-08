@@ -864,6 +864,10 @@
     - service: rest_command.sonos_playlist_preset
     - delay: 00:00:03
     - service: rest_command.sonos_playlist_preset
+    - service: tts.google_translate_say
+      entity_id: media_player.wohnzimmer
+      data:
+        message: 'Hallo Flo, schön dass du Daheim bist. Kannst du bitte kurz die Blumen gießen?'
     - service: input_number.set_value
       data_template:
         entity_id: input_number.box1
