@@ -862,6 +862,8 @@
   action:
     - service: rest_command.sonos_playlist_clear
     - service: rest_command.sonos_playlist_preset
+    - delay: 00:00:03
+    - service: rest_command.sonos_playlist_preset
     - service: input_number.set_value
       data_template:
         entity_id: input_number.box1
