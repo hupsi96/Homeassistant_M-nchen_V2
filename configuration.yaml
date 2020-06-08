@@ -98,7 +98,7 @@ timer:
   chris_debounce:
     duration: '00:0:05'
   christian_nightmode_counter:
-    duration: '00:00:20' #'07:00:00'
+    duration: '07:00:00'
   simon_debounce:
     duration: '00:0:05'
   simon_nightmode_counter:
