@@ -106,6 +106,17 @@ timer:
   gang_debounce: # after 1 minute the light should be turned off in Garderobe
     duration: '00:01:30'
 
+light:
+  - platform: group
+    name: test Lights
+    entities:
+      - light.esstisch_1
+      - light.esstisch_2
+      - light.esstisch_3
+      - light.esstisch_4
+      - light.esstisch_5
+      - light.esstisch_6
+
 # Text to speech
 tts:
   - platform: google_translate

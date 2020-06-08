@@ -907,3 +907,38 @@
     
       #http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1DWTlzJXLRpd4a?si=YTl1WZsRR5KniTjm6XQSWA api request to start playlist on sonos
       #source for documtation: https://github.com/jishi/node-sonos-http-api
+
+
+###################################################
+# Sonnenuntergang Licht an
+###################################################
+
+- alias: 'Sonnenuntergang Licht'
+  initial_state: true
+  trigger:
+    platform: sun
+    event: sunset
+    offset: "-00:15:00"
+  condition:
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: device_tracker.iphone_von_simon # Wifi
+        state: 'home'
+      - condition: state
+        entity_id: device_tracker.flos_iphone_2 # Wifi
+        state: 'home'
+      - condition: state
+        entity_id: device_tracker.iphonevranziska # Wifi
+        state: 'home'
+      - condition: state
+        entity_id: device_tracker.iphonevhristian # Wifi
+        state: 'home'
+      - condition: state
+        entity_id: device_tracker.steffi_sugar # Wifi
+        state: 'home'
+  action:
+    - service: hue.hue_activate_scene
+      data:
+        group_name: Wohnzimmer
+        scene_name: Sunset
