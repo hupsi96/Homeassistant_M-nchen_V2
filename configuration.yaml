@@ -72,7 +72,7 @@ samsungtv:
 #setup for zigbee2mqtt
 mqtt:
   discovery: true
-  #broker: [YOUR MQTT BROKER]  # Remove if you want to use builtin-in MQTT broker
+  broker: 192.168.178.73  # Remove if you want to use builtin-in MQTT broker
   birth_message:
     topic: 'hass/status'
     payload: 'online'
