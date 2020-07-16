@@ -137,7 +137,7 @@ input_number:
 #  client_id: !secret spotifyClient2
 #  client_secret: !secret spotifySecret2
 mqtt:
-  broker: 192.168.178.101
+  broker: 192.168.178.73
 #customize: !include customize.yaml
 light: !include light.yaml
 rest_command: !include rest_commands.yaml
