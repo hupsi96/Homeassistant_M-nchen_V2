@@ -966,7 +966,7 @@
           {% elif trigger.entity_id == 'device_tracker.iphone_von_simon' %}
             'Hallo Simon, schön dass du Daheim bist.'
           {% elif trigger.entity_id == 'device_tracker.flos_iphone_2' %}
-            'Hallo Flo, schön dass du Daheim bist.'
+            'Hallo Flo, schön dass du auch mal Daheim bist.'
           {% elif trigger.entity_id == 'device_tracker.iphonevranziska' %}
             'Hallo Franzi, schön dass du wieder bei uns in der WG bist.'
           {% else %} 

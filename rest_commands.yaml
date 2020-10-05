@@ -158,7 +158,7 @@ esstisch_auto_lightoff_request: #Esstisch
 ###################################################
 
 sonos_playlist_clear:
-    url: http://192.168.178.73:5005/wohnzimmer/clearqueue
+    url: http://192.168.178.73:5005/Beam Me Up/clearqueue
     method: GET
 
 sonos_speech_preset:
@@ -170,61 +170,61 @@ sonos_playlist_preset:
     method: GET
 
 sonos_kueche_pause:
-    url: http://192.168.178.73:5005/küche/pause
+    url: http://192.168.178.73:5005/kitchen orchestra/pause
     method: GET
 
 sonos_esstisch_pause:
-    url: http://192.168.178.73:5005/esstisch/pause
+    url: http://192.168.178.73:5005/high five/pause
     method: GET
 
-sonos_playlist_chris_1:
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1DWTlzJXLRpd4a
+sonos_playlist_chris_1: #This Is 2Pac
+    url: http://192.168.178.73:5005/beam me up/spotify/now/spotify:user:spotify:playlist:37i9dQZF1DXdgf6ud7uDc7
     method: GET
 
-sonos_playlist_chris_2:
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:4BpSSoOmR47lRI4oNYgSg4
+sonos_playlist_chris_2: #Sheesh Scur
+    url: http://192.168.178.73:5005/beam me up/spotify/now/spotify:user:spotify:playlist:7HQNRl9xTG8go7dZ1IEYTA
     method: GET
 
-sonos_playlist_chris_3:
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1E4EzccfqXgcAE
+sonos_playlist_chris_3: #Von Wegen Lisbeth
+    url: http://192.168.178.73:5005/beam me up/spotify/now/spotify:user:spotify:playlist:37i9dQZF1E4EzccfqXgcAE
     method: GET
 
-sonos_playlist_chris_4:
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:5BygwTQ3OrbiwVsQhXFHMz
+sonos_playlist_chris_4: #Classic Rock
+    url: http://192.168.178.73:5005/beam me up/spotify/now/spotify:user:spotify:playlist:5BygwTQ3OrbiwVsQhXFHMz
     method: GET
 
 sonos_playlist_flo_1: #UEFA
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:5eZtdy2eSMgRAAC8wKbtE8
+    url: http://192.168.178.73:5005/beam me up/spotify/now/spotify:user:spotify:playlist:5eZtdy2eSMgRAAC8wKbtE8
     method: GET
 
 sonos_playlist_flo_2: #All Out 90s
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1DXbTxeAdrVG2l
+    url: http://192.168.178.73:5005/beam me up/spotify/now/spotify:user:spotify:playlist:37i9dQZF1DXbTxeAdrVG2l
     method: GET
 
 sonos_playlist_flo_3: # seiler & Speer
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:6xp8gFUWTjXxpmacxT8zsX
+    url: http://192.168.178.73:5005/beam me up/spotify/now/spotify:user:spotify:playlist:6xp8gFUWTjXxpmacxT8zsX
     method: GET
 
 sonos_playlist_flo_4: # Eminem
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:4WgkYzOPr7cq1mcduC54qc
+    url: http://192.168.178.73:5005/beam me up/spotify/now/spotify:user:spotify:playlist:4WgkYzOPr7cq1mcduC54qc
     method: GET
 
 sonos_playlist_simon_1:
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1DWTlzJXLRpd4a
+    url: http://192.168.178.73:5005/beam me up/spotify/now/spotify:user:spotify:playlist:37i9dQZF1DWTlzJXLRpd4a
     method: GET
 
 sonos_playlist_simon_2:
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:4BpSSoOmR47lRI4oNYgSg4
+    url: http://192.168.178.73:5005/beam me up/spotify/now/spotify:user:spotify:playlist:4BpSSoOmR47lRI4oNYgSg4
     method: GET
 
 sonos_playlist_simon_3:
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:37i9dQZF1E4EzccfqXgcAE
+    url: http://192.168.178.73:5005/beam me up/spotify/now/spotify:user:spotify:playlist:37i9dQZF1E4EzccfqXgcAE
     method: GET
 
 sonos_playlist_simon_4:
-    url: http://192.168.178.73:5005/wohnzimmer/spotify/now/spotify:user:spotify:playlist:5BygwTQ3OrbiwVsQhXFHMz
+    url: http://192.168.178.73:5005/beam me up/spotify/now/spotify:user:spotify:playlist:5BygwTQ3OrbiwVsQhXFHMz
     method: GET
 
 sonos_playlist_play:
-    url: http://192.168.178.73:5005/wohnzimmer/play
+    url: http://192.168.178.73:5005/beam me up/play
     method: GET
