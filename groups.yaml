@@ -135,7 +135,7 @@ christianTracking:
   name: Tracking
   control: hidden
   entities:
-    - device_tracker.iphonevhristian
+    - device_tracker.iphone_chris_manuell_2
     - device_tracker.christian_cgi
     - device_tracker.iphone_von_christian_2
     - input_boolean.christian_nachtmodus
