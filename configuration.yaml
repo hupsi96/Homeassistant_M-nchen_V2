@@ -111,6 +111,8 @@ timer:
     duration: '00:01:00'
   gang_debounce: # after 1 minute the light should be turned off in Garderobe
     duration: '00:01:30'
+  coming_come_timer:
+    duration: '00:15:00'
 
 # Text to speech
 tts:

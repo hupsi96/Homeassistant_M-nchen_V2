@@ -687,184 +687,27 @@
 #{% if (is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphone_chris_manuell_2', 'home')) or (is_state('device_tracker.iphone_chris_manuell_2', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone_2', 'home') and is_state('device_tracker.iphone_von_simon', 'home')) or (is_state('device_tracker.iphone_chris_manuell_2', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.flos_iphone_2', 'home') and is_state('device_tracker.iphone_von_simon', 'not_home')) or (is_state('device_tracker.iphone_chris_manuell_2', 'not_home') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.flos_iphone_2', 'not_home') and is_state('device_tracker.iphone_von_simon', 'home')) %}
 
 ###################################################
-# Comming Home automation - All
+# Comming Home automation - Timer Start
 ###################################################
 
-- alias: 'Comming Home Light'
+- alias: 'Coming Home GPS Timer'
   initial_state: true
   trigger:
-    - platform: state
-      entity_id: device_tracker.iphone_chris_manuell_2 #WiFi based
+    - platform: state #GPS Christian
+      entity_id: device_tracker.iphone_von_christian
       from: "not_home"
       to: "home"
-    - platform: state
-      entity_id: device_tracker.iphone_von_simon #WiFi based
+    - platform: state #GPS Simon
+      entity_id: device_tracker.simons_iphone
       from: "not_home"
       to: "home"
-    - platform: state
-      entity_id: device_tracker.flos_iphone_2 #WiFi based
-      from: "not_home"
-      to: "home"
-    - platform: state
-      entity_id: device_tracker.iphonevranziska #WiFi based
-      from: "not_home"
-      to: "home"
-    - platform: state
-      entity_id: device_tracker.steffi_sugar #WiFi based
+    - platform: state #GPS Florian
+      entity_id: device_tracker.flos_iphone_3
       from: "not_home"
       to: "home"
   condition:
-    condition: and
-    conditions:
-      - condition: or
-        conditions:
-          - condition: sun
-            before: sunrise
-            before_offset: "+01:00:00"
-          - condition: sun
-            after: sunset
-            after_offset: "-01:00:00"
-      - condition: or
-        conditions:
-        - condition: and
-          conditions: # Chris
-            - condition: state
-              entity_id: device_tracker.iphone_von_simon # Wifi
-              state: 'not_home'
-            - condition: state
-              entity_id: device_tracker.flos_iphone_2 # Wifi
-              state: 'not_home'
-            - condition: state
-              entity_id: device_tracker.iphonevranziska # Wifi
-              state: 'not_home'
-            - condition: state
-              entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
-              state: 'home'
-            - condition: state
-              entity_id: device_tracker.steffi_sugar # Wifi
-              state: 'not_home'
-        - condition: and
-          conditions: # Franzi
-            - condition: state
-              entity_id: device_tracker.iphone_von_simon # Wifi
-              state: 'not_home'
-            - condition: state
-              entity_id: device_tracker.flos_iphone_2 # Wifi
-              state: 'not_home'
-            - condition: state
-              entity_id: device_tracker.iphonevranziska # Wifi
-              state: 'home'
-            - condition: state
-              entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
-              state: 'not_home'
-            - condition: state
-              entity_id: device_tracker.steffi_sugar # Wifi
-              state: 'not_home'
-        - condition: and
-          conditions: # Flo
-            - condition: state
-              entity_id: device_tracker.iphone_von_simon # Wifi
-              state: 'not_home'
-            - condition: state
-              entity_id: device_tracker.flos_iphone_2 # Wifi
-              state: 'home'
-            - condition: state
-              entity_id: device_tracker.iphonevranziska # Wifi
-              state: 'not_home'
-            - condition: state
-              entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
-              state: 'not_home'
-            - condition: state
-              entity_id: device_tracker.steffi_sugar # Wifi
-              state: 'not_home'
-        - condition: and
-          conditions: # Simon
-            - condition: state
-              entity_id: device_tracker.iphone_von_simon # Wifi
-              state: 'home'
-            - condition: state
-              entity_id: device_tracker.flos_iphone_2 # Wifi
-              state: 'not_home'
-            - condition: state
-              entity_id: device_tracker.iphonevranziska # Wifi
-              state: 'not_home'
-            - condition: state
-              entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
-              state: 'not_home'
-            - condition: state
-              entity_id: device_tracker.steffi_sugar # Wifi
-              state: 'not_home'
-        - condition: and
-          conditions: # Steffi
-            - condition: state
-              entity_id: device_tracker.iphone_von_simon # Wifi
-              state: 'not_home'
-            - condition: state
-              entity_id: device_tracker.flos_iphone_2 # Wifi
-              state: 'not_home'
-            - condition: state
-              entity_id: device_tracker.iphonevranziska # Wifi
-              state: 'not_home'
-            - condition: state
-              entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
-              state: 'not_home'
-            - condition: state
-              entity_id: device_tracker.steffi_sugar # Wifi
-              state: 'home'
-  action:
-    - service: hue.hue_activate_scene
-      data:
-        group_name: Wohnzimmer
-        scene_name: Entspannt
-    - service: hue.hue_activate_scene
-      data_template:
-        group_name: >
-          {% if trigger.entity_id == 'device_tracker.iphone_chris_manuell_2' %}
-            Christian
-          {% elif trigger.entity_id == 'device_tracker.iphone_von_simon' or trigger.entity_id == 'device_tracker.steffi_sugar' %}
-            Simon
-          {% elif trigger.entity_id == 'device_tracker.flos_iphone_2' or trigger.entity_id == 'entity_id: device_tracker.iphonevranziska' %}
-            Flo
-          {% else %}
-            Wohnzimmer
-          {% endif %}
-        scene_name: >
-          {% if trigger.entity_id == 'device_tracker.iphone_chris_manuell_2' %}
-            Standard
-          {% elif trigger.entity_id == 'device_tracker.iphone_von_simon' or trigger.entity_id == 'device_tracker.steffi_sugar' %}
-            Hell
-          {% elif trigger.entity_id == 'device_tracker.flos_iphone_2' or trigger.entity_id == 'entity_id: device_tracker.iphonevranziska' %}
-            Hell
-          {% else %}
-            Entspannt
-          {% endif %}
-
-- alias: 'Comming Home Music'
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: device_tracker.iphone_chris_manuell_2 #WiFi based
-      from: "not_home"
-      to: "home"
-    - platform: state
-      entity_id: device_tracker.iphone_von_simon #WiFi based
-      from: "not_home"
-      to: "home"
-    - platform: state
-      entity_id: device_tracker.flos_iphone_2 #WiFi based
-      from: "not_home"
-      to: "home"
-    - platform: state
-      entity_id: device_tracker.iphonevranziska #WiFi based
-      from: "not_home"
-      to: "home"
-    - platform: state
-      entity_id: device_tracker.steffi_sugar #WiFi based
-      from: "not_home"
-      to: "home"
-  condition:
-    condition: or
-    conditions:
+    - condition: or
+      conditions:
       - condition: and
         conditions: # Chris
           - condition: state
@@ -951,6 +794,260 @@
             entity_id: device_tracker.steffi_sugar # Wifi
             state: 'home'
   action:
+    - service: timer.start
+      entity_id: timer.coming_come_timer
+
+
+###################################################
+# Comming Home automation - All
+###################################################
+
+- alias: 'Comming Home Light'
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: device_tracker.iphone_chris_manuell_2 #WiFi based
+      from: "not_home"
+      to: "home"
+    - platform: state
+      entity_id: device_tracker.iphone_von_simon #WiFi based
+      from: "not_home"
+      to: "home"
+    - platform: state
+      entity_id: device_tracker.flos_iphone_2 #WiFi based
+      from: "not_home"
+      to: "home"
+    - platform: state
+      entity_id: device_tracker.iphonevranziska #WiFi based
+      from: "not_home"
+      to: "home"
+    - platform: state
+      entity_id: device_tracker.steffi_sugar #WiFi based
+      from: "not_home"
+      to: "home"
+  condition:
+    condition: and
+    conditions:
+      - condition: or
+        conditions:
+          - condition: sun
+            before: sunrise
+            before_offset: "+01:00:00"
+          - condition: sun
+            after: sunset
+            after_offset: "-01:00:00"
+      - condition: state
+        entity_id:  timer.coming_come_timer
+        state: 'active'
+  action:
+    - service: timer.cancel
+      entity_id: timer.coming_come_timer
+    - service: hue.hue_activate_scene
+      data:
+        group_name: Wohnzimmer
+        scene_name: Entspannt
+    - service: hue.hue_activate_scene
+      data_template:
+        group_name: >
+          {% if trigger.entity_id == 'device_tracker.iphone_chris_manuell_2' %}
+            Christian
+          {% elif trigger.entity_id == 'device_tracker.iphone_von_simon' or trigger.entity_id == 'device_tracker.steffi_sugar' %}
+            Simon
+          {% elif trigger.entity_id == 'device_tracker.flos_iphone_2' or trigger.entity_id == 'entity_id: device_tracker.iphonevranziska' %}
+            Flo
+          {% else %}
+            Wohnzimmer
+          {% endif %}
+        scene_name: >
+          {% if trigger.entity_id == 'device_tracker.iphone_chris_manuell_2' %}
+            Standard
+          {% elif trigger.entity_id == 'device_tracker.iphone_von_simon' or trigger.entity_id == 'device_tracker.steffi_sugar' %}
+            Hell
+          {% elif trigger.entity_id == 'device_tracker.flos_iphone_2' or trigger.entity_id == 'entity_id: device_tracker.iphonevranziska' %}
+            Hell
+          {% else %}
+            Entspannt
+          {% endif %}
+
+# - alias: 'Comming Home Light'
+#   initial_state: true
+#   trigger:
+#     - platform: state
+#       entity_id: device_tracker.iphone_chris_manuell_2 #WiFi based
+#       from: "not_home"
+#       to: "home"
+#     - platform: state
+#       entity_id: device_tracker.iphone_von_simon #WiFi based
+#       from: "not_home"
+#       to: "home"
+#     - platform: state
+#       entity_id: device_tracker.flos_iphone_2 #WiFi based
+#       from: "not_home"
+#       to: "home"
+#     - platform: state
+#       entity_id: device_tracker.iphonevranziska #WiFi based
+#       from: "not_home"
+#       to: "home"
+#     - platform: state
+#       entity_id: device_tracker.steffi_sugar #WiFi based
+#       from: "not_home"
+#       to: "home"
+#   condition:
+#     condition: and
+#     conditions:
+#       - condition: or
+#         conditions:
+#           - condition: sun
+#             before: sunrise
+#             before_offset: "+01:00:00"
+#           - condition: sun
+#             after: sunset
+#             after_offset: "-01:00:00"
+#       - condition: or
+#         conditions:
+#         - condition: and
+#           conditions: # Chris
+#             - condition: state
+#               entity_id: device_tracker.iphone_von_simon # Wifi
+#               state: 'not_home'
+#             - condition: state
+#               entity_id: device_tracker.flos_iphone_2 # Wifi
+#               state: 'not_home'
+#             - condition: state
+#               entity_id: device_tracker.iphonevranziska # Wifi
+#               state: 'not_home'
+#             - condition: state
+#               entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
+#               state: 'home'
+#             - condition: state
+#               entity_id: device_tracker.steffi_sugar # Wifi
+#               state: 'not_home'
+#         - condition: and
+#           conditions: # Franzi
+#             - condition: state
+#               entity_id: device_tracker.iphone_von_simon # Wifi
+#               state: 'not_home'
+#             - condition: state
+#               entity_id: device_tracker.flos_iphone_2 # Wifi
+#               state: 'not_home'
+#             - condition: state
+#               entity_id: device_tracker.iphonevranziska # Wifi
+#               state: 'home'
+#             - condition: state
+#               entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
+#               state: 'not_home'
+#             - condition: state
+#               entity_id: device_tracker.steffi_sugar # Wifi
+#               state: 'not_home'
+#         - condition: and
+#           conditions: # Flo
+#             - condition: state
+#               entity_id: device_tracker.iphone_von_simon # Wifi
+#               state: 'not_home'
+#             - condition: state
+#               entity_id: device_tracker.flos_iphone_2 # Wifi
+#               state: 'home'
+#             - condition: state
+#               entity_id: device_tracker.iphonevranziska # Wifi
+#               state: 'not_home'
+#             - condition: state
+#               entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
+#               state: 'not_home'
+#             - condition: state
+#               entity_id: device_tracker.steffi_sugar # Wifi
+#               state: 'not_home'
+#         - condition: and
+#           conditions: # Simon
+#             - condition: state
+#               entity_id: device_tracker.iphone_von_simon # Wifi
+#               state: 'home'
+#             - condition: state
+#               entity_id: device_tracker.flos_iphone_2 # Wifi
+#               state: 'not_home'
+#             - condition: state
+#               entity_id: device_tracker.iphonevranziska # Wifi
+#               state: 'not_home'
+#             - condition: state
+#               entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
+#               state: 'not_home'
+#             - condition: state
+#               entity_id: device_tracker.steffi_sugar # Wifi
+#               state: 'not_home'
+#         - condition: and
+#           conditions: # Steffi
+#             - condition: state
+#               entity_id: device_tracker.iphone_von_simon # Wifi
+#               state: 'not_home'
+#             - condition: state
+#               entity_id: device_tracker.flos_iphone_2 # Wifi
+#               state: 'not_home'
+#             - condition: state
+#               entity_id: device_tracker.iphonevranziska # Wifi
+#               state: 'not_home'
+#             - condition: state
+#               entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
+#               state: 'not_home'
+#             - condition: state
+#               entity_id: device_tracker.steffi_sugar # Wifi
+#               state: 'home'
+#   action:
+#     - service: hue.hue_activate_scene
+#       data:
+#         group_name: Wohnzimmer
+#         scene_name: Entspannt
+#     - service: hue.hue_activate_scene
+#       data_template:
+#         group_name: >
+#           {% if trigger.entity_id == 'device_tracker.iphone_chris_manuell_2' %}
+#             Christian
+#           {% elif trigger.entity_id == 'device_tracker.iphone_von_simon' or trigger.entity_id == 'device_tracker.steffi_sugar' %}
+#             Simon
+#           {% elif trigger.entity_id == 'device_tracker.flos_iphone_2' or trigger.entity_id == 'entity_id: device_tracker.iphonevranziska' %}
+#             Flo
+#           {% else %}
+#             Wohnzimmer
+#           {% endif %}
+#         scene_name: >
+#           {% if trigger.entity_id == 'device_tracker.iphone_chris_manuell_2' %}
+#             Standard
+#           {% elif trigger.entity_id == 'device_tracker.iphone_von_simon' or trigger.entity_id == 'device_tracker.steffi_sugar' %}
+#             Hell
+#           {% elif trigger.entity_id == 'device_tracker.flos_iphone_2' or trigger.entity_id == 'entity_id: device_tracker.iphonevranziska' %}
+#             Hell
+#           {% else %}
+#             Entspannt
+#           {% endif %}
+
+- alias: 'Comming Home Music'
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: device_tracker.iphone_chris_manuell_2 #WiFi based
+      from: "not_home"
+      to: "home"
+    - platform: state
+      entity_id: device_tracker.iphone_von_simon #WiFi based
+      from: "not_home"
+      to: "home"
+    - platform: state
+      entity_id: device_tracker.flos_iphone_2 #WiFi based
+      from: "not_home"
+      to: "home"
+    - platform: state
+      entity_id: device_tracker.iphonevranziska #WiFi based
+      from: "not_home"
+      to: "home"
+    - platform: state
+      entity_id: device_tracker.steffi_sugar #WiFi based
+      from: "not_home"
+      to: "home"
+  condition:
+    - condition: state
+      entity_id:  timer.coming_come_timer
+      state: 'active'
+  action:
+    - service: timer.cancel
+      entity_id: timer.coming_come_timer
     - service: rest_command.sonos_playlist_clear
     - service: rest_command.sonos_speech_preset
     - delay: 00:00:03
@@ -1012,6 +1109,180 @@
             rest_command.sonos_playlist_simon_4
           {% endif %}
         {% endif %}
+
+# - alias: 'Comming Home Music'
+#   initial_state: true
+#   trigger:
+#     - platform: state
+#       entity_id: device_tracker.iphone_chris_manuell_2 #WiFi based
+#       from: "not_home"
+#       to: "home"
+#     - platform: state
+#       entity_id: device_tracker.iphone_von_simon #WiFi based
+#       from: "not_home"
+#       to: "home"
+#     - platform: state
+#       entity_id: device_tracker.flos_iphone_2 #WiFi based
+#       from: "not_home"
+#       to: "home"
+#     - platform: state
+#       entity_id: device_tracker.iphonevranziska #WiFi based
+#       from: "not_home"
+#       to: "home"
+#     - platform: state
+#       entity_id: device_tracker.steffi_sugar #WiFi based
+#       from: "not_home"
+#       to: "home"
+#   condition:
+#     condition: or
+#     conditions:
+#       - condition: and
+#         conditions: # Chris
+#           - condition: state
+#             entity_id: device_tracker.iphone_von_simon # Wifi
+#             state: 'not_home'
+#           - condition: state
+#             entity_id: device_tracker.flos_iphone_2 # Wifi
+#             state: 'not_home'
+#           - condition: state
+#             entity_id: device_tracker.iphonevranziska # Wifi
+#             state: 'not_home'
+#           - condition: state
+#             entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
+#             state: 'home'
+#           - condition: state
+#             entity_id: device_tracker.steffi_sugar # Wifi
+#             state: 'not_home'
+#       - condition: and
+#         conditions: # Franzi
+#           - condition: state
+#             entity_id: device_tracker.iphone_von_simon # Wifi
+#             state: 'not_home'
+#           - condition: state
+#             entity_id: device_tracker.flos_iphone_2 # Wifi
+#             state: 'not_home'
+#           - condition: state
+#             entity_id: device_tracker.iphonevranziska # Wifi
+#             state: 'home'
+#           - condition: state
+#             entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
+#             state: 'not_home'
+#           - condition: state
+#             entity_id: device_tracker.steffi_sugar # Wifi
+#             state: 'not_home'
+#       - condition: and
+#         conditions: # Flo
+#           - condition: state
+#             entity_id: device_tracker.iphone_von_simon # Wifi
+#             state: 'not_home'
+#           - condition: state
+#             entity_id: device_tracker.flos_iphone_2 # Wifi
+#             state: 'home'
+#           - condition: state
+#             entity_id: device_tracker.iphonevranziska # Wifi
+#             state: 'not_home'
+#           - condition: state
+#             entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
+#             state: 'not_home'
+#           - condition: state
+#             entity_id: device_tracker.steffi_sugar # Wifi
+#             state: 'not_home'
+#       - condition: and
+#         conditions: # Simon
+#           - condition: state
+#             entity_id: device_tracker.iphone_von_simon # Wifi
+#             state: 'home'
+#           - condition: state
+#             entity_id: device_tracker.flos_iphone_2 # Wifi
+#             state: 'not_home'
+#           - condition: state
+#             entity_id: device_tracker.iphonevranziska # Wifi
+#             state: 'not_home'
+#           - condition: state
+#             entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
+#             state: 'not_home'
+#           - condition: state
+#             entity_id: device_tracker.steffi_sugar # Wifi
+#             state: 'not_home'
+#       - condition: and
+#         conditions: # Steffi
+#           - condition: state
+#             entity_id: device_tracker.iphone_von_simon # Wifi
+#             state: 'not_home'
+#           - condition: state
+#             entity_id: device_tracker.flos_iphone_2 # Wifi
+#             state: 'not_home'
+#           - condition: state
+#             entity_id: device_tracker.iphonevranziska # Wifi
+#             state: 'not_home'
+#           - condition: state
+#             entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
+#             state: 'not_home'
+#           - condition: state
+#             entity_id: device_tracker.steffi_sugar # Wifi
+#             state: 'home'
+#   action:
+#     - service: rest_command.sonos_playlist_clear
+#     - service: rest_command.sonos_speech_preset
+#     - delay: 00:00:03
+#     - service: rest_command.sonos_speech_preset
+#     - service: tts.google_translate_say
+#       entity_id: media_player.wohnzimmer
+#       data_template: 
+#         message: >
+#           {% if trigger.entity_id == 'device_tracker.iphone_chris_manuell_2' %}
+#             'Hallo Chris, schön dass du Daheim bist.'
+#           {% elif trigger.entity_id == 'device_tracker.steffi_sugar' %}
+#             'Hallo Steffi, schön dass du den weiten Weg von Amsterdam bis zu uns in die WG gefunden hast! Willkommen!'
+#           {% elif trigger.entity_id == 'device_tracker.iphone_von_simon' %}
+#             'Hallo Simon, schön dass du Daheim bist.'
+#           {% elif trigger.entity_id == 'device_tracker.flos_iphone_2' %}
+#             'Hallo Flo, schön dass du auch mal Daheim bist.'
+#           {% elif trigger.entity_id == 'device_tracker.iphonevranziska' %}
+#             'Hallo Franzi, schön dass du wieder bei uns in der WG bist.'
+#           {% else %} 
+#             'Hallo und herzlich willkommen!'
+#           {% endif %}
+#     - delay: 00:00:05
+#     - service: rest_command.sonos_playlist_preset
+#     - service: input_number.set_value
+#       data_template:
+#         entity_id: input_number.box1
+#         value: '{{ range(0, 4) | random | float }}'
+#     - service_template: >
+#         {% if is_state('input_number.box1', '0.0' ) %}
+#           {% if trigger.entity_id == 'device_tracker.iphone_chris_manuell_2' %}
+#             rest_command.sonos_playlist_chris_1
+#           {% elif trigger.entity_id == 'device_tracker.flos_iphone_2' or trigger.entity_id == 'entity_id: device_tracker.iphonevranziska' %}
+#             rest_command.sonos_playlist_flo_1
+#           {% else %}
+#             rest_command.sonos_playlist_simon_1
+#           {% endif %}
+#         {% elif is_state('input_number.box1', '1.0' ) %}
+#           {% if trigger.entity_id == 'device_tracker.iphone_chris_manuell_2' %}
+#             rest_command.sonos_playlist_chris_2
+#           {% elif trigger.entity_id == 'device_tracker.flos_iphone_2' or trigger.entity_id == 'entity_id: device_tracker.iphonevranziska' %}
+#             rest_command.sonos_playlist_flo_2
+#           {% else %}
+#             rest_command.sonos_playlist_simon_2
+#           {% endif %}
+#         {% elif is_state('input_number.box1', '2.0' ) %}
+#           {% if trigger.entity_id == 'device_tracker.iphone_chris_manuell_2' %}
+#             rest_command.sonos_playlist_chris_3
+#           {% elif trigger.entity_id == 'device_tracker.flos_iphone_2' or trigger.entity_id == 'entity_id: device_tracker.iphonevranziska' %}
+#             rest_command.sonos_playlist_flo_3
+#           {% else %}
+#             rest_command.sonos_playlist_simon_3
+#           {% endif %}
+#         {% else %}
+#           {% if trigger.entity_id == 'device_tracker.iphone_chris_manuell_2' %}
+#             rest_command.sonos_playlist_chris_4
+#           {% elif trigger.entity_id == 'device_tracker.flos_iphone_2' or trigger.entity_id == 'entity_id: device_tracker.iphonevranziska' %}
+#             rest_command.sonos_playlist_flo_4
+#           {% else %}
+#             rest_command.sonos_playlist_simon_4
+#           {% endif %}
+#         {% endif %}
     #- delay: 0:05
     #- service: rest_command.sonos_playlist_play
     
