@@ -702,7 +702,7 @@
       from: "not_home"
       to: "home"
     - platform: state #GPS Florian
-      entity_id: device_tracker.flos_iphone_3
+      entity_id: device_tracker.iphone_5
       from: "not_home"
       to: "home"
   condition:
