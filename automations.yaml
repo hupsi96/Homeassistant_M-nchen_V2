@@ -667,7 +667,7 @@
   action:
     - service: input_boolean.turn_on
       data:
-        entity_id: weather_good
+        entity_id: input_boolean.weather_good
 
 - alias: Weather condition from good
   initial_state: true
@@ -687,7 +687,7 @@
   action:
     - service: input_boolean.turn_off
       data:
-        entity_id: weather_good
+        entity_id: input_boolean.weather_good
 
 - alias: Weather condition night
   initial_state: true
@@ -698,7 +698,7 @@
   action:
     - service: input_boolean.turn_off
       data:
-        entity_id: weather_good
+        entity_id: input_boolean.weather_good
 
 - alias: Weather condition night
   initial_state: true
@@ -713,7 +713,7 @@
   action:
     - service: input_boolean.turn_on
       data:
-        entity_id: weather_good
+        entity_id: input_boolean.weather_good
       
 ##################################################################################################
 # Wifi Down automation
