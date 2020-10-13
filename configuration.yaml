@@ -35,7 +35,7 @@ input_boolean:
     icon: mdi:weather-night
   weather_good:
     name: Weather good
-    inital: off
+    initial: off
 
 #selector for scene in Flo´s room
 input_select:
