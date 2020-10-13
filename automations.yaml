@@ -647,6 +647,49 @@
   action:
     - service: rest_command.gang_lightoff_request
 
+
+#weather automation
+- alias: Weather condition to good
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.owm_condition
+      to: "clear sky"
+  condition:
+    - condition: and
+      conditions:
+        - condition: sun
+          before: sunset
+          before_offset: "-01:00:00"
+        - condition: sun
+          after: sunrise
+          after_offset: "+01:00:00"
+  action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: weather_good
+
+- alias: Weather condition from good
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.owm_condition
+      from: "clear sky"
+  condition:
+    - condition: and
+      conditions:
+        - condition: sun
+          before: sunset
+          before_offset: "-01:00:00"
+        - condition: sun
+          after: sunrise
+          after_offset: "+01:00:00"
+  action:
+    - service: input_boolean.turn_off
+      data:
+        entity_id: weather_good
+
+
 ##################################################################################################
 # Wifi Down automation
 ##################################################################################################
