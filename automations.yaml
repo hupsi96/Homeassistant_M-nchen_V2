@@ -1005,7 +1005,7 @@
   trigger:
     - platform: state
       entity_id: sensor.someone_home_wifi #WiFi based
-      to: 'home'
+      to: 'on'
   condition:
     condition: and
     conditions:
@@ -1250,7 +1250,7 @@
   trigger:
     - platform: state
       entity_id: sensor.someone_home_wifi #WiFi based
-      to: 'home'
+      to: 'off'
   condition:
     condition: and
     conditions:
