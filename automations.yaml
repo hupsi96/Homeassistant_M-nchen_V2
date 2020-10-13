@@ -1028,8 +1028,6 @@
         entity_id:  device_tracker.iphonevranziska
         state: 'not_home'
   action:
-    - service: timer.cancel
-      entity_id: timer.coming_come_timer
     - service: hue.hue_activate_scene
       data:
         group_name: Wohnzimmer
@@ -1056,6 +1054,9 @@
           {% else %}
             Entspannt
           {% endif %}
+    - delay: 0:05
+    - service: timer.cancel
+      entity_id: timer.coming_come_timer
 
 # - alias: 'Comming Home Music'
 #   initial_state: true
@@ -1265,8 +1266,6 @@
         entity_id:  device_tracker.iphonevranziska
         state: 'not_home'
   action:
-    - service: timer.cancel
-      entity_id: timer.coming_come_timer
     - service: rest_command.sonos_playlist_clear
     - service: rest_command.sonos_speech_preset
     - delay: 00:00:03
@@ -1330,6 +1329,9 @@
         {% endif %}
     - delay: 0:05
     - service: rest_command.sonos_playlist_play
+    - delay: 0:05
+    - service: timer.cancel
+      entity_id: timer.coming_come_timer
 
 
 ###################################################
