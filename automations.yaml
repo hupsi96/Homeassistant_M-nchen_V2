@@ -491,6 +491,9 @@
     - condition: state
       entity_id:  timer.garderobe_debounce_dim
       state: 'idle'
+    - condition: state
+      entity_id:  input_boolean.weather_good
+      state: 'off'
   action:
     - service_template: >
         {% if is_state('group.garderobe', 'off') and is_state('input_boolean.garderobe_nachtmodus', 'on') %}
@@ -577,6 +580,9 @@
     - condition: state
       entity_id:  timer.gang_debounce_dim
       state: 'idle'
+    - condition: state
+      entity_id:  input_boolean.weather_good
+      state: 'off'
   action:
     - service_template: >
         {% if is_state('group.gang', 'off') and is_state('input_boolean.gang_nachtmodus', 'on') %}
@@ -700,7 +706,7 @@
       data:
         entity_id: input_boolean.weather_good
 
-- alias: Weather condition night
+- alias: Weather condition morning
   initial_state: true
   trigger:
     platform: sun
