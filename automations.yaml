@@ -828,12 +828,12 @@
   trigger:
     - platform: state #GPS All
       entity_id: sensor.someone_home_gps
-      from: "not_home"
-      to: "home"
+      from: 'off'
+      to: 'one'
   condition:
     - condition: state
       entity_id:  sensor.someone_home_wifi #WIFI All
-      state: 'not_home'    
+      state: 'off'    
   action:
     - service: timer.start
       entity_id: timer.coming_come_timer
