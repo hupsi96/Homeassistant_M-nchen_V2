@@ -152,7 +152,7 @@ sensor: #709162007 Sendling- Westpark
       someone_home_gps:
         friendly_name: Someone Home GPS
         value_template: >
-          {% if is_state('device_tracker.iphone_von_christian', 'home') or is_state('device_tracker.simons_iphone' , 'home') is_state('device_tracker.iphone_5', 'home') %}
+          {% if is_state('device_tracker.iphone_von_christian', 'home') or is_state('device_tracker.simons_iphone' , 'home') or is_state('device_tracker.iphone_5', 'home') %}
             on
           {% else %}
             off
