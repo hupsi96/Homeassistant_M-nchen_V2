@@ -1053,7 +1053,7 @@
           {% else %}
             Entspannt
           {% endif %}
-    - delay: 0:05
+    - delay: 0:30
     - service: timer.cancel
       entity_id: timer.coming_come_timer
 
