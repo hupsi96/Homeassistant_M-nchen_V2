@@ -131,6 +131,11 @@ input_number:
     step: 1
     mode: box
 
+
+sensor: #709162007
+  - platform: dwd_weather_warnings
+    region_name: 709162007
+
 #http:
 #  base_url: 'https://1n9cjmfsjljrwj776nv3ev2ncba9kf91.ui.nabu.casa'
 
