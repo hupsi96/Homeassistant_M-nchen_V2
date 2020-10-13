@@ -132,9 +132,18 @@ input_number:
     mode: box
 
 
-sensor: #709162007
+sensor: #709162007 Sendling- Westpark
   - platform: dwd_weather_warnings
     region_name: 709162007
+  - platform: openweathermap
+    api_key: !secret openWeatherApiK
+    monitored_conditions:
+      - weather
+      - temperature
+      - wind_speed
+      - humidity
+      - pressure
+      - clouds
 
 #http:
 #  base_url: 'https://1n9cjmfsjljrwj776nv3ev2ncba9kf91.ui.nabu.casa'
