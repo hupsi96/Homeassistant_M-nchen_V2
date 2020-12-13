@@ -178,7 +178,7 @@ sensor: #709162007 Sendling- Westpark
 #  broker: 192.168.178.73
 
 #customize: !include customize.yaml
-#light: !include light.yaml
+light: !include light.yaml
 rest_command: !include rest_commands.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
