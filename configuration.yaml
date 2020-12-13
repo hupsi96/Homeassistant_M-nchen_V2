@@ -72,7 +72,7 @@ samsungtv:
   - host: 192.168.178.40
     port: 8001
 
-setup for zigbee2mqtt
+#setup for zigbee2mqtt
 mqtt:
   discovery: true
   broker: 192.168.178.73  # Remove if you want to use builtin-in MQTT broker
