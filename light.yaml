@@ -20,10 +20,23 @@
 
 - platform: mqtt
   name: Ambilight Test
-  schema: json
+  #schema: json
   command_topic: "ambilightLamp/light/set"
   state_topic: "ambilightLamp/light/status"
-  brightness: true
-  rgb: true
-  white_value: true
-  optimistic: true
+  
+  brightness_state_topic: "ambilightLamp/status/brightness"
+  brightness_command_topic: "ambilightLamp/set/brightness"
+  
+  rgb_state_topic: "ambilightLamp/status/rgb"
+  rgb_command_topic: "ambilightLamp/set/rgb"
+  
+  white_value_state_topic: "ambilightLamp/status/white"
+  white_value_command_topic: "ambilightLamp/set/white"
+  
+  state_value_template: "{{ value_json.state }}"
+  brightness_value_template: "{{ value_json.brightness }}"
+  rgb_value_template: "{{ value_json.rgb | join(',') }}"
+  #brightness: true
+  #rgb: true
+  #white_value: true
+  #optimistic: true
