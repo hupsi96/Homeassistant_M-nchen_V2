@@ -40,3 +40,4 @@
   #rgb: true
   #white_value: true
   optimistic: true
+  on_command_type: 'brightness'
