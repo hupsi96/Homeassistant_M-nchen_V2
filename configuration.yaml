@@ -72,16 +72,16 @@ samsungtv:
   - host: 192.168.178.40
     port: 8001
 
-#setup for zigbee2mqtt
-# mqtt:
-#   discovery: true
-#   broker: 192.168.178.73  # Remove if you want to use builtin-in MQTT broker
-#   birth_message:
-#     topic: 'hass/status'
-#     payload: 'online'
-#   will_message:
-#     topic: 'hass/status'
-#     payload: 'offline'
+setup for zigbee2mqtt
+mqtt:
+  discovery: true
+  broker: 192.168.178.73  # Remove if you want to use builtin-in MQTT broker
+  birth_message:
+    topic: 'hass/status'
+    payload: 'online'
+  will_message:
+    topic: 'hass/status'
+    payload: 'offline'
 
 device_tracker:
 #Device tracker using FritzBox -> hopefully better then the GPS thing
@@ -174,8 +174,8 @@ sensor: #709162007 Sendling- Westpark
 #spotify:
 #  client_id: !secret spotifyClient2
 #  client_secret: !secret spotifySecret2
-mqtt:
-  broker: 192.168.178.73
+#mqtt:
+#  broker: 192.168.178.73
 
 #customize: !include customize.yaml
 light: !include light.yaml
