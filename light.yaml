@@ -1,5 +1,5 @@
 - platform: mqtt
-  name: Amiblight Wohnzimmer
+  name: Ambilight Wohnzimmer
   state_topic: "ambilightLamp/light/status"
   command_topic: "ambilightLamp/light/switch"
   brightness_state_topic: "ambilightLamp/brightness/status"
