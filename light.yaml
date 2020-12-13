@@ -26,3 +26,4 @@
   brightness: true
   rgb: true
   white_value: true
+  optimistic: true
