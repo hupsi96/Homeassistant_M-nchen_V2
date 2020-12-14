@@ -39,7 +39,7 @@
 
   effect_command_topic: "ambilightLamp/set/effect"
   effect_state_topic: "ambilightLamp/status/effect"
-  effect_list : [rainbow]
+  effect_list : [rainbow,noEffect]
   #brightness: true
   #rgb: true
   #white_value: true
