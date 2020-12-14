@@ -36,8 +36,14 @@
   state_value_template: "{{ value_json.state }}"
   brightness_value_template: "{{ value_json.brightness }}"
   rgb_value_template: "{{ value_json.rgb | join(',') }}"
+
+  effect_command_topic: "ambilightLamp/set/effect"
+  effect_state_topic: "ambilightLamp/status/effect"
+  effect_list : [rainbow]
   #brightness: true
   #rgb: true
   #white_value: true
   optimistic: true
   on_command_type: 'brightness'
+  #payload_on: "ON" #testing required 
+  #payload_off: "OFF"
