@@ -278,7 +278,7 @@
       to: 'off'
   condition:
     - condition: state
-      entity_id: 'light.simon_2'
+      entity_id: 'group.simon'
       state: 'off'
   action:
     - service: rest_command.simon_lighton_request
@@ -299,7 +299,7 @@
     condition: and
     conditions:
       - condition: state
-        entity_id: 'light.simon_2'
+        entity_id: 'group.simon'
         state: 'on'
       - condition: state
         entity_id: timer.simon_debounce
@@ -319,7 +319,7 @@
     condition: and
     conditions:
       - condition: state
-        entity_id: 'light.simon_2'
+        entity_id: 'group.simon'
         state: 'on'
       - condition: state
         entity_id: timer.simon_debounce
