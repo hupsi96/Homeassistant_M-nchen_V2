@@ -149,18 +149,20 @@ sensor: #709162007 Sendling- Westpark
       - clouds
   - platform: template
     sensors:
+    ##or is_state('device_tracker.iphone_5', 'home')
       someone_home_gps:
         friendly_name: Someone Home GPS
         value_template: >
-          {% if is_state('device_tracker.iphone_von_christian', 'home') or is_state('device_tracker.simons_iphone' , 'home') or is_state('device_tracker.iphone_5', 'home') %}
+          {% if is_state('device_tracker.iphone_von_christian_2', 'home') or is_state('device_tracker.simons_iphone' , 'home')  %} 
             on
           {% else %}
             off
           {% endif %}
       someone_home_wifi:
+      #or is_state('device_tracker.flos_iphone_2', 'home')
         friendly_name: Someone Home WiFi
         value_template: >
-          {% if is_state('device_tracker.iphone_chris_manuell_2', 'home') or is_state('device_tracker.iphone_von_simon' , 'home') or is_state('device_tracker.flos_iphone_2', 'home') %}
+          {% if is_state('device_tracker.iphone_chris_manuell_2', 'home') or is_state('device_tracker.aa_ed_57_f6_e8_0b' , 'home') %}
             on
           {% else %}
             off

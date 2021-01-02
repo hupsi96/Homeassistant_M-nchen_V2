@@ -101,7 +101,7 @@
     - service: timer.start
       entity_id: timer.flo_debounce
 
-- alias: chris_Night_mode_timer_start
+- alias: flo_Night_mode_timer_start
   trigger:
     - platform: state
       entity_id: input_boolean.flo_nachtmodus
@@ -111,7 +111,7 @@
     - service: timer.start
       entity_id: timer.flo_nightmode_counter
 
-- alias: chris_Night_mode_timer_stop
+- alias: flo_Night_mode_timer_stop
   trigger:
     - platform: state
       entity_id: input_boolean.flo_nachtmodus
@@ -121,7 +121,7 @@
     - service: timer.cancel
       entity_id: timer.flo_nightmode_counter
 
-- alias: chris_Night_mode_timer_expired
+- alias: flo_Night_mode_timer_expired
   trigger:
     - platform: state
       entity_id: timer.flo_nightmode_counter
@@ -725,7 +725,7 @@
 # Wifi Down automation
 ##################################################################################################
 
-- alias: Wifi_down
+- alias: Wifi_down_on
   initial_state: true
   trigger:
     - platform: state
@@ -736,7 +736,7 @@
     - service: homeassistant.turn_off
       entity_id: automation.flo_coming_home_light
 
-- alias: Wifi_down
+- alias: Wifi_down_off
   initial_state: true
   trigger:
     - platform: state
@@ -824,22 +824,20 @@
         scene_name: Entspannt
     - service: hue.hue_activate_scene
       data_template:
+      #{% elif is_state('device_tracker.iphone_5', 'home') %} Flo
+      #{% elif is_state('device_tracker.iphone_5', 'home') %} Hell
         group_name: >
-          {% if is_state('device_tracker.iphone_von_christian', 'home') %}
+          {% if is_state('device_tracker.iphone_chris_manuell_2', 'home') %}
             Christian
-          {% elif is_state('device_tracker.simons_iphone' , 'home') %}
+          {% elif is_state('device_tracker.aa_ed_57_f6_e8_0b' , 'home') %}
             Simon
-          {% elif is_state('device_tracker.iphone_5', 'home') %}
-            Flo
           {% else %}
             Wohnzimmer
           {% endif %}
         scene_name: >
-          {% if is_state('device_tracker.iphone_von_christian', 'home') %}
+          {% if is_state('device_tracker.iphone_chris_manuell_2', 'home') %}
             Standard
-          {% elif is_state('device_tracker.simons_iphone' , 'home') %}
-            Hell
-          {% elif is_state('device_tracker.iphone_5', 'home') %}
+          {% elif is_state('device_tracker.aa_ed_57_f6_e8_0b' , 'home') %}
             Hell
           {% else %}
             Entspannt
@@ -878,16 +876,15 @@
     - service: rest_command.sonos_speech_preset
     - service: tts.google_translate_say
       entity_id: media_player.wohnzimmer
-      data_template: 
+      data_template:
+      #{% elif is_state('device_tracker.flos_iphone_2', 'home') %} 'Hallo Flo, schön dass du auch mal Daheim bist.'
         message: >
-          {% if is_state('device_tracker.iphone_von_christian', 'home') %}
+          {% if is_state('device_tracker.iphone_chris_manuell_2', 'home') %}
             'Hallo Chris, schön dass du Daheim bist.'
           {% elif is_state('device_tracker.steffi_sugar', 'home') %}
             'Hallo Steffi, schön dass du den weiten Weg von Amsterdam bis zu uns in die WG gefunden hast! Willkommen!'
-          {% elif is_state('device_tracker.iphone_von_simon', 'home') %}
+          {% elif is_state('device_tracker.aa_ed_57_f6_e8_0b', 'home') %}
             'Hallo Simon, schön dass du Daheim bist.'
-          {% elif is_state('device_tracker.flos_iphone_2', 'home') %}
-            'Hallo Flo, schön dass du auch mal Daheim bist.'
           {% elif is_state('device_tracker.iphonevranziska', 'home') %}
             'Hallo Franzi, schön dass du wieder bei uns in der WG bist.'
           {% else %} 
@@ -901,7 +898,7 @@
         value: '{{ range(0, 4) | random | float }}'
     - service_template: >
         {% if is_state('input_number.box1', '0.0' ) %}
-          {% if is_state('device_tracker.iphone_von_christian', 'home') %}
+          {% if is_state('device_tracker.iphone_chris_manuell_2', 'home') %}
             rest_command.sonos_playlist_chris_1
           {% elif is_state('device_tracker.flos_iphone_2', 'home') or is_state('device_tracker.iphonevranziska', 'home') %}
             rest_command.sonos_playlist_flo_1
@@ -909,7 +906,7 @@
             rest_command.sonos_playlist_simon_1
           {% endif %}
         {% elif is_state('input_number.box1', '1.0' ) %}
-          {% if is_state('device_tracker.iphone_von_christian', 'home') %}
+          {% if is_state('device_tracker.iphone_chris_manuell_2', 'home') %}
             rest_command.sonos_playlist_chris_2
           {% elif is_state('device_tracker.flos_iphone_2', 'home') or is_state('device_tracker.iphonevranziska', 'home') %}
             rest_command.sonos_playlist_flo_2
@@ -917,7 +914,7 @@
             rest_command.sonos_playlist_simon_2
           {% endif %}
         {% elif is_state('input_number.box1', '2.0' ) %}
-          {% if is_state('device_tracker.iphone_von_christian', 'home') %}
+          {% if is_state('device_tracker.iphone_chris_manuell_2', 'home') %}
             rest_command.sonos_playlist_chris_3
           {% elif is_state('device_tracker.flos_iphone_2', 'home') or is_state('device_tracker.iphonevranziska', 'home') %}
             rest_command.sonos_playlist_flo_3
@@ -925,7 +922,7 @@
             rest_command.sonos_playlist_simon_3
           {% endif %}
         {% else %}
-          {% if is_state('device_tracker.iphone_von_christian', 'home') %}
+          {% if is_state('device_tracker.iphone_chris_manuell_2', 'home') %}
             rest_command.sonos_playlist_chris_4
           {% elif is_state('device_tracker.flos_iphone_2', 'home') or is_state('device_tracker.iphonevranziska', 'home') %}
             rest_command.sonos_playlist_flo_4
@@ -944,45 +941,45 @@
 # Sonnenuntergang Licht an
 ###################################################
 
-- alias: 'Sonnenuntergang Licht'
-  initial_state: true
-  trigger:
-    platform: sun
-    event: sunset
-    offset: "-01:00:00"
-  condition:
-    condition: and
-    conditions:
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: device_tracker.iphone_von_simon # Wifi
-            state: 'home'
-          - condition: state
-            entity_id: device_tracker.flos_iphone_2 # Wifi
-            state: 'home'
-          - condition: state
-            entity_id: device_tracker.iphonevranziska # Wifi
-            state: 'home'
-          - condition: state
-            entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
-            state: 'home'
-          - condition: state
-            entity_id: device_tracker.steffi_sugar # Wifi
-            state: 'home'
-      - condition: state
-        entity_id: light.wohnzimmer
-        state: 'off'
-  action:
-    - service: hue.hue_activate_scene
-      data:
-        group_name: Wohnzimmer
-        scene_name: Sunset
-    - service: light.turn_on
-      entity_id: light.wohnzimmer
-      data:
-        transition: 900
-        brightness: 200
+# - alias: 'Sonnenuntergang Licht'
+#   initial_state: true
+#   trigger:
+#     platform: sun
+#     event: sunset
+#     offset: "-01:00:00"
+#   condition:
+#     condition: and
+#     conditions:
+#       - condition: or
+#         conditions:
+#           - condition: state
+#             entity_id: device_tracker.iphone_von_simon # Wifi
+#             state: 'home'
+#           - condition: state
+#             entity_id: device_tracker.flos_iphone_2 # Wifi
+#             state: 'home'
+#           - condition: state
+#             entity_id: device_tracker.iphonevranziska # Wifi
+#             state: 'home'
+#           - condition: state
+#             entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
+#             state: 'home'
+#           - condition: state
+#             entity_id: device_tracker.steffi_sugar # Wifi
+#             state: 'home'
+#       - condition: state
+#         entity_id: light.wohnzimmer
+#         state: 'off'
+#   action:
+#     - service: hue.hue_activate_scene
+#       data:
+#         group_name: Wohnzimmer
+#         scene_name: Sunset
+#     - service: light.turn_on
+#       entity_id: light.wohnzimmer
+#       data:
+#         transition: 900
+#         brightness: 200
 
 ###################################################
 # TV turn_on
