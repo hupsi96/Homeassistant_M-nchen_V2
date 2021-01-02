@@ -165,8 +165,8 @@ sensor: #709162007 Sendling- Westpark
           {% else %}
             off
           {% endif %}
-
-
+emulated_hue:
+  expose_by_default: false
 #http:
 #  base_url: 'https://1n9cjmfsjljrwj776nv3ev2ncba9kf91.ui.nabu.casa'
 
