@@ -179,7 +179,7 @@ homekit:
       - input_boolean.good_morning
 
 ifttt:
-  key: "m4Xva6B1PIB5O8Ag4zmot1EAipsIH91--mEjXXX-o4D"
+  key: 'm4Xva6B1PIB5O8Ag4zmot1EAipsIH91--mEjXXX-o4D'
 
 tuya:
   username: chris.huppertz@yahoo.de
