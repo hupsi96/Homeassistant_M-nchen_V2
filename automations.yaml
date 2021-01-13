@@ -950,8 +950,10 @@
       entity_id: input_boolean.good_morning
     - service: ifttt.trigger
       data: {"event": "good_morning"}
-    - service: rest_command.goodmorning_request_1
-    - service: rest_command.goodmorning_request_2
+    - service: rest_command.goodmorning_request_1_1
+    - service: rest_command.goodmorning_request_1_2
+    - service: rest_command.goodmorning_request_2_1
+    - service: rest_command.goodmorning_request_2_2
 
     
 
