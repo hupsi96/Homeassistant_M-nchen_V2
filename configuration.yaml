@@ -36,6 +36,9 @@ input_boolean:
   weather_good:
     name: Weather good
     initial: off
+  good_morning:
+    name: Morgen Routine
+    initial: off
 
 #selector for scene in Flo´s room
 input_select:
@@ -169,6 +172,11 @@ sensor: #709162007 Sendling- Westpark
           {% endif %}
 emulated_hue:
   expose_by_default: false
+
+homekit:
+  filter:
+    include_entities:
+      - input_boolean.good_morning
 
 tuya:
   username: chris.huppertz@yahoo.de
