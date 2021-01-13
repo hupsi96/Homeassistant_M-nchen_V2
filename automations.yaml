@@ -951,12 +951,14 @@
     - service: ifttt.trigger
       data: {"event": "good_morning"}
     - service: light.turn_on
-      entity_id: 'light.christian_2'
-      brightness: 1
+      data:
+        entity_id: 'light.christian_2'
+        brightness: 1
     - service: light.turn_on
-      entity_id: 'light.christian_2'
-      brightness: 200
-      transition: 120
+      data:
+        entity_id: 'light.christian_2'
+        brightness: 200
+        transition: 120
 
     
 
