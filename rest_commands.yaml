@@ -228,3 +228,15 @@ sonos_playlist_simon_4:
 sonos_playlist_play:
     url: http://192.168.178.73:5005/beam me up/play
     method: GET
+
+
+####good morning
+goodmorning_request_1:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/lights/3/state
+    method: PUT
+    payload: '{"on":true,"transitiontime":"1200","bri":"200"}'
+
+goodmorning_request_2:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/lights/18/state
+    method: PUT
+    payload: '{"on":true,"transitiontime":"1200","bri":"200"}'
