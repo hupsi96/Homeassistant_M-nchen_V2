@@ -17,7 +17,7 @@
   action:
     - service: hue.hue_activate_scene
       data_template: 
-        group_name: "Flo"
+        group_name: "Lea"
         scene_name: >
           {{ states('input_select.scene_flo') }}
     - service: timer.start
@@ -35,7 +35,7 @@
     condition: and
     conditions:
       - condition: state
-        entity_id: 'light.flo_fado'
+        entity_id: 'light.lea'
         state: 'on'
       - condition: state
         entity_id: timer.flo_debounce
@@ -55,7 +55,7 @@
     condition: and
     conditions:
       - condition: state
-        entity_id: 'light.flo_fado'
+        entity_id: 'light.lea'
         state: 'on'
       - condition: state
         entity_id: timer.flo_debounce
@@ -65,7 +65,7 @@
       entity_id: input_select.scene_flo
     - service: hue.hue_activate_scene
       data_template: 
-        group_name: "Flo"
+        group_name: "Lea"
         scene_name: >
           {{ states('input_select.scene_flo') }}
     - service: timer.cancel
