@@ -170,6 +170,7 @@ sensor: #709162007 Sendling- Westpark
           {% else %}
             off
           {% endif %}
+
 emulated_hue:
   expose_by_default: false
 
