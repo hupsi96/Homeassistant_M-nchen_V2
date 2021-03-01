@@ -394,6 +394,7 @@
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.simon_nachtmodus
+
 ##################################################################################################
 # Garderobe & Gang Status Change
 ##################################################################################################
@@ -421,6 +422,13 @@
           input_boolean.turn_off
         {% endif %}
       entity_id: input_boolean.garderobe_nachtmodus
+    - service_template: >
+        {% if (is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphone_chris_manuell_2', 'home')) or (is_state('device_tracker.iphone_chris_manuell_2', 'not_home') and ((is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.aa_ed_57_f6_e8_0b', 'home')) or (is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.leas_iphone', 'home')))) %}
+          input_boolean.turn_on
+        {% else %} 
+          input_boolean.turn_off
+        {% endif %}
+      entity_id: input_boolean.klo_nachtmodus
     - service_template: >
         {% if (is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.leas_iphone', 'home')) or  (is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.aa_ed_57_f6_e8_0b', 'home')) or (is_state('device_tracker.aa_ed_57_f6_e8_0b', 'not_home') and is_state('device_tracker.leas_iphone', 'not_home') and is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphone_chris_manuell_2', 'home')) %}
           input_boolean.turn_on
@@ -548,7 +556,7 @@
           rest_command.garderobe_lightonnight_request
         {% elif is_state('group.garderobe', 'on') and is_state('input_boolean.garderobe_nachtmodus', 'on') %}
           rest_command.garderobe_lightonnight_recall_request
-        {% elif is_state('group.group.garderobe', 'off') %} 
+        {% elif is_state('group.garderobe', 'off') %} 
           rest_command.garderobe_lighton_dim_request
         {% else %}
           rest_command.garderobe_lighton_recall_dim_request
@@ -720,7 +728,94 @@
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.weather_good
-      
+
+
+##################################################################################################
+# Klo Motion Detection
+##################################################################################################
+
+- alias: Klo_turn_on
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.0x0017880106f68789_occupancy #TODO: Replace with motion detector id for Klo
+      to: 'on'
+  condition:
+    - condition: template #TODO: Replace with motion detector id for Klo
+      value_template: "{{ (state_attr('binary_sensor.0x0017880106f68789_occupancy', 'occupancy')) }}"
+    - condition: state
+      entity_id:  timer.klo_debounce_dim
+      state: 'idle'
+  action: #TODO: Replace Rest commands & Klo nachtmodus anlegen
+    - service_template: >
+        {% if is_state('light.klo', 'off') and is_state('input_boolean.klo_nachtmodus', 'on') %}
+          rest_command.klo_lightonnight_request
+        {% elif is_state('light.klo', 'on') and is_state('input_boolean.klo_nachtmodus', 'on') %}
+            rest_command.klo_lightonnight_recall_request
+        {% elif is_state('light.klo', 'off') %} 
+          rest_command.klo_lighton_request
+        {% else %}
+          rest_command.klo_lighton_recall_request
+        {% endif %}
+    - service: timer.cancel
+      entity_id: timer.klo_debounce
+    - service: timer.start
+      entity_id: timer.klo_debounce
+    - service: timer.cancel
+      entity_id: timer.klo_debounce_dim
+    - service: timer.start
+      entity_id: timer.klo_debounce_dim
+    
+- alias: Klo_keep_turn_on
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.0x0017880106f68789_occupancy #TODO: Replace with motion detector id for Klo
+  condition:
+    - condition: template #TODO: Replace with motion detector id for Klo
+      value_template: "{{ (state_attr('binary_sensor.0x0017880106f68789_occupancy', 'occupancy')) }}"
+    - condition: state
+      entity_id:  timer.klo_debounce
+      state: 'active'
+  action:
+    - service: timer.cancel
+      entity_id: timer.klo_debounce
+    - service: timer.start
+      entity_id: timer.klo_debounce
+    - service: timer.cancel
+      entity_id: timer.klo_debounce_dim
+    - service: timer.start
+      entity_id: timer.klo_debounce_dim
+
+- alias: klo_dim
+  initial_state: true
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.klo_debounce_dim
+  action:
+    - service_template: >
+        {% if is_state('light.klo', 'off') and is_state('input_boolean.klo_nachtmodus', 'on') %}
+          rest_command.klo_lightonnight_request
+        {% elif is_state('light.klo', 'on') and is_state('input_boolean.klo_nachtmodus', 'on') %}
+          rest_command.klo_lightonnight_recall_request
+        {% elif is_state('light.klo', 'off') %} 
+          rest_command.klo_lighton_dim_request
+        {% else %}
+          rest_command.klo_lighton_recall_dim_request
+        {% endif %}
+
+- alias: klo_off
+  initial_state: true
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.klo_debounce
+  action:
+    - service: rest_command.klo_lightoff_request
+
 ##################################################################################################
 # Wifi Down automation
 ##################################################################################################

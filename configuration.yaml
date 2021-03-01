@@ -33,6 +33,10 @@ input_boolean:
     name: Gang Nachtmodus
     initial: off
     icon: mdi:weather-night
+  klo_nachtmodus:
+    name: Klo Nachtmodus
+    initial: off
+    icon: mdi:weather-night
   weather_good:
     name: Weather good
     initial: off
@@ -119,6 +123,10 @@ timer:
     duration: '00:01:30'
   coming_come_timer:
     duration: '00:15:00'
+  klo_debounce_dim: #after 45 secounds the light should be dimmed in Garderobe
+    duration: '00:01:30'
+  klo_debounce: # after 1 minute the light should be turned off in Garderobe
+    duration: '00:02:00'
 
 # Text to speech
 tts:

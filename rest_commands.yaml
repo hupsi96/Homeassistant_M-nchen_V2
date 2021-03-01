@@ -98,6 +98,40 @@ gang_lighton_dim_recall_request:
     method: PUT
     payload: '{"scene":"mF10HcTDiZgIteV"}'
 
+klo_lightoff_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"on":false}'
+
+klo_lighton_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
+    method: PUT
+    payload: '{"on":false,"scene":"fzEZjYCcrhPLB5N"}'
+
+klo_lighton_recall_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
+    method: PUT
+    payload: '{"scene":"fzEZjYCcrhPLB5N"}'
+
+klo_lighton_dim_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
+    method: PUT
+    payload: '{"on":false,"scene":"zv-QXXvUGyOy-55"}'
+
+klo_lighton_recall_dim_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
+    method: PUT
+    payload: '{"scene":"zv-QXXvUGyOy-55"}'
+
+klo_lightonnight_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
+    method: PUT
+    payload: '{"on":false,"scene":"Wk-Gz2E4BvHM4WP"}'
+
+klo_lightonnight_recall_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
+    method: PUT
+    payload: '{"scene":"Wk-Gz2E4BvHM4WP"}'
 #############################################################################################
 # Coming Home Automation
 #############################################################################################
