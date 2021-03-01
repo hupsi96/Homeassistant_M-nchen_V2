@@ -132,6 +132,8 @@ klo_lightonnight_recall_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
     method: PUT
     payload: '{"scene":"Wk-Gz2E4BvHM4WP"}'
+
+    
 #############################################################################################
 # Coming Home Automation
 #############################################################################################
