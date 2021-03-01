@@ -949,8 +949,7 @@
     - service: input_boolean.turn_off
       entity_id: input_boolean.good_morning
     - service: scene.turn_on
-      target:
-        entity_id: scene.8kovujj0fumhirbe
+      entity_id: scene.8kovujj0fumhirbe
 
     
 
