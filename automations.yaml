@@ -823,6 +823,22 @@
           rest_command.klo_lightonnight_request
         {% elif is_state('light.klo', 'on') and is_state('input_boolean.klo_nachtmodus', 'on') %}
           rest_command.klo_lightonnight_recall_request
+        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and if is_state('input_number.box1', '0.0')%}
+          rest_command.klo_lighton_dim_request
+        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and if is_state('input_number.box1', '1.0')%}
+          rest_command.klo_lighton_dim_request
+        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and if is_state('input_number.box1', '2.0')%}
+          rest_command.klo_lighton_dim_request
+        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and if is_state('input_number.box1', '3.0')%}
+          rest_command.klo_lighton_dim_request
+        {% elif is_state('light.klo', 'on') and is_state('input_boolean.party_mode', 'on') and if is_state('input_number.box1', '0.0')%}
+          rest_command.klo_lighton_recall_dim_request
+        {% elif is_state('light.klo', 'on') and is_state('input_boolean.party_mode', 'on') and if is_state('input_number.box1', '1.0')%}
+          rest_command.klo_lighton_recall_dim_request
+        {% elif is_state('light.klo', 'on') and is_state('input_boolean.party_mode', 'on') and if is_state('input_number.box1', '2.0')%}
+          rest_command.klo_lighton_recall_dim_request
+        {% elif is_state('light.klo', 'on') and is_state('input_boolean.party_mode', 'on') and if is_state('input_number.box1', '3.0')%}
+          rest_command.klo_lighton_recall_dim_request
         {% elif is_state('light.klo', 'off') %} 
           rest_command.klo_lighton_dim_request
         {% else %}
