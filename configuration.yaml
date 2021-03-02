@@ -43,6 +43,9 @@ input_boolean:
   good_morning:
     name: Morgen Routine
     initial: off
+  klo_motion_off:
+    name: Klo Motion aus
+    initial: off
 
 #selector for scene in Flo´s room
 input_select:
