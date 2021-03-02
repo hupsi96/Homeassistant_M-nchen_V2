@@ -46,6 +46,9 @@ input_boolean:
   klo_motion_off:
     name: Klo Motion aus
     initial: off
+  party_mode:
+    name: Party Mode
+    initial: off
 
 #selector for scene in Flo´s room
 input_select:
@@ -142,6 +145,13 @@ speedtestdotnet:
 input_number:
   box1:
     name: 'Playlist'
+    initial: 0
+    min: 0
+    max: 3
+    step: 1
+    mode: box
+  party_scene:
+    name: 'Party Scene'
     initial: 0
     min: 0
     max: 3
