@@ -738,11 +738,11 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: binary_sensor.0x0017880106f68789_occupancy #TODO: Replace with motion detector id for Klo
+      entity_id: binary_sensor.0x001788010916b47d_occupancy
       to: 'on'
   condition:
-    - condition: template #TODO: Replace with motion detector id for Klo
-      value_template: "{{ (state_attr('binary_sensor.0x0017880106f68789_occupancy', 'occupancy')) }}"
+    - condition: template
+      value_template: "{{ (state_attr('binary_sensor.0x001788010916b47d_occupancy', 'occupancy')) }}"
     - condition: state
       entity_id:  timer.klo_debounce_dim
       state: 'idle'
@@ -793,10 +793,10 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: binary_sensor.0x0017880106f68789_occupancy #TODO: Replace with motion detector id for Klo
+      entity_id: binary_sensor.0x001788010916b47d_occupancy 
   condition:
-    - condition: template #TODO: Replace with motion detector id for Klo
-      value_template: "{{ (state_attr('binary_sensor.0x0017880106f68789_occupancy', 'occupancy')) }}"
+    - condition: template
+      value_template: "{{ (state_attr('binary_sensor.0x001788010916b47d_occupancy', 'occupancy')) }}"
     - condition: state
       entity_id:  timer.klo_debounce
       state: 'active'
