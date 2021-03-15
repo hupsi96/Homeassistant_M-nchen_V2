@@ -108,20 +108,101 @@ klo_lighton_request:
     method: PUT
     payload: '{"on":false,"scene":"fzEZjYCcrhPLB5N"}'
 
+klo_lighton_request_party_1:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"on":false,"scene":"6RUW37G7HQuUmdY"}'
+
+klo_lighton_request_party_2:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"on":false,"scene":"fGLDvK42WcQFtyX"}'
+
+klo_lighton_request_party_3:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"on":false,"scene":"qz0J1ho7vRM6zYc"}'
+
+klo_lighton_request_party_4:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"on":false,"scene":"16dgZgl99eMHGH4"}'
+
 klo_lighton_recall_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
     method: PUT
     payload: '{"scene":"fzEZjYCcrhPLB5N"}'
+
+klo_lighton_recall_request_party_1:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"scene":"6RUW37G7HQuUmdY"}' #Sonnenuntergang Savanne
+
+klo_lighton_recall_request_party_2:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"scene":"fGLDvK42WcQFtyX"}' #Tropendämmerung
+
+klo_lighton_recall_request_party_3:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"scene":"qz0J1ho7vRM6zYc"}' #Nordlichter
+
+klo_lighton_recall_request_party_4:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"scene":"16dgZgl99eMHGH4"}' #Frühlingsblüten
 
 klo_lighton_dim_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
     method: PUT
     payload: '{"on":false,"scene":"zv-QXXvUGyOy-55"}'
 
+klo_lighton_dim_request_party_1:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"on":false,"scene":"Ut8yZBs5zE-7w83"}' #Sonnenuntergang Savanne Dim
+
+klo_lighton_dim_request_party_2:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"on":false,"scene":"MJqnMcxJtGu4NXs"}' ##Tropendämmerung Dim 
+
+klo_lighton_dim_request_party_3:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"on":false,"scene":"xT6mBcsKiHU9m8"}' #Nordlichter Dim
+
+klo_lighton_dim_request_party_4:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"on":false,"scene":"92uylFgfLX4aRzt"}' #Frühlingsblüten Dim
+
 klo_lighton_recall_dim_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
     method: PUT
     payload: '{"scene":"zv-QXXvUGyOy-55"}'
+
+klo_lighton_recall_dim_request_party_1:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"scene":"Ut8yZBs5zE-7w83"}' #Sonnenuntergang Savanne Dim
+
+klo_lighton_recall_dim_request_party_2:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"scene":"MJqnMcxJtGu4NXs"}' ##Tropendämmerung Dim 
+
+klo_lighton_recall_dim_request_party_3:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"scene":"xT6mBcsKiHU9m8"}' #Nordlichter Dim
+
+klo_lighton_recall_dim_request_party_4:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"scene":"92uylFgfLX4aRzt"}' #Frühlingsblüten Dim
+
 
 klo_lightonnight_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
