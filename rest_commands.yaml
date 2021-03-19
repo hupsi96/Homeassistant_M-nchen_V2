@@ -109,32 +109,32 @@ klo_lightoff_request:
 klo_lightbright_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
     method: PUT
-    payload: '{"bri":254}'
+    payload: '{"on":true,"bri":254}'
 
 klo_lighton_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
     method: PUT
-    payload: '{"scene":"fzEZjYCcrhPLB5N","bri":"254"}'
+    payload: '{"on":true,"scene":"fzEZjYCcrhPLB5N","bri":"254"}'
 
 klo_lighton_request_party_1:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
     method: PUT
-    payload: '{"scene":"6RUW37G7HQuUmdY"}'
+    payload: '{"on":true,"scene":"6RUW37G7HQuUmdY"}'
 
 klo_lighton_request_party_2:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
     method: PUT
-    payload: '{"scene":"fGLDvK42WcQFtyX"}'
+    payload: '{"on":true,"scene":"fGLDvK42WcQFtyX"}'
 
 klo_lighton_request_party_3:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
     method: PUT
-    payload: '{"scene":"qz0J1ho7vRM6zYc"}'
+    payload: '{"on":true,"scene":"qz0J1ho7vRM6zYc"}'
 
 klo_lighton_request_party_4:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
     method: PUT
-    payload: '{"scene":"16dgZgl99eMHGH4"}'
+    payload: '{"on":true,"scene":"16dgZgl99eMHGH4"}'
 
 klo_lightdim_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
