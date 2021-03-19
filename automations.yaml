@@ -757,8 +757,6 @@
     - service_template: >
         {% if is_state('light.klo', 'off') and is_state('input_boolean.klo_nachtmodus', 'on') %}
           rest_command.klo_lightonnight_request
-        {% elif is_state('light.klo', 'on') and is_state('input_boolean.klo_nachtmodus', 'on') %}
-          rest_command.klo_lightonnight_recall_request
         {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene', '0.0') %}
           rest_command.klo_lighton_request_party_1
         {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene', '1.0') %}
@@ -767,18 +765,10 @@
           rest_command.klo_lighton_request_party_3
         {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene', '3.0') %}
           rest_command.klo_lighton_request_party_4
-        {% elif is_state('light.klo', 'on') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene', '0.0') %}
-          rest_command.klo_lighton_recall_request_party_1
-        {% elif is_state('light.klo', 'on') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene', '1.0') %}
-          rest_command.klo_lighton_recall_request_party_2
-        {% elif is_state('light.klo', 'on') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene', '2.0') %}
-          rest_command.klo_lighton_recall_request_party_3
-        {% elif is_state('light.klo', 'on') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene', '3.0') %}
-          rest_command.klo_lighton_recall_request_party_4
-        {% elif is_state('light.klo', 'off') %} 
-          rest_command.klo_lighton_request
+        {% elif is_state('light.klo', 'on') %}
+          rest_command.klo_lightBright_request
         {% else %}
-          rest_command.klo_lighton_recall_request
+          rest_command.klo_lighton_request
         {% endif %}
     - service: timer.cancel
       entity_id: timer.klo_debounce
@@ -819,30 +809,10 @@
         entity_id: timer.klo_debounce_dim
   action:
     - service_template: >
-        {% if is_state('light.klo', 'off') and is_state('input_boolean.klo_nachtmodus', 'on') %}
+        {% if is_state('input_boolean.klo_nachtmodus', 'on') %}
           rest_command.klo_lightonnight_request
-        {% elif is_state('light.klo', 'on') and is_state('input_boolean.klo_nachtmodus', 'on') %}
-          rest_command.klo_lightonnight_recall_request
-        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene', '0.0') %}
-          rest_command.klo_lighton_dim_request_party_1
-        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene', '1.0') %}
-          rest_command.klo_lighton_dim_request_party_2
-        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene', '2.0') %}
-          rest_command.klo_lighton_dim_request_party_3
-        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene', '3.0') %}
-          rest_command.klo_lighton_dim_request_party_4
-        {% elif is_state('light.klo', 'on') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene', '0.0') %}
-          rest_command.klo_lighton_recall_dim_request_party_1
-        {% elif is_state('light.klo', 'on') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene', '1.0') %}
-          rest_command.klo_lighton_recall_dim_request_party_2
-        {% elif is_state('light.klo', 'on') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene', '2.0') %}
-          rest_command.klo_lighton_recall_dim_request_party_3
-        {% elif is_state('light.klo', 'on') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene', '3.0') %}
-          rest_command.klo_lighton_recall_dim_request_party_4
-        {% elif is_state('light.klo', 'off') %} 
-          rest_command.klo_lighton_dim_request
         {% else %}
-          rest_command.klo_lighton_recall_dim_request
+          rest_command.klo_lightDim_request
         {% endif %}
 
 - alias: klo_off
