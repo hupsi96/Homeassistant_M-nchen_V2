@@ -372,4 +372,9 @@ goodmorning_request_2_1:
 
     ###### New API Calls: Turn on 1. {"scene":"fzEZjYCcrhPLB5N"} 2. {"bri":254} 
     
-    #kecke
+    #test
+
+klo_lightBright_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"bri":"254"}'
