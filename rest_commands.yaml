@@ -106,10 +106,10 @@ klo_lightoff_request:
     method: PUT
     payload: '{"on":false,"effect":"none"}'
 
-klo_lightBright_request:
+klo_lightbright_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
     method: PUT
-    payload: '{"bri":"254"}'
+    payload: '{"bri":254}'
 
 klo_lighton_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
@@ -136,10 +136,10 @@ klo_lighton_request_party_4:
     method: PUT
     payload: '{"scene":"16dgZgl99eMHGH4"}'
 
-klo_lightDim_request:
+klo_lightdim_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
     method: PUT
-    payload: '{"bri_inc":"-100","transitiontime":"100"}'
+    payload: '{"bri_inc":-100,"transitiontime":100}'
 
 #klo_lighton_recall_request:
 #     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
