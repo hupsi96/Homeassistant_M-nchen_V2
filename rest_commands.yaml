@@ -367,3 +367,8 @@ goodmorning_request_2_1:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/lights/18/state
     method: PUT
     payload: '{"on":true,"bri":"1"}'
+
+
+
+    ###### New API Calls: Turn on 1. {"scene":"fzEZjYCcrhPLB5N"} 2. {"bri":254} 
+
