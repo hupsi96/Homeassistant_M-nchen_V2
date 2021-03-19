@@ -374,7 +374,7 @@ goodmorning_request_2_1:
     
     #test
 
-klo_lightBright_request:
+klo_lightbright_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
     method: PUT
     payload: '{"bri":"254"}'
