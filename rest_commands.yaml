@@ -1,3 +1,8 @@
+klo_lightBright_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"bri":254}'
+
 flo_lighton_request: #Tested -> workes as it should :)
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/7/action
     method: PUT
@@ -106,10 +111,7 @@ klo_lightoff_request:
     method: PUT
     payload: '{"on":false,"effect":"none"}'
 
-klo_lightBright_request:
-    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
-    method: PUT
-    payload: '{"bri":254}'
+
 
 klo_lighton_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
