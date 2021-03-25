@@ -758,10 +758,6 @@
       entity_id:  input_boolean.klo_motion_off
       state: 'off'
   action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.party_scene_klo
-        value: '{{ range(0, 4) | random | float }}'
     - service_template: >
         {% if is_state('input_boolean.klo_nachtmodus', 'on') %}
           rest_command.klo_lightonnight_request
@@ -845,6 +841,10 @@
         entity_id: timer.klo_debounce
   action:
     - service: rest_command.klo_lightoff_request
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.party_scene_klo
+        value: '{{ range(0, 4) | random | float }}'
 
 ##################################################################################################
 # Bad Motion Detection
