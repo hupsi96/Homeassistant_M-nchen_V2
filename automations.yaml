@@ -788,7 +788,7 @@
       entity_id: timer.klo_debounce_dim
     - service: timer.start
       entity_id: timer.klo_debounce_dim
-    - delay: 00:00:05
+    - delay: 00:00:02
     - service_template: >
         {% if is_state('light.klo', 'off') and is_state('input_boolean.klo_nachtmodus', 'on') %}
           rest_command.klo_lightonnight_request
