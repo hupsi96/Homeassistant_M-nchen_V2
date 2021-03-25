@@ -150,47 +150,47 @@ klo_lightonnight_request:
 ############################### BAD API CALLS ##########################################
 ##########################################################################
 
-bad_lightonnight_request: #TODO adjust for bad
+bad_lightonnight_request: #"group": "12
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
     method: PUT
-    payload: '{"scene":"Wk-Gz2E4BvHM4WP"}'
+    payload: '{"scene":"Zn3bE19RwombofO"}'
 
-bad_lighton_request_party_1: #TODO adjust for bad
+bad_lighton_request_party_1:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
     method: PUT
-    payload: '{"on":true,"scene":"6RUW37G7HQuUmdY"}'
+    payload: '{"on":true,"scene":"BaXnGfZge52X-4V"}'
 
-bad_lighton_request_party_2: #TODO adjust for bad
+bad_lighton_request_party_2:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
     method: PUT
-    payload: '{"on":true,"scene":"fGLDvK42WcQFtyX"}'
+    payload: '{"on":true,"scene":"bZzeiZ2tVX8YeLy"}'
 
-bad_lighton_request_party_3: #TODO adjust for bad
+bad_lighton_request_party_3: DcJKdDQy4usil73
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
     method: PUT
     payload: '{"on":true,"scene":"qz0J1ho7vRM6zYc"}'
 
-bad_lighton_request_party_4: #TODO adjust for bad
+bad_lighton_request_party_4:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
     method: PUT
-    payload: '{"on":true,"scene":"16dgZgl99eMHGH4"}'
+    payload: '{"on":true,"scene":"6FWdPqo3PTo66wZ"}'
 
-bad_lightbright_request: #TODO adjust for bad
+bad_lightbright_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
     method: PUT
-    payload: '{"on":true,"bri":254}' # think about + as alternative for the full
+    payload: '{"on":true,"bri":254}'
 
-bad_lighton_request: #TODO adjust for bad
+bad_lighton_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
     method: PUT
-    payload: '{"on":true,"scene":"fzEZjYCcrhPLB5N","bri":"254"}'
+    payload: '{"on":true,"scene":"iBGXYAdnM0cGT-o","bri":"254"}'
 
-bad_lightdim_request:  #TODO adjust for bad
+bad_lightdim_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
     method: PUT
     payload: '{"bri_inc":-100,"transitiontime":100}'
 
-bad_lightoff_request: #TODO adjust for bad
+bad_lightoff_request: 
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
     method: PUT
     payload: '{"on":false,"effect":"none"}'
