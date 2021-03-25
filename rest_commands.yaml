@@ -139,7 +139,7 @@ klo_lighton_request_party_4:
 klo_lightdim_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
     method: PUT
-    payload: '{"bri_inc":-100,"transitiontime":100}'
+    payload: '{"bri_inc":-250,"transitiontime":100}'
 
 klo_lightonnight_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
@@ -188,7 +188,7 @@ bad_lighton_request:
 bad_lightdim_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
     method: PUT
-    payload: '{"bri_inc":-100,"transitiontime":100}'
+    payload: '{"bri_inc":-250,"transitiontime":100}'
 
 bad_lightoff_request: 
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
