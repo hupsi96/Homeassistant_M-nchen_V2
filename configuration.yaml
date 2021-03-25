@@ -141,9 +141,9 @@ timer:
   klo_debounce: # after 2 minute the light should be turned off in Garderobe
     duration: '00:03:45'
   bad_debounce_dim: #after 90 secounds the light should be dimmed in Garderobe
-    duration: '00:03:00'
+    duration: '00:01:00'
   bad_debounce: # after 2 minute the light should be turned off in Garderobe
-    duration: '00:03:45'
+    duration: '00:01:30'
 
 # Text to speech
 tts:
