@@ -273,6 +273,36 @@ livingroom:
     - media_player.wohnzimmer
     - media_player.unnamed_room_2
 
+kloSensor:
+  name: Klo Sensor
+  entities:
+    - binary_sensor.0x001788010916b47d_occupancy
+    - timer.klo_debounce
+    - timer.klo_debounce_dim
+
+kloAutomation:
+  name: Klo Automation
+  entities:
+    - automation.klo_dim
+    - automation.klo_keep_turn_on
+    - automation.klo_off
+    - automation.klo_turn_on
+
+kloSettings:
+  name: Klo Einstellungen
+  entities:
+    - input_boolean.klo_motion_off
+    - input_boolean.klo_nachtmodus
+    - input_number.party_scene_klo
+
+kloRoom:
+  name: Klo
+  view: true
+  entities:
+    - group.kloSettings
+    - group.kloAutomation
+    - group.kloSensor
+
 abstellkammerLight:
   name: Licht
   entities:
