@@ -37,6 +37,10 @@ input_boolean:
     name: Klo Nachtmodus
     initial: off
     icon: mdi:weather-night
+  bad_nachtmodus:
+    name: Klo Nachtmodus
+    initial: off
+    icon: mdi:weather-night
   weather_good:
     name: Weather good
     initial: off
@@ -48,6 +52,9 @@ input_boolean:
     initial: off
   party_mode:
     name: Party Mode
+    initial: off
+  bad_motion_off:
+    name: Klo Motion aus
     initial: off
 
 #selector for scene in Flo´s room
@@ -133,6 +140,10 @@ timer:
     duration: '00:00:15'
   klo_debounce: # after 2 minute the light should be turned off in Garderobe
     duration: '00:00:30'
+  bad_debounce_dim: #after 90 secounds the light should be dimmed in Garderobe
+    duration: '00:00:15'
+  bad_debounce: # after 2 minute the light should be turned off in Garderobe
+    duration: '00:00:30'
 
 # Text to speech
 tts:
@@ -151,6 +162,13 @@ input_number:
     step: 1
     mode: box
   party_scene_klo:
+    name: 'Party Scene'
+    initial: 0
+    min: 0
+    max: 3
+    step: 1
+    mode: box
+  party_scene_bad:
     name: 'Party Scene'
     initial: 0
     min: 0

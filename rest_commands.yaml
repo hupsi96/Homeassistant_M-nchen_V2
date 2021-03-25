@@ -98,7 +98,7 @@ gang_lighton_dim_recall_request:
     method: PUT
     payload: '{"scene":"mF10HcTDiZgIteV"}'
 ##########################################################################
-##########################################################################
+############################### KLO API CALLS ##########################################
 ##########################################################################
 
 klo_lightoff_request:
@@ -141,93 +141,59 @@ klo_lightdim_request:
     method: PUT
     payload: '{"bri_inc":-100,"transitiontime":100}'
 
-#klo_lighton_recall_request:
-#     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
-#     method: PUT
-#     payload: '{"scene":"fzEZjYCcrhPLB5N"}'
-
-# klo_lighton_recall_request_party_1:
-#     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
-#     method: PUT
-#     payload: '{"scene":"6RUW37G7HQuUmdY"}' #Sonnenuntergang Savanne
-
-# klo_lighton_recall_request_party_2:
-#     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
-#     method: PUT
-#     payload: '{"scene":"fGLDvK42WcQFtyX"}' #Tropendämmerung
-
-# klo_lighton_recall_request_party_3:
-#     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
-#     method: PUT
-#     payload: '{"scene":"qz0J1ho7vRM6zYc"}' #Nordlichter
-
-# klo_lighton_recall_request_party_4:
-#     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
-#     method: PUT
-#     payload: '{"scene":"16dgZgl99eMHGH4"}' #Frühlingsblüten
-
-# klo_lighton_dim_request:
-#     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
-#     method: PUT
-#     payload: '{"on":false,"scene":"zv-QXXvUGyOy-55"}'
-
-# klo_lighton_dim_request_party_1:
-#     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
-#     method: PUT
-#     payload: '{"on":false,"scene":"Ut8yZBs5zE-7w83"}' #Sonnenuntergang Savanne Dim
-
-# klo_lighton_dim_request_party_2:
-#     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
-#     method: PUT
-#     payload: '{"on":false,"scene":"MJqnMcxJtGu4NXs"}' ##Tropendämmerung Dim 
-
-# klo_lighton_dim_request_party_3:
-#     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
-#     method: PUT
-#     payload: '{"on":false,"scene":"xT6mBcsKiHU9m8"}' #Nordlichter Dim
-
-# klo_lighton_dim_request_party_4:
-#     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
-#     method: PUT
-#     payload: '{"on":false,"scene":"92uylFgfLX4aRzt"}' #Frühlingsblüten Dim
-
-# klo_lighton_recall_dim_request:
-#     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
-#     method: PUT
-#     payload: '{"scene":"zv-QXXvUGyOy-55"}'
-
-# klo_lighton_recall_dim_request_party_1:
-#     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
-#     method: PUT
-#     payload: '{"scene":"Ut8yZBs5zE-7w83"}' #Sonnenuntergang Savanne Dim
-
-# klo_lighton_recall_dim_request_party_2:
-#     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
-#     method: PUT
-#     payload: '{"scene":"MJqnMcxJtGu4NXs"}' ##Tropendämmerung Dim 
-
-# klo_lighton_recall_dim_request_party_3:
-#     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
-#     method: PUT
-#     payload: '{"scene":"xT6mBcsKiHU9m8"}' #Nordlichter Dim
-
-# klo_lighton_recall_dim_request_party_4:
-#     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
-#     method: PUT
-#     payload: '{"scene":"92uylFgfLX4aRzt"}' #Frühlingsblüten Dim
-
-
 klo_lightonnight_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
     method: PUT
     payload: '{"scene":"Wk-Gz2E4BvHM4WP"}'
 
-# klo_lightonnight_recall_request:
-#     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
-#     method: PUT
-#     payload: '{"scene":"Wk-Gz2E4BvHM4WP"}'
+##########################################################################
+############################### BAD API CALLS ##########################################
+##########################################################################
 
-    
+bad_lightonnight_request: #TODO adjust for bad
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"scene":"Wk-Gz2E4BvHM4WP"}'
+
+bad_lighton_request_party_1: #TODO adjust for bad
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"on":true,"scene":"6RUW37G7HQuUmdY"}'
+
+bad_lighton_request_party_2: #TODO adjust for bad
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"on":true,"scene":"fGLDvK42WcQFtyX"}'
+
+bad_lighton_request_party_3: #TODO adjust for bad
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"on":true,"scene":"qz0J1ho7vRM6zYc"}'
+
+bad_lighton_request_party_4: #TODO adjust for bad
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"on":true,"scene":"16dgZgl99eMHGH4"}'
+
+bad_lightbright_request: #TODO adjust for bad
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"on":true,"bri":254}' # think about + as alternative for the full
+
+bad_lighton_request: #TODO adjust for bad
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"on":true,"scene":"fzEZjYCcrhPLB5N","bri":"254"}'
+
+bad_lightdim_request:  #TODO adjust for bad
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"bri_inc":-100,"transitiontime":100}'
+
+bad_lightoff_request: #TODO adjust for bad
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"on":false,"effect":"none"}'
 #############################################################################################
 # Coming Home Automation
 #############################################################################################
