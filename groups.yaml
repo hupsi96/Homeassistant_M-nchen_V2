@@ -324,6 +324,7 @@ badSettings:
     - input_boolean.bad_motion_off
     - input_boolean.bad_nachtmodus
     - input_number.party_scene_bad
+    - input_boolean.party_mode
 
 badRoom:
   name: Bad
