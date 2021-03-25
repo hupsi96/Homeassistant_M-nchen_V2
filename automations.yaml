@@ -869,18 +869,18 @@
     - service_template: >
         {% if is_state('light.bad', 'off') and is_state('input_boolean.bad_nachtmodus', 'on') %}
           rest_command.bad_lightonnight_request
-        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '0.0') %}
+        {% elif is_state('light.bad', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '0.0') %}
           rest_command.bad_lighton_request_party_1
-        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '1.0') %}
+        {% elif is_state('light.bad', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '1.0') %}
           rest_command.bad_lighton_request_party_2
-        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '2.0') %}
+        {% elif is_state('light.bad', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '2.0') %}
           rest_command.bad_lighton_request_party_3
-        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '3.0') %}
+        {% elif is_state('light.bad', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '3.0') %}
           rest_command.bad_lighton_request_party_4
-        {% elif is_state('light.klo', 'on') %}
+        {% elif is_state('light.bad', 'on') %}
           rest_command.bad_lightbright_request
         {% else %}
-          rest_command.klo_lighton_request
+          rest_command.bad_lighton_request
         {% endif %}
     - service: timer.cancel
       entity_id: timer.bad_debounce
@@ -894,18 +894,18 @@
     - service_template: >
         {% if is_state('light.bad', 'off') and is_state('input_boolean.bad_nachtmodus', 'on') %}
           rest_command.bad_lightonnight_request
-        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '0.0') %}
+        {% elif is_state('light.bad', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '0.0') %}
           rest_command.bad_lighton_request_party_1
-        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '1.0') %}
+        {% elif is_state('light.bad', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '1.0') %}
           rest_command.bad_lighton_request_party_2
-        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '2.0') %}
+        {% elif is_state('light.bad', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '2.0') %}
           rest_command.bad_lighton_request_party_3
-        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '3.0') %}
+        {% elif is_state('light.bad', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '3.0') %}
           rest_command.bad_lighton_request_party_4
-        {% elif is_state('light.klo', 'on') %}
+        {% elif is_state('light.bad', 'on') %}
           rest_command.bad_lightbright_request
         {% else %}
-          rest_command.klo_lighton_request
+          rest_command.bad_lighton_request
         {% endif %}
     
 - alias: Bad_keep_turn_on
@@ -952,7 +952,7 @@
       event_data:
         entity_id: timer.bad_debounce
   action:
-    - service: rest_command.klo_lightoff_request
+    - service: rest_command.bad_lightoff_request
 
 ##################################################################################################
 # Wifi Down automation
