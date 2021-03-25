@@ -325,6 +325,18 @@ sonos_playlist_play:
     url: http://192.168.178.73:5005/beam me up/play
     method: GET
 
+sonos_bad_join_high_five:
+    url: http://192.168.178.73:5005/beat for bath/join/high five
+    method: GET
+
+sonos_bad_leave_high_five:
+    url: http://192.168.178.73:5005/beat for bath/leave/high five
+    method: GET
+
+sonos_bad_volume_15:
+    url: http://192.168.178.73:5005/beat for bath/volume/15
+    method: GET
+
 
 ####good morning
 goodmorning_request_1_2:

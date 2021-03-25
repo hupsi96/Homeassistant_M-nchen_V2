@@ -904,6 +904,28 @@
           rest_command.bad_lighton_request
         {% endif %}
     
+- alias: Bad_turn_on_sonos
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.0x001788010916b16c_occupancy
+      to: 'on'
+  condition:
+    - condition: template
+      value_template: "{{ (state_attr('binary_sensor.0x001788010916b16c_occupancy', 'occupancy')) }}"
+    - condition: state
+      entity_id: timer.bad_debounce_dim
+      state: 'idle'
+    - condition: state
+      entity_id: input_boolean.bad_motion_off
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.party_mode
+      state: 'on'
+  action:
+    - service: rest_command.sonos_bad_volume_15
+    - service: rest_command.sonos_bad_join_high_five
+
 - alias: Bad_keep_turn_on
   initial_state: true
   trigger:
@@ -953,6 +975,16 @@
       data_template:
         entity_id: input_number.party_scene_bad
         value: '{{ range(0, 4) | random | float }}'
+
+- alias: bad_off_sonos
+  initial_state: true
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.bad_debounce
+  action:
+    - service: rest_command.sonos_bad_leave_high_five
 
 ##################################################################################################
 # Wifi Down automation
