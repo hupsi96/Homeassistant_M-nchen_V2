@@ -33,11 +33,28 @@ input_boolean:
     name: Gang Nachtmodus
     initial: off
     icon: mdi:weather-night
+  klo_nachtmodus:
+    name: Klo Nachtmodus
+    initial: off
+    icon: mdi:weather-night
+  bad_nachtmodus:
+    name: Klo Nachtmodus
+    initial: off
+    icon: mdi:weather-night
   weather_good:
     name: Weather good
     initial: off
   good_morning:
     name: Morgen Routine
+    initial: off
+  klo_motion_off:
+    name: Klo Motion aus
+    initial: off
+  party_mode:
+    name: Party Mode
+    initial: off
+  bad_motion_off:
+    name: Klo Motion aus
     initial: off
 
 #selector for scene in Flo´s room
@@ -119,6 +136,14 @@ timer:
     duration: '00:01:30'
   coming_come_timer:
     duration: '00:15:00'
+  klo_debounce_dim: #after 90 secounds the light should be dimmed in Garderobe
+    duration: '00:03:00'
+  klo_debounce: # after 2 minute the light should be turned off in Garderobe
+    duration: '00:03:45'
+  bad_debounce_dim: #after 90 secounds the light should be dimmed in Garderobe
+    duration: '00:01:00'
+  bad_debounce: # after 2 minute the light should be turned off in Garderobe
+    duration: '00:01:30'
 
 # Text to speech
 tts:
@@ -136,27 +161,41 @@ input_number:
     max: 3
     step: 1
     mode: box
+  party_scene_klo:
+    name: 'Party Scene'
+    initial: 0
+    min: 0
+    max: 3
+    step: 1
+    mode: box
+  party_scene_bad:
+    name: 'Party Scene'
+    initial: 0
+    min: 0
+    max: 3
+    step: 1
+    mode: box
 
 
 sensor: #709162007 Sendling- Westpark
   - platform: dwd_weather_warnings
     region_name: 709162007
-  #- platform: openweathermap
-    #api_key: !secret openWeatherApiK
-    #monitored_conditions:
-      #- weather
-      #- temperature
-      #- wind_speed
-      #- humidity
-      #- pressure
-      #- clouds
+  - platform: openweathermap
+    api_key: !secret openWeatherApiK
+    monitored_conditions:
+      - weather
+      - temperature
+      - wind_speed
+      - humidity
+      - pressure
+      - clouds
   - platform: template
     sensors:
     ##or is_state('device_tracker.iphone_5', 'home')
       someone_home_gps:
         friendly_name: Someone Home GPS
         value_template: >
-          {% if is_state('device_tracker.iphone_von_christian_3', 'home') or is_state('device_tracker.simons_iphone' , 'home')  %} 
+          {% if is_state('device_tracker.iphone_von_christian_2', 'home') or is_state('device_tracker.simons_iphone' , 'home')  %} 
             on
           {% else %}
             off
@@ -170,7 +209,6 @@ sensor: #709162007 Sendling- Westpark
           {% else %}
             off
           {% endif %}
-
 emulated_hue:
   expose_by_default: false
 

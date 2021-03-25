@@ -273,6 +273,67 @@ livingroom:
     - media_player.wohnzimmer
     - media_player.unnamed_room_2
 
+kloSensor:
+  name: Klo Sensor
+  entities:
+    - binary_sensor.0x001788010916b47d_occupancy
+    - timer.klo_debounce
+    - timer.klo_debounce_dim
+
+kloAutomation:
+  name: Klo Automation
+  entities:
+    - automation.klo_dim
+    - automation.klo_keep_turn_on
+    - automation.klo_off
+    - automation.klo_turn_on
+
+kloSettings:
+  name: Klo Einstellungen
+  entities:
+    - input_boolean.klo_motion_off
+    - input_boolean.klo_nachtmodus
+    - input_number.party_scene_klo
+
+kloRoom:
+  name: Klo
+  view: true
+  entities:
+    - group.kloSettings
+    - group.kloAutomation
+    - group.kloSensor
+
+badSensor:
+  name: Bad Sensor
+  entities:
+    - binary_sensor.0x001788010916b16c_occupancy
+    - timer.bad_debounce
+    - timer.bad_debounce_dim
+
+badAutomation:
+  name: Bad Automation
+  entities:
+    - automation.bad_dim
+    - automation.bad_keep_turn_on
+    - automation.bad_off
+    - automation.bad_turn_on
+
+badSettings:
+  name: Bad Einstellungen
+  entities:
+    - input_boolean.bad_motion_off
+    - input_boolean.bad_nachtmodus
+    - input_number.party_scene_bad
+    - input_boolean.party_mode
+
+badRoom:
+  name: Bad
+  view: true
+  entities:
+    - group.badSettings
+    - group.badAutomation
+    - group.badSensor
+
 abstellkammerLight:
   name: Licht
   entities:

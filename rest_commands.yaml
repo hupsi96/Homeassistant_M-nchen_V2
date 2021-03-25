@@ -97,7 +97,103 @@ gang_lighton_dim_recall_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/6/action
     method: PUT
     payload: '{"scene":"mF10HcTDiZgIteV"}'
+##########################################################################
+############################### KLO API CALLS ##########################################
+##########################################################################
 
+klo_lightoff_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"on":false,"effect":"none"}'
+
+klo_lightbright_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"on":true,"bri":254}'
+
+klo_lighton_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"scene":"fzEZjYCcrhPLB5N","bri":"254"}'
+
+klo_lighton_request_party_1:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"scene":"6RUW37G7HQuUmdY"}'
+
+klo_lighton_request_party_2:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"scene":"fGLDvK42WcQFtyX"}'
+
+klo_lighton_request_party_3:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"scene":"qz0J1ho7vRM6zYc"}'
+
+klo_lighton_request_party_4:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"scene":"16dgZgl99eMHGH4"}'
+
+klo_lightdim_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"bri_inc":-250,"transitiontime":100}'
+
+klo_lightonnight_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"scene":"Wk-Gz2E4BvHM4WP"}'
+
+##########################################################################
+############################### BAD API CALLS ##########################################
+##########################################################################
+
+bad_lightonnight_request: #"group": "12
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
+    method: PUT
+    payload: '{"scene":"Zn3bE19RwombofO"}'
+
+bad_lighton_request_party_1:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
+    method: PUT
+    payload: '{"scene":"BaXnGfZge52X-4V"}'
+
+bad_lighton_request_party_2:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
+    method: PUT
+    payload: '{"scene":"bZzeiZ2tVX8YeLy"}'
+
+bad_lighton_request_party_3:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
+    method: PUT
+    payload: '{"scene":"DcJKdDQy4usil73"}'
+
+bad_lighton_request_party_4:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
+    method: PUT
+    payload: '{"scene":"6FWdPqo3PTo66wZ"}'
+
+bad_lightbright_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
+    method: PUT
+    payload: '{"on":true,"bri":254}'
+
+bad_lighton_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
+    method: PUT
+    payload: '{"scene":"iBGXYAdnM0cGT-o","bri":"254"}'
+
+bad_lightdim_request:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
+    method: PUT
+    payload: '{"bri_inc":-250,"transitiontime":100}'
+
+bad_lightoff_request: 
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
+    method: PUT
+    payload: '{"on":false,"effect":"none"}'
 #############################################################################################
 # Coming Home Automation
 #############################################################################################
@@ -229,6 +325,18 @@ sonos_playlist_play:
     url: http://192.168.178.73:5005/beam me up/play
     method: GET
 
+sonos_bad_join_high_five:
+    url: http://192.168.178.73:5005/beat for bath/join/high five
+    method: GET
+
+sonos_bad_leave_high_five:
+    url: http://192.168.178.73:5005/beat for bath/leave/high five
+    method: GET
+
+sonos_bad_volume_15:
+    url: http://192.168.178.73:5005/beat for bath/volume/15
+    method: GET
+
 
 ####good morning
 goodmorning_request_1_2:
@@ -250,3 +358,8 @@ goodmorning_request_2_1:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/lights/18/state
     method: PUT
     payload: '{"on":true,"bri":"1"}'
+
+
+
+    ###### New API Calls: Turn on 1. {"scene":"fzEZjYCcrhPLB5N"} 2. {"bri":254} 
+

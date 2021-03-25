@@ -394,6 +394,7 @@
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.simon_nachtmodus
+
 ##################################################################################################
 # Garderobe & Gang Status Change
 ##################################################################################################
@@ -406,7 +407,7 @@
     - platform: state
       entity_id: device_tracker.aa_ed_57_f6_e8_0b
     - platform: state
-      entity_id: device_tracker.iphonevhristian_3
+      entity_id: device_tracker.iphone_chris_manuell_2
     - platform: state
       entity_id: input_boolean.christian_nachtmodus
     - platform: state
@@ -428,6 +429,21 @@
           input_boolean.turn_off
         {% endif %}
       entity_id: input_boolean.gang_nachtmodus
+    - service_template: >
+        {% if (is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian_3', 'home')) or (is_state('device_tracker.iphonevhristian_3', 'not_home') and ((is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.aa_ed_57_f6_e8_0b', 'home')) or (is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.leas_iphone', 'home')))) %}
+          input_boolean.turn_on
+        {% else %} 
+          input_boolean.turn_off
+        {% endif %}
+      entity_id: input_boolean.klo_nachtmodus
+    - service_template: >
+        {% if (is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.leas_iphone', 'home')) or  (is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.aa_ed_57_f6_e8_0b', 'home')) or (is_state('device_tracker.aa_ed_57_f6_e8_0b', 'not_home') and is_state('device_tracker.leas_iphone', 'not_home') and is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian_3', 'home')) %}
+          input_boolean.turn_on
+        {% else %} 
+          input_boolean.turn_off
+        {% endif %}
+      entity_id: input_boolean.bad_nachtmodus
+    
 
 ##################################################################################################
 # Garderobe & Gang Nightmode Light Change
@@ -499,7 +515,7 @@
         {% if is_state('group.garderobe', 'off') and is_state('input_boolean.garderobe_nachtmodus', 'on') %}
           rest_command.garderobe_lightonnight_request
         {% elif is_state('group.garderobe', 'on') and is_state('input_boolean.garderobe_nachtmodus', 'on') %}
-            rest_command.garderobe_lightonnight_recall_request
+          rest_command.garderobe_lightonnight_recall_request
         {% elif is_state('group.garderobe', 'off') %} 
           rest_command.garderobe_lighton_request
         {% else %}
@@ -548,7 +564,7 @@
           rest_command.garderobe_lightonnight_request
         {% elif is_state('group.garderobe', 'on') and is_state('input_boolean.garderobe_nachtmodus', 'on') %}
           rest_command.garderobe_lightonnight_recall_request
-        {% elif is_state('group.group.garderobe', 'off') %} 
+        {% elif is_state('group.garderobe', 'off') %} 
           rest_command.garderobe_lighton_dim_request
         {% else %}
           rest_command.garderobe_lighton_recall_dim_request
@@ -720,7 +736,260 @@
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.weather_good
-      
+
+
+##################################################################################################
+# Klo Motion Detection
+
+#Ideen: Problem: Vorbeilaufen bleibt an -> Schneller dimmen und wenn nichts passiert aus
+
+#Idee: Im party modus timer kürzer?
+##################################################################################################
+
+- alias: Klo_turn_on
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.0x001788010916b47d_occupancy
+      to: 'on'
+  condition:
+    - condition: template
+      value_template: "{{ (state_attr('binary_sensor.0x001788010916b47d_occupancy', 'occupancy')) }}"
+    - condition: state
+      entity_id:  timer.klo_debounce_dim
+      state: 'idle'
+    - condition: state
+      entity_id:  input_boolean.klo_motion_off
+      state: 'off'
+  action:
+    - service_template: >
+        {% if is_state('input_boolean.klo_nachtmodus', 'on') %}
+          rest_command.klo_lightonnight_request
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '0.0') %}
+          rest_command.klo_lighton_request_party_1
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '1.0') %}
+          rest_command.klo_lighton_request_party_2
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '2.0') %}
+          rest_command.klo_lighton_request_party_3
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '3.0') %}
+          rest_command.klo_lighton_request_party_4
+        {% else %}
+          rest_command.klo_lighton_request
+        {% endif %}
+    - service: timer.cancel
+      entity_id: timer.klo_debounce
+    - service: timer.start
+      entity_id: timer.klo_debounce
+    - service: timer.cancel
+      entity_id: timer.klo_debounce_dim
+    - service: timer.start
+      entity_id: timer.klo_debounce_dim
+    - delay: 00:00:02
+    - service_template: >
+        {% if is_state('input_boolean.klo_nachtmodus', 'on') %}
+          rest_command.klo_lightonnight_request
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '0.0') %}
+          rest_command.klo_lighton_request_party_1
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '1.0') %}
+          rest_command.klo_lighton_request_party_2
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '2.0') %}
+          rest_command.klo_lighton_request_party_3
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '3.0') %}
+          rest_command.klo_lighton_request_party_4
+        {% else %}
+          rest_command.klo_lighton_request
+        {% endif %}
+    
+- alias: Klo_keep_turn_on
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.0x001788010916b47d_occupancy 
+  condition:
+    - condition: template
+      value_template: "{{ (state_attr('binary_sensor.0x001788010916b47d_occupancy', 'occupancy')) }}"
+    - condition: state
+      entity_id:  timer.klo_debounce
+      state: 'active'
+  action:
+    - service: timer.cancel
+      entity_id: timer.klo_debounce
+    - service: timer.start
+      entity_id: timer.klo_debounce
+    - service: timer.cancel
+      entity_id: timer.klo_debounce_dim
+    - service: timer.start
+      entity_id: timer.klo_debounce_dim
+
+- alias: klo_dim
+  initial_state: true
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.klo_debounce_dim
+  action:
+    - service_template: >
+        {% if is_state('input_boolean.klo_nachtmodus', 'on') %}
+          rest_command.klo_lightonnight_request
+        {% else %}
+          rest_command.klo_lightdim_request
+        {% endif %}
+
+- alias: klo_off
+  initial_state: true
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.klo_debounce
+  action:
+    - service: rest_command.klo_lightoff_request
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.party_scene_klo
+        value: '{{ range(0, 4) | random | float }}'
+
+##################################################################################################
+# Bad Motion Detection
+##################################################################################################
+
+- alias: Bad_turn_on
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.0x001788010916b16c_occupancy
+      to: 'on'
+  condition:
+    - condition: template
+      value_template: "{{ (state_attr('binary_sensor.0x001788010916b16c_occupancy', 'occupancy')) }}"
+    - condition: state
+      entity_id:  timer.bad_debounce_dim
+      state: 'idle'
+    - condition: state
+      entity_id:  input_boolean.bad_motion_off
+      state: 'off'
+  action:
+    - service_template: >
+        {% if is_state('input_boolean.bad_nachtmodus', 'on') %}
+          rest_command.bad_lightonnight_request
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '0.0') %}
+          rest_command.bad_lighton_request_party_1
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '1.0') %}
+          rest_command.bad_lighton_request_party_2
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '2.0') %}
+          rest_command.bad_lighton_request_party_3
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '3.0') %}
+          rest_command.bad_lighton_request_party_4
+        {% else %}
+          rest_command.bad_lighton_request
+        {% endif %}
+    - service: timer.cancel
+      entity_id: timer.bad_debounce
+    - service: timer.start
+      entity_id: timer.bad_debounce
+    - service: timer.cancel
+      entity_id: timer.bad_debounce_dim
+    - service: timer.start
+      entity_id: timer.bad_debounce_dim
+    - delay: 00:00:02
+    - service_template: >
+        {% if is_state('input_boolean.bad_nachtmodus', 'on') %}
+          rest_command.bad_lightonnight_request
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '0.0') %}
+          rest_command.bad_lighton_request_party_1
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '1.0') %}
+          rest_command.bad_lighton_request_party_2
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '2.0') %}
+          rest_command.bad_lighton_request_party_3
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '3.0') %}
+          rest_command.bad_lighton_request_party_4
+        {% else %}
+          rest_command.bad_lighton_request
+        {% endif %}
+    
+- alias: Bad_turn_on_sonos
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.0x001788010916b16c_occupancy
+      to: 'on'
+  condition:
+    - condition: template
+      value_template: "{{ (state_attr('binary_sensor.0x001788010916b16c_occupancy', 'occupancy')) }}"
+    - condition: state
+      entity_id: timer.bad_debounce_dim
+      state: 'idle'
+    - condition: state
+      entity_id: input_boolean.bad_motion_off
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.party_mode
+      state: 'on'
+  action:
+    - service: rest_command.sonos_bad_volume_15
+    - service: rest_command.sonos_bad_join_high_five
+
+- alias: Bad_keep_turn_on
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.0x001788010916b16c_occupancy 
+  condition:
+    - condition: template
+      value_template: "{{ (state_attr('binary_sensor.0x001788010916b16c_occupancy', 'occupancy')) }}"
+    - condition: state
+      entity_id:  timer.bad_debounce
+      state: 'active'
+  action:
+    - service: timer.cancel
+      entity_id: timer.bad_debounce
+    - service: timer.start
+      entity_id: timer.bad_debounce
+    - service: timer.cancel
+      entity_id: timer.bad_debounce_dim
+    - service: timer.start
+      entity_id: timer.bad_debounce_dim
+
+- alias: bad_dim
+  initial_state: true
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.bad_debounce_dim
+  action:
+    - service_template: >
+        {% if is_state('input_boolean.bad_nachtmodus', 'on') %}
+          rest_command.bad_lightonnight_request
+        {% else %}
+          rest_command.bad_lightdim_request
+        {% endif %}
+
+- alias: bad_off
+  initial_state: true
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.bad_debounce
+  action:
+    - service: rest_command.bad_lightoff_request
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.party_scene_bad
+        value: '{{ range(0, 4) | random | float }}'
+
+- alias: bad_off_sonos
+  initial_state: true
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.bad_debounce
+  action:
+    - service: rest_command.sonos_bad_leave_high_five
+
 ##################################################################################################
 # Wifi Down automation
 ##################################################################################################
@@ -758,7 +1027,7 @@
 #             Hell
 #           {% endif %}
 
-#{% if (is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian_3', 'home')) or (is_state('device_tracker.iphonevhristian_3', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.leas_iphone', 'home') and is_state('device_tracker.aa_ed_57_f6_e8_0b', 'home')) or (is_state('device_tracker.iphonevhristian_3', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.leas_iphone', 'home') and is_state('device_tracker.aa_ed_57_f6_e8_0b', 'not_home')) or (is_state('device_tracker.iphonevhristian_3', 'not_home') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.leas_iphone', 'not_home') and is_state('device_tracker.aa_ed_57_f6_e8_0b', 'home')) %}
+#{% if (is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphone_chris_manuell_2', 'home')) or (is_state('device_tracker.iphone_chris_manuell_2', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.leas_iphone', 'home') and is_state('device_tracker.aa_ed_57_f6_e8_0b', 'home')) or (is_state('device_tracker.iphone_chris_manuell_2', 'not_home') and is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.leas_iphone', 'home') and is_state('device_tracker.aa_ed_57_f6_e8_0b', 'not_home')) or (is_state('device_tracker.iphone_chris_manuell_2', 'not_home') and is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.leas_iphone', 'not_home') and is_state('device_tracker.aa_ed_57_f6_e8_0b', 'home')) %}
 
 ###################################################
 # Comming Home automation - Timer Start
@@ -827,7 +1096,7 @@
       #{% elif is_state('device_tracker.iphone_5', 'home') %} Flo
       #{% elif is_state('device_tracker.iphone_5', 'home') %} Hell
         group_name: >
-          {% if is_state('device_tracker.iphonevhristian_3', 'home') %}
+          {% if is_state('device_tracker.iphone_chris_manuell_2', 'home') %}
             Christian
           {% elif is_state('device_tracker.aa_ed_57_f6_e8_0b' , 'home') %}
             Simon
@@ -835,7 +1104,7 @@
             Wohnzimmer
           {% endif %}
         scene_name: >
-          {% if is_state('device_tracker.iphonevhristian_3', 'home') %}
+          {% if is_state('device_tracker.iphone_chris_manuell_2', 'home') %}
             Standard
           {% elif is_state('device_tracker.aa_ed_57_f6_e8_0b' , 'home') %}
             Hell
@@ -879,7 +1148,7 @@
       data_template:
       #{% elif is_state('device_tracker.leas_iphone', 'home') %} 'Hallo Flo, schön dass du auch mal Daheim bist.'
         message: >
-          {% if is_state('device_tracker.iphonevhristian_3', 'home') %}
+          {% if is_state('device_tracker.iphone_chris_manuell_2', 'home') %}
             'Hallo Chris, schön dass du Daheim bist.'
           {% elif is_state('device_tracker.steffi_sugar', 'home') %}
             'Hallo Steffi, schön dass du den weiten Weg von Amsterdam bis zu uns in die WG gefunden hast! Willkommen!'
@@ -898,7 +1167,7 @@
         value: '{{ range(0, 4) | random | float }}'
     - service_template: >
         {% if is_state('input_number.box1', '0.0' ) %}
-          {% if is_state('device_tracker.iphonevhristian_3', 'home') %}
+          {% if is_state('device_tracker.iphone_chris_manuell_2', 'home') %}
             rest_command.sonos_playlist_chris_1
           {% elif is_state('device_tracker.leas_iphone', 'home') or is_state('device_tracker.iphonevranziska', 'home') %}
             rest_command.sonos_playlist_flo_1
@@ -906,7 +1175,7 @@
             rest_command.sonos_playlist_simon_1
           {% endif %}
         {% elif is_state('input_number.box1', '1.0' ) %}
-          {% if is_state('device_tracker.iphonevhristian_3', 'home') %}
+          {% if is_state('device_tracker.iphone_chris_manuell_2', 'home') %}
             rest_command.sonos_playlist_chris_2
           {% elif is_state('device_tracker.leas_iphone', 'home') or is_state('device_tracker.iphonevranziska', 'home') %}
             rest_command.sonos_playlist_flo_2
@@ -914,7 +1183,7 @@
             rest_command.sonos_playlist_simon_2
           {% endif %}
         {% elif is_state('input_number.box1', '2.0' ) %}
-          {% if is_state('device_tracker.iphonevhristian_3', 'home') %}
+          {% if is_state('device_tracker.iphone_chris_manuell_2', 'home') %}
             rest_command.sonos_playlist_chris_3
           {% elif is_state('device_tracker.leas_iphone', 'home') or is_state('device_tracker.iphonevranziska', 'home') %}
             rest_command.sonos_playlist_flo_3
@@ -922,7 +1191,7 @@
             rest_command.sonos_playlist_simon_3
           {% endif %}
         {% else %}
-          {% if is_state('device_tracker.iphonevhristian_3', 'home') %}
+          {% if is_state('device_tracker.iphone_chris_manuell_2', 'home') %}
             rest_command.sonos_playlist_chris_4
           {% elif is_state('device_tracker.leas_iphone', 'home') or is_state('device_tracker.iphonevranziska', 'home') %}
             rest_command.sonos_playlist_flo_4
@@ -978,7 +1247,7 @@
 #             entity_id: device_tracker.iphonevranziska # Wifi
 #             state: 'home'
 #           - condition: state
-#             entity_id: device_tracker.iphonevhristian_3 # Wifi
+#             entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
 #             state: 'home'
 #           - condition: state
 #             entity_id: device_tracker.steffi_sugar # Wifi
@@ -1086,7 +1355,7 @@
 #   initial_state: true
 #   trigger:
 #     - platform: state
-#       entity_id: device_tracker.iphonevhristian_3 #WiFi based
+#       entity_id: device_tracker.iphone_chris_manuell_2 #WiFi based
 #       from: "not_home"
 #       to: "home"
 #     - platform: state
@@ -1125,7 +1394,7 @@
 #                 entity_id: device_tracker.iphonevranziska # Wifi
 #                 state: 'not_home'
 #               - condition: state
-#                 entity_id: device_tracker.iphonevhristian_3 # Wifi
+#                 entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
 #                 state: 'home'
 #               - condition: state
 #                 entity_id: device_tracker.steffi_sugar # Wifi
@@ -1142,7 +1411,7 @@
 #                 entity_id: device_tracker.iphonevranziska # Wifi
 #                 state: 'home'
 #               - condition: state
-#                 entity_id: device_tracker.iphonevhristian_3 # Wifi
+#                 entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
 #                 state: 'not_home'
 #               - condition: state
 #                 entity_id: device_tracker.steffi_sugar # Wifi
@@ -1159,7 +1428,7 @@
 #                 entity_id: device_tracker.iphonevranziska # Wifi
 #                 state: 'not_home'
 #               - condition: state
-#                 entity_id: device_tracker.iphonevhristian_3 # Wifi
+#                 entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
 #                 state: 'not_home'
 #               - condition: state
 #                 entity_id: device_tracker.steffi_sugar # Wifi
@@ -1176,7 +1445,7 @@
 #                 entity_id: device_tracker.iphonevranziska # Wifi
 #                 state: 'not_home'
 #               - condition: state
-#                 entity_id: device_tracker.iphonevhristian_3 # Wifi
+#                 entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
 #                 state: 'not_home'
 #               - condition: state
 #                 entity_id: device_tracker.steffi_sugar # Wifi
@@ -1193,7 +1462,7 @@
 #                 entity_id: device_tracker.iphonevranziska # Wifi
 #                 state: 'not_home'
 #               - condition: state
-#                 entity_id: device_tracker.iphonevhristian_3 # Wifi
+#                 entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
 #                 state: 'not_home'
 #               - condition: state
 #                 entity_id: device_tracker.steffi_sugar # Wifi
@@ -1209,7 +1478,7 @@
 #       entity_id: media_player.wohnzimmer
 #       data_template: 
 #         message: >
-#           {% if trigger.entity_id == 'device_tracker.iphonevhristian_3' %}
+#           {% if trigger.entity_id == 'device_tracker.iphone_chris_manuell_2' %}
 #             'Hallo Chris, schön dass du Daheim bist.'
 #           {% elif trigger.entity_id == 'device_tracker.steffi_sugar' %}
 #             'Hallo Steffi, schön dass du den weiten Weg von Amsterdam bis zu uns in die WG gefunden hast! Willkommen!'
@@ -1230,7 +1499,7 @@
 #         value: '{{ range(0, 4) | random | float }}'
 #     - service_template: >
 #         {% if is_state('input_number.box1', '0.0' ) %}
-#           {% if trigger.entity_id == 'device_tracker.iphonevhristian_3' %}
+#           {% if trigger.entity_id == 'device_tracker.iphone_chris_manuell_2' %}
 #             rest_command.sonos_playlist_chris_1
 #           {% elif trigger.entity_id == 'device_tracker.leas_iphone' or trigger.entity_id == 'entity_id: device_tracker.iphonevranziska' %}
 #             rest_command.sonos_playlist_flo_1
@@ -1238,7 +1507,7 @@
 #             rest_command.sonos_playlist_simon_1
 #           {% endif %}
 #         {% elif is_state('input_number.box1', '1.0' ) %}
-#           {% if trigger.entity_id == 'device_tracker.iphonevhristian_3' %}
+#           {% if trigger.entity_id == 'device_tracker.iphone_chris_manuell_2' %}
 #             rest_command.sonos_playlist_chris_2
 #           {% elif trigger.entity_id == 'device_tracker.leas_iphone' or trigger.entity_id == 'entity_id: device_tracker.iphonevranziska' %}
 #             rest_command.sonos_playlist_flo_2
@@ -1246,7 +1515,7 @@
 #             rest_command.sonos_playlist_simon_2
 #           {% endif %}
 #         {% elif is_state('input_number.box1', '2.0' ) %}
-#           {% if trigger.entity_id == 'device_tracker.iphonevhristian_3' %}
+#           {% if trigger.entity_id == 'device_tracker.iphone_chris_manuell_2' %}
 #             rest_command.sonos_playlist_chris_3
 #           {% elif trigger.entity_id == 'device_tracker.leas_iphone' or trigger.entity_id == 'entity_id: device_tracker.iphonevranziska' %}
 #             rest_command.sonos_playlist_flo_3
@@ -1254,7 +1523,7 @@
 #             rest_command.sonos_playlist_simon_3
 #           {% endif %}
 #         {% else %}
-#           {% if trigger.entity_id == 'device_tracker.iphonevhristian_3' %}
+#           {% if trigger.entity_id == 'device_tracker.iphone_chris_manuell_2' %}
 #             rest_command.sonos_playlist_chris_4
 #           {% elif trigger.entity_id == 'device_tracker.leas_iphone' or trigger.entity_id == 'entity_id: device_tracker.iphonevranziska' %}
 #             rest_command.sonos_playlist_flo_4
@@ -1272,7 +1541,7 @@
 #   initial_state: true
 #   trigger:
 #     - platform: state
-#       entity_id: device_tracker.iphonevhristian_3 #WiFi based
+#       entity_id: device_tracker.iphone_chris_manuell_2 #WiFi based
 #       from: "not_home"
 #       to: "home"
 #     - platform: state
@@ -1319,7 +1588,7 @@
 #               entity_id: device_tracker.iphonevranziska # Wifi
 #               state: 'not_home'
 #             - condition: state
-#               entity_id: device_tracker.iphonevhristian_3 # Wifi
+#               entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
 #               state: 'home'
 #             - condition: state
 #               entity_id: device_tracker.steffi_sugar # Wifi
@@ -1336,7 +1605,7 @@
 #               entity_id: device_tracker.iphonevranziska # Wifi
 #               state: 'home'
 #             - condition: state
-#               entity_id: device_tracker.iphonevhristian_3 # Wifi
+#               entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
 #               state: 'not_home'
 #             - condition: state
 #               entity_id: device_tracker.steffi_sugar # Wifi
@@ -1353,7 +1622,7 @@
 #               entity_id: device_tracker.iphonevranziska # Wifi
 #               state: 'not_home'
 #             - condition: state
-#               entity_id: device_tracker.iphonevhristian_3 # Wifi
+#               entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
 #               state: 'not_home'
 #             - condition: state
 #               entity_id: device_tracker.steffi_sugar # Wifi
@@ -1370,7 +1639,7 @@
 #               entity_id: device_tracker.iphonevranziska # Wifi
 #               state: 'not_home'
 #             - condition: state
-#               entity_id: device_tracker.iphonevhristian_3 # Wifi
+#               entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
 #               state: 'not_home'
 #             - condition: state
 #               entity_id: device_tracker.steffi_sugar # Wifi
@@ -1387,7 +1656,7 @@
 #               entity_id: device_tracker.iphonevranziska # Wifi
 #               state: 'not_home'
 #             - condition: state
-#               entity_id: device_tracker.iphonevhristian_3 # Wifi
+#               entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
 #               state: 'not_home'
 #             - condition: state
 #               entity_id: device_tracker.steffi_sugar # Wifi
@@ -1402,7 +1671,7 @@
 #     - service: hue.hue_activate_scene
 #       data_template:
 #         group_name: >
-#           {% if trigger.entity_id == 'device_tracker.iphonevhristian_3' %}
+#           {% if trigger.entity_id == 'device_tracker.iphone_chris_manuell_2' %}
 #             Christian
 #           {% elif trigger.entity_id == 'device_tracker.aa_ed_57_f6_e8_0b' or trigger.entity_id == 'device_tracker.steffi_sugar' %}
 #             Simon
@@ -1412,7 +1681,7 @@
 #             Wohnzimmer
 #           {% endif %}
 #         scene_name: >
-#           {% if trigger.entity_id == 'device_tracker.iphonevhristian_3' %}
+#           {% if trigger.entity_id == 'device_tracker.iphone_chris_manuell_2' %}
 #             Standard
 #           {% elif trigger.entity_id == 'device_tracker.aa_ed_57_f6_e8_0b' or trigger.entity_id == 'device_tracker.steffi_sugar' %}
 #             Hell
