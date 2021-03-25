@@ -740,6 +740,10 @@
 
 ##################################################################################################
 # Klo Motion Detection
+
+#Ideen: Problem: Vorbeilaufen bleibt an -> Schneller dimmen und wenn nichts passiert aus
+
+#Idee: Im party modus timer kürzer?
 ##################################################################################################
 
 - alias: Klo_turn_on
