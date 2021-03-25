@@ -752,18 +752,18 @@
   action:
     - service: input_number.set_value
       data_template:
-        entity_id: input_number.party_scene
+        entity_id: input_number.party_scene_klo
         value: '{{ range(0, 4) | random | float }}'
     - service_template: >
         {% if is_state('light.klo', 'off') and is_state('input_boolean.klo_nachtmodus', 'on') %}
           rest_command.klo_lightonnight_request
-        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene', '0.0') %}
+        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '0.0') %}
           rest_command.klo_lighton_request_party_1
-        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene', '1.0') %}
+        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '1.0') %}
           rest_command.klo_lighton_request_party_2
-        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene', '2.0') %}
+        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '2.0') %}
           rest_command.klo_lighton_request_party_3
-        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene', '3.0') %}
+        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '3.0') %}
           rest_command.klo_lighton_request_party_4
         {% elif is_state('light.klo', 'on') %}
           rest_command.klo_lightbright_request
@@ -778,6 +778,23 @@
       entity_id: timer.klo_debounce_dim
     - service: timer.start
       entity_id: timer.klo_debounce_dim
+    - delay: 00:00:05
+    - service_template: >
+        {% if is_state('light.klo', 'off') and is_state('input_boolean.klo_nachtmodus', 'on') %}
+          rest_command.klo_lightonnight_request
+        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '0.0') %}
+          rest_command.klo_lighton_request_party_1
+        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '1.0') %}
+          rest_command.klo_lighton_request_party_2
+        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '2.0') %}
+          rest_command.klo_lighton_request_party_3
+        {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '3.0') %}
+          rest_command.klo_lighton_request_party_4
+        {% elif is_state('light.klo', 'on') %}
+          rest_command.klo_lightbright_request
+        {% else %}
+          rest_command.klo_lighton_request
+        {% endif %}
     
 - alias: Klo_keep_turn_on
   initial_state: true
