@@ -158,22 +158,22 @@ bad_lightonnight_request: #"group": "12
 bad_lighton_request_party_1:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
     method: PUT
-    payload: '{"on":true,"scene":"BaXnGfZge52X-4V"}'
+    payload: '{"scene":"BaXnGfZge52X-4V"}'
 
 bad_lighton_request_party_2:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
     method: PUT
-    payload: '{"on":true,"scene":"bZzeiZ2tVX8YeLy"}'
+    payload: '{"scene":"bZzeiZ2tVX8YeLy"}'
 
 bad_lighton_request_party_3:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
     method: PUT
-    payload: '{"on":true,"scene":"DcJKdDQy4usil73"}'
+    payload: '{"scene":"DcJKdDQy4usil73"}'
 
 bad_lighton_request_party_4:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
     method: PUT
-    payload: '{"on":true,"scene":"6FWdPqo3PTo66wZ"}'
+    payload: '{"scene":"6FWdPqo3PTo66wZ"}'
 
 bad_lightbright_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
@@ -183,7 +183,7 @@ bad_lightbright_request:
 bad_lighton_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
     method: PUT
-    payload: '{"on":true,"scene":"iBGXYAdnM0cGT-o","bri":"254"}'
+    payload: '{"scene":"iBGXYAdnM0cGT-o","bri":"254"}'
 
 bad_lightdim_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action

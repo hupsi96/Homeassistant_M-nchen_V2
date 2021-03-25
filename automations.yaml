@@ -866,23 +866,17 @@
       entity_id:  input_boolean.bad_motion_off
       state: 'off'
   action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.party_scene_bad
-        value: '{{ range(0, 4) | random | float }}' #TODO: Check if light.bad is the group
     - service_template: >
-        {% if is_state('light.bad', 'off') and is_state('input_boolean.bad_nachtmodus', 'on') %}
+        {% if is_state('input_boolean.bad_nachtmodus', 'on') %}
           rest_command.bad_lightonnight_request
-        {% elif is_state('light.bad', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '0.0') %}
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '0.0') %}
           rest_command.bad_lighton_request_party_1
-        {% elif is_state('light.bad', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '1.0') %}
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '1.0') %}
           rest_command.bad_lighton_request_party_2
-        {% elif is_state('light.bad', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '2.0') %}
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '2.0') %}
           rest_command.bad_lighton_request_party_3
-        {% elif is_state('light.bad', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '3.0') %}
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '3.0') %}
           rest_command.bad_lighton_request_party_4
-        {% elif is_state('light.bad', 'on') %}
-          rest_command.bad_lightbright_request
         {% else %}
           rest_command.bad_lighton_request
         {% endif %}
@@ -894,20 +888,18 @@
       entity_id: timer.bad_debounce_dim
     - service: timer.start
       entity_id: timer.bad_debounce_dim
-    - delay: 00:00:05
+    - delay: 00:00:02
     - service_template: >
-        {% if is_state('light.bad', 'off') and is_state('input_boolean.bad_nachtmodus', 'on') %}
+        {% if is_state('input_boolean.bad_nachtmodus', 'on') %}
           rest_command.bad_lightonnight_request
-        {% elif is_state('light.bad', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '0.0') %}
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '0.0') %}
           rest_command.bad_lighton_request_party_1
-        {% elif is_state('light.bad', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '1.0') %}
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '1.0') %}
           rest_command.bad_lighton_request_party_2
-        {% elif is_state('light.bad', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '2.0') %}
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '2.0') %}
           rest_command.bad_lighton_request_party_3
-        {% elif is_state('light.bad', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '3.0') %}
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '3.0') %}
           rest_command.bad_lighton_request_party_4
-        {% elif is_state('light.bad', 'on') %}
-          rest_command.bad_lightbright_request
         {% else %}
           rest_command.bad_lighton_request
         {% endif %}
@@ -957,6 +949,10 @@
         entity_id: timer.bad_debounce
   action:
     - service: rest_command.bad_lightoff_request
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.party_scene_bad
+        value: '{{ range(0, 4) | random | float }}'
 
 ##################################################################################################
 # Wifi Down automation
