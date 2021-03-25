@@ -303,6 +303,36 @@ kloRoom:
     - group.kloAutomation
     - group.kloSensor
 
+badSensor:
+  name: Bad Sensor
+  entities:
+    - binary_sensor.0x001788010916b16c_occupancy
+    - timer.bad_debounce
+    - timer.bad_debounce_dim
+
+badAutomation:
+  name: Bad Automation
+  entities:
+    - automation.bad_dim
+    - automation.bad_keep_turn_on
+    - automation.bad_off
+    - automation.bad_turn_on
+
+badSettings:
+  name: Bad Einstellungen
+  entities:
+    - input_boolean.bad_motion_off
+    - input_boolean.bad_nachtmodus
+    - input_number.party_scene_bad
+
+badRoom:
+  name: Bad
+  view: true
+  entities:
+    - group.badSettings
+    - group.badAutomation
+    - group.badSensor
+
 abstellkammerLight:
   name: Licht
   entities:
