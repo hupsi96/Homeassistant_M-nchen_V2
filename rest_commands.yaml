@@ -165,10 +165,10 @@ bad_lighton_request_party_2:
     method: PUT
     payload: '{"on":true,"scene":"bZzeiZ2tVX8YeLy"}'
 
-bad_lighton_request_party_3: DcJKdDQy4usil73
+bad_lighton_request_party_3:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
     method: PUT
-    payload: '{"on":true,"scene":"qz0J1ho7vRM6zYc"}'
+    payload: '{"on":true,"scene":"DcJKdDQy4usil73"}'
 
 bad_lighton_request_party_4:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
