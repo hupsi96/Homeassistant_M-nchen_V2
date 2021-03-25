@@ -773,6 +773,8 @@
           rest_command.klo_lighton_request_party_3
         {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '3.0') %}
           rest_command.klo_lighton_request_party_4
+        {% elif is_state('light.klo', 'on') and is_state('input_boolean.klo_nachtmodus', 'on') %}
+          rest_command.klo_lightonnight_request
         {% elif is_state('light.klo', 'on') %}
           rest_command.klo_lightbright_request
         {% else %}
@@ -798,6 +800,8 @@
           rest_command.klo_lighton_request_party_3
         {% elif is_state('light.klo', 'off') and is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '3.0') %}
           rest_command.klo_lighton_request_party_4
+        {% elif is_state('light.klo', 'on') and is_state('input_boolean.klo_nachtmodus', 'on') %}
+          rest_command.klo_lightonnight_request
         {% elif is_state('light.klo', 'on') %}
           rest_command.klo_lightbright_request
         {% else %}
