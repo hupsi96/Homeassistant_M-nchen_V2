@@ -1016,6 +1016,38 @@
   action:
     - service: rest_command.sonos_bad_leave_high_five
 
+- alias: bad_dusch_modus_activation
+  trigger:
+    - platform: state
+      entity_id: input_boolean.bad_duschen
+  action:
+    - service: timer.start
+      entity_id: timer.bad_duschen_timer
+    - service_template: >
+        {% if is_state('input_boolean.bad_duschen', 'on') %}
+          rest_command.bad_lighton_request_party_4
+        {% else %}
+          rest_command.bad_lighton_request
+        {% endif %}
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.bad_motion_off
+
+- alias: bad_dusch_modus_deactivation
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.bad_duschen_timer
+  condition:
+    - condition: state
+      entity_id:  input_boolean.bad_duschen
+      state: 'on'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.bad_motion_off
+    - service: rest_command.bad_lighton_request
+
+
 ##################################################################################################
 # Wifi Down automation
 ##################################################################################################
