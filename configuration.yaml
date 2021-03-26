@@ -220,6 +220,7 @@ sensor: #709162007 Sendling- Westpark
             off
           {% endif %}
 emulated_hue:
+  type: alexa
   expose_by_default: false
   listen_port: 80
   entities:
