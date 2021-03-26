@@ -222,7 +222,7 @@ sensor: #709162007 Sendling- Westpark
 emulated_hue:
   type: alexa
   expose_by_default: false
-  listen_port: 80
+  listen_port: 1024
   entities:
     input_boolean.bad_duschen:
       name: "Bad Dusch-Modus"
