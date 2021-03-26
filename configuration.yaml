@@ -54,7 +54,13 @@ input_boolean:
     name: Party Mode
     initial: off
   bad_motion_off:
-    name: Klo Motion aus
+    name: Bad Motion aus
+    initial: off
+  klo_duschen:
+    name: Klo Duschen
+    initial: off
+  bad_duschen:
+    name: Bad Duschen
     initial: off
 
 #selector for scene in Flo´s room
@@ -144,6 +150,10 @@ timer:
     duration: '00:01:00'
   bad_debounce: # after 2 minute the light should be turned off in Garderobe
     duration: '00:01:30'
+  klo_duschen_timer:
+    duration: '00:15:00'
+  bad_duschen_timer:
+    duration: '00:20:00'
 
 # Text to speech
 tts:

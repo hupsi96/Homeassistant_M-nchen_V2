@@ -811,6 +811,9 @@
     - condition: state
       entity_id:  timer.klo_debounce
       state: 'active'
+    - condition: state
+      entity_id:  input_boolean.klo_motion_off
+      state: 'off'
   action:
     - service: timer.cancel
       entity_id: timer.klo_debounce
@@ -828,6 +831,10 @@
       event_type: timer.finished
       event_data:
         entity_id: timer.klo_debounce_dim
+  condition:
+    - condition: state
+      entity_id:  input_boolean.klo_motion_off
+      state: 'off'
   action:
     - service_template: >
         {% if is_state('input_boolean.klo_nachtmodus', 'on') %}
@@ -843,6 +850,10 @@
       event_type: timer.finished
       event_data:
         entity_id: timer.klo_debounce
+  condition:
+    - condition: state
+      entity_id:  input_boolean.klo_motion_off
+      state: 'off'
   action:
     - service: rest_command.klo_lightoff_request
     - service: input_number.set_value
@@ -941,6 +952,9 @@
     - condition: state
       entity_id:  timer.bad_debounce
       state: 'active'
+    - condition: state
+      entity_id:  input_boolean.bad_motion_off
+      state: 'off'
   action:
     - service: timer.cancel
       entity_id: timer.bad_debounce
@@ -958,6 +972,10 @@
       event_type: timer.finished
       event_data:
         entity_id: timer.bad_debounce_dim
+  condition:
+    - condition: state
+      entity_id:  input_boolean.bad_motion_off
+      state: 'off'
   action:
     - service_template: >
         {% if is_state('input_boolean.bad_nachtmodus', 'on') %}
@@ -973,6 +991,10 @@
       event_type: timer.finished
       event_data:
         entity_id: timer.bad_debounce
+  condition:
+    - condition: state
+      entity_id:  input_boolean.bad_motion_off
+      state: 'off'
   action:
     - service: rest_command.bad_lightoff_request
     - service: input_number.set_value
