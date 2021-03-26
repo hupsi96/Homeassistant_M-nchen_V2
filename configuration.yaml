@@ -221,6 +221,9 @@ sensor: #709162007 Sendling- Westpark
           {% endif %}
 emulated_hue:
   expose_by_default: false
+  entities:
+    input_boolean.bad_duschen:
+      name: "Bad Dusch-Modus"
 
 homekit:
   filter:
