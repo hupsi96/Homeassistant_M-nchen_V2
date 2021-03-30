@@ -1283,7 +1283,22 @@
 ###################################################
 # Abend Kaffeemaschine
 ###################################################  
-- alias: 'Kaffeemaschine Abend'
+
+- alias: "Kaffeemaschine Status"
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: switch.0x7cb03eaa0a0019d8_switch
+  action:
+    - service_template: >
+        {% if is_state('switch.0x7cb03eaa0a0019d8_switch', 'on') %}
+          input_boolean.turn_on
+        {% else %}
+          input_boolean.turn_off
+        {% endif %}
+      entity_id: input_boolean.kaffee_on
+
+- alias: "Kaffeemaschine wait timer"
   initial_state: true
   trigger:
     platform: time
@@ -1293,15 +1308,31 @@
       entity_id: switch.0x7cb03eaa0a0019d8_switch
       state: 'on'
   action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.kaffee_on
+    
+
+- alias: 'Kaffeemaschine Abend'
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.kaffee_on
+    from: 'on'
+    to: 'off'
+  condition:
+    - condition: state
+      entity_id: switch.0x7cb03eaa0a0019d8_switch
+      state: 'on'
+  action:
     - service: notify.mobile_app_iphone_von_christian
       data:
         title: "Kaffeemaschine"
-        message: "Die Megica ist noch an - schon geputz?"
+        message: "Die Magica ist noch an"
         data:
           push:
             category: KAFFEE
 
-- alias: 'Kaffeemaschine Wait'
+- alias: 'Kaffeemaschine Aus'
   initial_state: true
   trigger:
     platform: event
@@ -1312,6 +1343,33 @@
     - service: switch.turn_off
       entity_id: switch.0x7cb03eaa0a0019d8_switch
 
+- alias: 'Kaffeemaschine Wait'
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: WAIT
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.kaffee_on
+    - service: timer.start
+      entity_id: timer.kaffee_on_timer
+
+- alias: 'Kaffeemaschine Timer Reminder'
+  initial_state: true
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.kaffee_on_timer
+  condition:
+    - condition: state
+      entity_id: switch.0x7cb03eaa0a0019d8_switch
+      state: 'on'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.kaffee_on
 
 
 ###################################################

@@ -62,6 +62,9 @@ input_boolean:
   bad_duschen:
     name: Bad Duschen
     initial: off
+  kaffee_on:
+    name: Magica On
+    initial: on
 
 #selector for scene in Flo´s room
 input_select:
@@ -154,6 +157,8 @@ timer:
     duration: '00:15:00'
   bad_duschen_timer:
     duration: '00:20:00'
+  kaffee_on_timer:
+    duration: '01:00:00'
 
 # Text to speech
 tts:
