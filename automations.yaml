@@ -1294,7 +1294,7 @@
       entity_id: switch.0x7cb03eaa0a0019d8_switch
       state: 'off'
     - condition: state
-      entity_id:  sensor.someone_home_wifi #WIFI All
+      entity_id:  sensor.someone_home_wifi
       state: 'on'
   action:
     - service: switch.turn_on
@@ -1306,7 +1306,7 @@
     platform: state
     entity_id: sensor.someone_home_wifi
     to: 'off'
-    for: "00:00:30" #Update
+    for: "01:00:00"
   condition:
     - condition: state
       entity_id: switch.0x7cb03eaa0a0019d8_switch
@@ -1330,7 +1330,7 @@
     - service: notify.mobile_app_iphone_von_christian
       data:
         title: "Kaffeemaschine"
-        message: "Die Magica ist noch an"
+        message: "Magica anschlaten?"
         data:
           push:
             category: KAFFEEON
@@ -1375,7 +1375,7 @@
     - service: notify.mobile_app_iphone_von_christian
       data:
         title: "Kaffeemaschine"
-        message: "Magica in 20 Minuten fertig"
+        message: "Magica in 20 Minuten bereit einen geisteskranken Kaffee für dich zu machen"
 
 - alias: "Kaffeemaschine wait timer"
   initial_state: true
