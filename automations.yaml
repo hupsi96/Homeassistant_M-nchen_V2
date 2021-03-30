@@ -1294,11 +1294,12 @@
       state: 'on'
   action:
     - service: notify.mobile_app_iphone_von_christian
-      title: "Kaffeemaschine"
-      message: "Die Megica ist noch an - schon geputz?"
       data:
-        push:
-          category: KAFFEE
+        title: "Kaffeemaschine"
+        message: "Die Megica ist noch an - schon geputz?"
+        data:
+          push:
+            category: KAFFEE
 
 - alias: 'Kaffeemaschine Wait'
   initial_state: true
