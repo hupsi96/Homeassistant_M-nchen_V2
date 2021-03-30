@@ -239,6 +239,8 @@ tuya:
   username: chris.huppertz@yahoo.de
   password: !secret tuyaPW
   country_code: 49
+
+ios:
 #http:
 #  base_url: 'https://1n9cjmfsjljrwj776nv3ev2ncba9kf91.ui.nabu.casa'
 
