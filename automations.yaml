@@ -1339,6 +1339,10 @@
     event_type: ios.notification_action_fired
     event_data:
       actionName: AUS
+  condition:
+    - condition: state
+      entity_id: timer.kaffee_on_timer
+      state: 'idle'
   action:
     - service: switch.turn_off
       entity_id: switch.0x7cb03eaa0a0019d8_switch
