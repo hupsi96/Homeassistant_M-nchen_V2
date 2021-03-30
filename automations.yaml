@@ -1281,8 +1281,18 @@
       entity_id: switch.0x7cb03eaa0a0019d8_switch
 
 ###################################################
-# Abend Kaffeemaschine
+# Kaffeemaschine
 ###################################################  
+
+###################################################
+# Morgens Kaffeemaschine
+################################################### 
+
+
+
+###################################################
+# Abend Kaffeemaschine
+################################################### 
 
 - alias: "Kaffeemaschine Status"
   initial_state: true
@@ -1297,6 +1307,19 @@
           input_boolean.turn_off
         {% endif %}
       entity_id: input_boolean.kaffee_on
+
+- alias: "Kaffeemaschine notify on"
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: switch.0x7cb03eaa0a0019d8_switch
+    from: 'off'
+    to: 'on'
+    action:
+      - service: notify.mobile_app_iphone_von_christian
+        data:
+          title: "Kaffeemaschine"
+          message: "Magica in 20 Minuten fertig"
 
 - alias: "Kaffeemaschine wait timer"
   initial_state: true
