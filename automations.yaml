@@ -1307,7 +1307,7 @@
       entity_id: switch.0x7cb03eaa0a0019d8_switch
       state: 'off'
   action:
-    - service: notify.mobile_app_iphone_von_christian
+    - service: notify.mobile_app_iphone_12_pro_christian
       data:
         title: "Kaffeemaschine"
         message: "Magica anschlaten?"
@@ -1352,7 +1352,7 @@
     from: 'off'
     to: 'on'
   action:
-    - service: notify.mobile_app_iphone_von_christian
+    - service: notify.mobile_app_iphone_12_pro_christian
       data:
         title: "Kaffeemaschine"
         message: "Magica in 20 Minuten bereit einen geisteskranken Kaffee für dich zu machen"
@@ -1383,7 +1383,7 @@
       entity_id: switch.0x7cb03eaa0a0019d8_switch
       state: 'on'
   action:
-    - service: notify.mobile_app_iphone_von_christian
+    - service: notify.mobile_app_iphone_12_pro_christian
       data:
         title: "Kaffeemaschine"
         message: "Die Magica ist noch an"
