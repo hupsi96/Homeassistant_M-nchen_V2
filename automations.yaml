@@ -1277,56 +1277,24 @@
       entity_id: input_boolean.good_morning
     - service: scene.turn_on
       entity_id: scene.8kovujj0fumhirbe
-
-    
-
-###################################################
-# Sonnenuntergang Licht an
-###################################################
-
-# - alias: 'Sonnenuntergang Licht'
-#   initial_state: true
-#   trigger:
-#     platform: sun
-#     event: sunset
-#     offset: "-01:00:00"
-#   condition:
-#     condition: and
-#     conditions:
-#       - condition: or
-#         conditions:
-#           - condition: state
-#             entity_id: device_tracker.aa_ed_57_f6_e8_0b # Wifi
-#             state: 'home'
-#           - condition: state
-#             entity_id: device_tracker.leas_iphone # Wifi
-#             state: 'home'
-#           - condition: state
-#             entity_id: device_tracker.iphonevranziska # Wifi
-#             state: 'home'
-#           - condition: state
-#             entity_id: device_tracker.iphone_chris_manuell_2 # Wifi
-#             state: 'home'
-#           - condition: state
-#             entity_id: device_tracker.steffi_sugar # Wifi
-#             state: 'home'
-#       - condition: state
-#         entity_id: light.wohnzimmer
-#         state: 'off'
-#   action:
-#     - service: hue.hue_activate_scene
-#       data:
-#         group_name: Wohnzimmer
-#         scene_name: Sunset
-#     - service: light.turn_on
-#       entity_id: light.wohnzimmer
-#       data:
-#         transition: 900
-#         brightness: 200
+    - service: switch.turn_on
+      entity_id: switch.0x7cb03eaa0a0019d8_switch
 
 ###################################################
-# TV turn_on
-###################################################
+# Abend Kaffeemaschine
+###################################################  
+- alias: 'Kaffeemaschine Abend'
+  initial_state: true
+  trigger:
+    platform: time
+    at: "19:00:00"
+  condition:
+    - condition: state
+      entity_id: switch.0x7cb03eaa0a0019d8_switch
+      state: 'on'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.0x7cb03eaa0a0019d8_switch
 
 - alias: 'Fernseher Wohnzimmer anschalten'
   initial_state: true
