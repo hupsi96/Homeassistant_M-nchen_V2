@@ -1288,6 +1288,21 @@
 # Morgens Kaffeemaschine
 ################################################### 
 
+- alias: "Kaffeemaschine turnOn morgen"
+  initial_state: true
+  trigger:
+    platform: time
+    at: "07:30:00"
+  condition:
+    - condition: state
+      entity_id: switch.0x7cb03eaa0a0019d8_switch
+      state: 'off'
+    - condition: state
+      entity_id:  sensor.someone_home_wifi #WIFI All
+      state: 'on'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.0x7cb03eaa0a0019d8_switch
 
 
 ###################################################
@@ -1315,11 +1330,11 @@
     entity_id: switch.0x7cb03eaa0a0019d8_switch
     from: 'off'
     to: 'on'
-    action:
-      - service: notify.mobile_app_iphone_von_christian
-        data:
-          title: "Kaffeemaschine"
-          message: "Magica in 20 Minuten fertig"
+  action:
+    - service: notify.mobile_app_iphone_von_christian
+      data:
+        title: "Kaffeemaschine"
+        message: "Magica in 20 Minuten fertig"
 
 - alias: "Kaffeemaschine wait timer"
   initial_state: true
