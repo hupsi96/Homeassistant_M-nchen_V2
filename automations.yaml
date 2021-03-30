@@ -1305,7 +1305,7 @@
   trigger:
     platform: state
     entity_id: sensor.someone_home_wifi
-    state: 'off'
+    to: 'off'
     for: "00:00:30" #Update
   condition:
     - condition: state
