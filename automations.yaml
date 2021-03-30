@@ -1284,15 +1284,11 @@
 # Kaffeemaschine
 ###################################################  
 
-###################################################
-# Morgens Kaffeemaschine
-################################################### 
-
 - alias: "Kaffeemaschine turnOn morgen"
   initial_state: true
   trigger:
     platform: time
-    at: "07:30:00"
+    at: "08:00:00"
   condition:
     - condition: state
       entity_id: switch.0x7cb03eaa0a0019d8_switch
@@ -1304,10 +1300,55 @@
     - service: switch.turn_on
       entity_id: switch.0x7cb03eaa0a0019d8_switch
 
+- alias: "kaffeemaschine leaving home"
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sensor.someone_home_wifi
+    state: 'off'
+    for: "00:00:30" #Update
+  condition:
+    - condition: state
+      entity_id: switch.0x7cb03eaa0a0019d8_switch
+      state: 'on'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.kaffee_on
 
-###################################################
-# Abend Kaffeemaschine
-################################################### 
+- alias: "kaffeemaschine coming home"
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sensor.someone_home_wifi
+    from: 'off'
+    to: 'on'
+  condition:
+    - condition: state
+      entity_id: switch.0x7cb03eaa0a0019d8_switch
+      state: 'off'
+  action:
+    - service: notify.mobile_app_iphone_von_christian
+      data:
+        title: "Kaffeemaschine"
+        message: "Die Magica ist noch an"
+        data:
+          push:
+            category: KAFFEEON
+
+- alias: 'Kaffeemaschine An coming home'
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: AN
+  condition:
+    - condition: state
+      entity_id: switch.0x7cb03eaa0a0019d8_switch
+      state: 'off'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.0x7cb03eaa0a0019d8_switch
 
 - alias: "Kaffeemaschine Status"
   initial_state: true
