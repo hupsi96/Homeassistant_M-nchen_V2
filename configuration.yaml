@@ -239,7 +239,7 @@ emulated_hue:
   #off_maps_to_on_domains:
   #  - script
   #  - scene
-  expose_by_default: falso
+  expose_by_default: false
   exposed_domains:
     - input_boolean
   entities:
