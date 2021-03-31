@@ -396,7 +396,7 @@
       entity_id: input_boolean.simon_nachtmodus
 
 ##################################################################################################
-# Garderobe & Gang Status Change
+# Garderobe & Gang & Klo & Bad Status Change
 ##################################################################################################
 
 - alias: garderobe_gang_status_switch
@@ -405,7 +405,7 @@
     - platform: state
       entity_id: device_tracker.leas_iphone
     - platform: state
-      entity_id: device_tracker.4a_82_26_a9_d2_80
+      entity_id: device_tracker.iphonevonsimon12pro
     - platform: state
       entity_id: device_tracker.iphonevhristian_2
     - platform: state
@@ -416,28 +416,28 @@
       entity_id: input_boolean.simon_nachtmodus
   action:
     - service_template: >
-        {% if (is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian_3', 'home')) or (is_state('device_tracker.iphonevhristian_3', 'not_home') and ((is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.4a_82_26_a9_d2_80', 'home')) or (is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.leas_iphone', 'home')))) %}
+        {% if (is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian_2', 'home')) or (is_state('device_tracker.iphonevhristian_2', 'not_home') and ((is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.iphonevonsimon12pro', 'home')) or (is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.leas_iphone', 'home')))) %}
           input_boolean.turn_on
         {% else %} 
           input_boolean.turn_off
         {% endif %}
       entity_id: input_boolean.garderobe_nachtmodus
     - service_template: >
-        {% if (is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.leas_iphone', 'home')) or  (is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.4a_82_26_a9_d2_80', 'home')) or (is_state('device_tracker.4a_82_26_a9_d2_80', 'not_home') and is_state('device_tracker.leas_iphone', 'not_home') and is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian_3', 'home')) %}
+        {% if (is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.leas_iphone', 'home')) or  (is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.iphonevonsimon12pro', 'home')) or (is_state('device_tracker.iphonevonsimon12pro', 'not_home') and is_state('device_tracker.leas_iphone', 'not_home') and is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian_2', 'home')) %}
           input_boolean.turn_on
         {% else %} 
           input_boolean.turn_off
         {% endif %}
       entity_id: input_boolean.gang_nachtmodus
     - service_template: >
-        {% if (is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian_3', 'home')) or (is_state('device_tracker.iphonevhristian_3', 'not_home') and ((is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.4a_82_26_a9_d2_80', 'home')) or (is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.leas_iphone', 'home')))) %}
+        {% if (is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian_2', 'home')) or (is_state('device_tracker.iphonevhristian_2', 'not_home') and ((is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.iphonevonsimon12pro', 'home')) or (is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.leas_iphone', 'home')))) %}
           input_boolean.turn_on
         {% else %} 
           input_boolean.turn_off
         {% endif %}
       entity_id: input_boolean.klo_nachtmodus
     - service_template: >
-        {% if (is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.leas_iphone', 'home')) or  (is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.4a_82_26_a9_d2_80', 'home')) or (is_state('device_tracker.4a_82_26_a9_d2_80', 'not_home') and is_state('device_tracker.leas_iphone', 'not_home') and is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian_3', 'home')) %}
+        {% if (is_state('input_boolean.flo_nachtmodus', 'on') and is_state('device_tracker.leas_iphone', 'home')) or  (is_state('input_boolean.simon_nachtmodus', 'on') and is_state('device_tracker.iphonevonsimon12pro', 'home')) or (is_state('device_tracker.iphonevonsimon12pro', 'not_home') and is_state('device_tracker.leas_iphone', 'not_home') and is_state('input_boolean.christian_nachtmodus', 'on') and is_state('device_tracker.iphonevhristian_2', 'home')) %}
           input_boolean.turn_on
         {% else %} 
           input_boolean.turn_off
@@ -1121,9 +1121,6 @@
       - condition: state
         entity_id:  device_tracker.steffi_sugar
         state: 'not_home'
-      - condition: state
-        entity_id:  device_tracker.iphonevranziska
-        state: 'not_home'
   action:
     - service: hue.hue_activate_scene
       data:
@@ -1131,12 +1128,10 @@
         scene_name: Entspannt
     - service: hue.hue_activate_scene
       data_template:
-      #{% elif is_state('device_tracker.iphone_5', 'home') %} Flo
-      #{% elif is_state('device_tracker.iphone_5', 'home') %} Hell
         group_name: >
           {% if is_state('device_tracker.iphonevhristian_2', 'home') %}
             Christian
-          {% elif is_state('device_tracker.4a_82_26_a9_d2_80' , 'home') %}
+          {% elif is_state('device_tracker.iphonevonsimon12pro' , 'home') %}
             Simon
           {% else %}
             Wohnzimmer
@@ -1144,7 +1139,7 @@
         scene_name: >
           {% if is_state('device_tracker.iphonevhristian_2', 'home') %}
             Standard
-          {% elif is_state('device_tracker.4a_82_26_a9_d2_80' , 'home') %}
+          {% elif is_state('device_tracker.iphonevonsimon12pro' , 'home') %}
             Hell
           {% else %}
             Entspannt
@@ -1173,9 +1168,6 @@
       - condition: state
         entity_id:  device_tracker.steffi_sugar
         state: 'not_home'
-      - condition: state
-        entity_id:  device_tracker.iphonevranziska
-        state: 'not_home'
   action:
     - service: rest_command.sonos_playlist_clear
     - service: rest_command.sonos_speech_preset
@@ -1190,7 +1182,7 @@
             'Hallo Chris, schön dass du Daheim bist.'
           {% elif is_state('device_tracker.steffi_sugar', 'home') %}
             'Hallo Steffi, schön dass du den weiten Weg von Amsterdam bis zu uns in die WG gefunden hast! Willkommen!'
-          {% elif is_state('device_tracker.4a_82_26_a9_d2_80', 'home') %}
+          {% elif is_state('device_tracker.iphonevonsimon12pro', 'home') %}
             'Hallo Simon, schön dass du Daheim bist.'
           {% elif is_state('device_tracker.iphonevranziska', 'home') %}
             'Hallo Franzi, schön dass du wieder bei uns in der WG bist.'
