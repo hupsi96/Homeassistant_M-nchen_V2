@@ -823,6 +823,20 @@
       entity_id: timer.klo_debounce_dim
     - service: timer.start
       entity_id: timer.klo_debounce_dim
+    - service_template: >
+        {% if is_state('input_boolean.klo_nachtmodus', 'on') %}
+          rest_command.klo_lightonnight_request
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '0.0') %}
+          rest_command.klo_lighton_request_party_1
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '1.0') %}
+          rest_command.klo_lighton_request_party_2
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '2.0') %}
+          rest_command.klo_lighton_request_party_3
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '3.0') %}
+          rest_command.klo_lighton_request_party_4
+        {% else %}
+          rest_command.klo_lighton_request
+        {% endif %}
 
 - alias: klo_dim
   initial_state: true
@@ -964,6 +978,20 @@
       entity_id: timer.bad_debounce_dim
     - service: timer.start
       entity_id: timer.bad_debounce_dim
+    - service_template: >
+        {% if is_state('input_boolean.bad_nachtmodus', 'on') %}
+          rest_command.bad_lightonnight_request
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '0.0') %}
+          rest_command.bad_lighton_request_party_1
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '1.0') %}
+          rest_command.bad_lighton_request_party_2
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '2.0') %}
+          rest_command.bad_lighton_request_party_3
+        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '3.0') %}
+          rest_command.bad_lighton_request_party_4
+        {% else %}
+          rest_command.bad_lighton_request
+        {% endif %}
 
 - alias: bad_dim
   initial_state: true
