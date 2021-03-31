@@ -1118,9 +1118,6 @@
       - condition: state
         entity_id:  timer.coming_come_timer
         state: 'active'
-      - condition: state
-        entity_id:  device_tracker.steffi_sugar
-        state: 'not_home'
   action:
     - service: hue.hue_activate_scene
       data:
@@ -1165,9 +1162,6 @@
       - condition: state
         entity_id:  timer.coming_come_timer
         state: 'active'
-      - condition: state
-        entity_id:  device_tracker.steffi_sugar
-        state: 'not_home'
   action:
     - service: rest_command.sonos_playlist_clear
     - service: rest_command.sonos_speech_preset
@@ -1176,7 +1170,6 @@
     - service: tts.google_translate_say
       entity_id: media_player.wohnzimmer
       data_template:
-      #{% elif is_state('device_tracker.leas_iphone', 'home') %} 'Hallo Flo, schön dass du auch mal Daheim bist.'
         message: >
           {% if is_state('device_tracker.iphonevhristian_2', 'home') %}
             'Hallo Chris, schön dass du Daheim bist.'
@@ -1229,8 +1222,6 @@
             rest_command.sonos_playlist_simon_4
           {% endif %}
         {% endif %}
-    - delay: 0:05
-    - service: rest_command.sonos_playlist_play
     - delay: 0:05
     - service: timer.cancel
       entity_id: timer.coming_come_timer
