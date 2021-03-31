@@ -1182,7 +1182,7 @@
             'Hallo Chris, schön dass du Daheim bist.'
           {% elif is_state('device_tracker.steffi_sugar', 'home') %}
             'Hallo Steffi, schön dass du den weiten Weg von Amsterdam bis zu uns in die WG gefunden hast! Willkommen!'
-          {% elif is_state('device_tracker.iphonevonsimon12pro, 'home') %}
+          {% elif is_state('device_tracker.iphonevonsimon12pro', 'home') %}
             'Hallo Simon, schön dass du Daheim bist.'
           {% elif is_state('device_tracker.iphonevranziska', 'home') %}
             'Hallo Franzi, schön dass du wieder bei uns in der WG bist.'
