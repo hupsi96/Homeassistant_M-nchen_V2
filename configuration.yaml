@@ -234,8 +234,8 @@ emulated_hue:
   #    hidden: false
   host_ip: 192.168.178.73
   listen_port: 8300
-  advertise_ip: 10.0.0.10
-  advertise_port: 8080
+  #advertise_ip: 10.0.0.10
+  #advertise_port: 8080
   #off_maps_to_on_domains:
   #  - script
   #  - scene
