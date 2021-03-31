@@ -1164,25 +1164,26 @@
         state: 'active'
   action:
     - service: rest_command.sonos_playlist_clear
-    - service: rest_command.sonos_speech_preset
+    #- service: rest_command.sonos_speech_preset
+    #- delay: 00:00:03
+    #- service: rest_command.sonos_speech_preset
+    #- service: tts.google_translate_say
+    #  entity_id: media_player.wohnzimmer
+    #  data_template:
+        # message: >
+        #   {% if is_state('device_tracker.iphonevhristian_2', 'home') %}
+        #     'Hallo Chris, schön dass du Daheim bist.'
+        #   {% elif is_state('device_tracker.steffi_sugar', 'home') %}
+        #     'Hallo Steffi, schön dass du den weiten Weg von Amsterdam bis zu uns in die WG gefunden hast! Willkommen!'
+        #   {% elif is_state('device_tracker.iphonevonsimon12pro', 'home') %}
+        #     'Hallo Simon, schön dass du Daheim bist.'
+        #   {% elif is_state('device_tracker.iphonevranziska', 'home') %}
+        #     'Hallo Franzi, schön dass du wieder bei uns in der WG bist.'
+        #   {% else %} 
+        #     'Hallo und herzlich willkommen!'
+        #   {% endif %}
+    - service: rest_command.sonos_playlist_preset
     - delay: 00:00:03
-    - service: rest_command.sonos_speech_preset
-    - service: tts.google_translate_say
-      entity_id: media_player.wohnzimmer
-      data_template:
-        message: >
-          {% if is_state('device_tracker.iphonevhristian_2', 'home') %}
-            'Hallo Chris, schön dass du Daheim bist.'
-          {% elif is_state('device_tracker.steffi_sugar', 'home') %}
-            'Hallo Steffi, schön dass du den weiten Weg von Amsterdam bis zu uns in die WG gefunden hast! Willkommen!'
-          {% elif is_state('device_tracker.iphonevonsimon12pro', 'home') %}
-            'Hallo Simon, schön dass du Daheim bist.'
-          {% elif is_state('device_tracker.iphonevranziska', 'home') %}
-            'Hallo Franzi, schön dass du wieder bei uns in der WG bist.'
-          {% else %} 
-            'Hallo und herzlich willkommen!'
-          {% endif %}
-    - delay: 00:00:05
     - service: rest_command.sonos_playlist_preset
     - service: input_number.set_value
       data_template:
