@@ -1281,6 +1281,12 @@
   trigger:
     platform: time
     at: "08:00:00"
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
   condition:
     - condition: state
       entity_id: light.on_off_plug_1
@@ -1318,6 +1324,11 @@
     - condition: state
       entity_id: light.on_off_plug_1
       state: 'off'
+    - condition: or
+      conditions:
+        - condition: time
+          after: "07:00:00"
+          before: "18:00:00"
   action:
     - service: notify.mobile_app_iphone_12_pro_christian
       data:
