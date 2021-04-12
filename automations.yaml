@@ -512,15 +512,10 @@
       state: 'off'
   action:
     - service_template: >
-        {% if is_state('group.garderobe', 'off') and is_state('input_boolean.garderobe_nachtmodus', 'on') %}
+        {% if is_state('input_boolean.garderobe_nachtmodus', 'on') %}
           rest_command.garderobe_lightonnight_request
-        {% elif is_state('group.garderobe', 'on') and is_state('input_boolean.garderobe_nachtmodus', 'on') %}
-          rest_command.garderobe_lightonnight_recall_request
-        {% elif is_state('group.garderobe', 'off') %} 
-          rest_command.garderobe_lighton_request
         {% else %}
-          rest_command.garderobe_lighton_recall_request
-        {% endif %}
+          rest_command.garderobe_lighton_request
     - service: timer.cancel
       entity_id: timer.garderobe_debounce
     - service: timer.start
@@ -529,6 +524,12 @@
       entity_id: timer.garderobe_debounce_dim
     - service: timer.start
       entity_id: timer.garderobe_debounce_dim
+    - delay: 00:00:02
+    - service_template: >
+        {% if is_state('input_boolean.garderobe_nachtmodus', 'on') %}
+          rest_command.garderobe_lightonnight_request
+        {% else %}
+          rest_command.garderobe_lighton_request
     
 - alias: Garderobe_keep_turn_on
   initial_state: true
@@ -550,6 +551,11 @@
       entity_id: timer.garderobe_debounce_dim
     - service: timer.start
       entity_id: timer.garderobe_debounce_dim
+    - service_template: >
+        {% if is_state('input_boolean.garderobe_nachtmodus', 'on') %}
+          rest_command.garderobe_lightonnight_request
+        {% else %}
+          rest_command.garderobe_lighton_request
 
 - alias: Garderobe_dim
   initial_state: true
@@ -560,14 +566,10 @@
         entity_id: timer.garderobe_debounce_dim
   action:
     - service_template: >
-        {% if is_state('group.garderobe', 'off') and is_state('input_boolean.garderobe_nachtmodus', 'on') %}
+        {% if is_state('input_boolean.garderobe_nachtmodus', 'on') %}
           rest_command.garderobe_lightonnight_request
-        {% elif is_state('group.garderobe', 'on') and is_state('input_boolean.garderobe_nachtmodus', 'on') %}
-          rest_command.garderobe_lightonnight_recall_request
-        {% elif is_state('group.garderobe', 'off') %} 
-          rest_command.garderobe_lighton_dim_request
         {% else %}
-          rest_command.garderobe_lighton_recall_dim_request
+          rest_command.garderobe_dim_request
         {% endif %}
 
 - alias: Garderobe_off
