@@ -516,6 +516,7 @@
           rest_command.garderobe_lightonnight_request
         {% else %}
           rest_command.garderobe_lighton_request
+        {% endif %}
     - service: timer.cancel
       entity_id: timer.garderobe_debounce
     - service: timer.start
@@ -530,6 +531,7 @@
           rest_command.garderobe_lightonnight_request
         {% else %}
           rest_command.garderobe_lighton_request
+        {% endif %}
     
 - alias: Garderobe_keep_turn_on
   initial_state: true
@@ -556,6 +558,7 @@
           rest_command.garderobe_lightonnight_request
         {% else %}
           rest_command.garderobe_lighton_request
+        {% endif %}
 
 - alias: Garderobe_dim
   initial_state: true
