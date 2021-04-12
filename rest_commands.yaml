@@ -36,32 +36,37 @@ garderobe_lightoff_request:
 garderobe_lighton_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
     method: PUT
-    payload: '{"on":false,"scene":"kHds0secOOdYNwi"}'
+    payload: '{"scene":"kHds0secOOdYNwi","bri":254}'
 
-garderobe_lighton_recall_request:
-    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
-    method: PUT
-    payload: '{"scene":"kHds0secOOdYNwi"}'
+#garderobe_lighton_recall_request:
+#    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
+#    method: PUT
+#    payload: '{"scene":"kHds0secOOdYNwi"}'
 
-garderobe_lighton_dim_request:
-    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
-    method: PUT
-    payload: '{"on":false,"scene":"vcJB9jTyHaqpUNc"}'
+#garderobe_lighton_dim_request:
+#    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
+#    method: PUT
+#    payload: '{"on":false,"scene":"vcJB9jTyHaqpUNc"}'
 
-garderobe_lighton_recall_dim_request:
-    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
-    method: PUT
-    payload: '{"scene":"vcJB9jTyHaqpUNc"}'
+#garderobe_lighton_recall_dim_request:
+#    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
+#    method: PUT
+#    payload: '{"scene":"vcJB9jTyHaqpUNc"}'
 
 garderobe_lightonnight_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
     method: PUT
-    payload: '{"on":false,"scene":"5bnWJJIACKjQ-Cf"}'
+    payload: '{"scene":"5bnWJJIACKjQ-Cf","bri":50}'
 
-garderobe_lightonnight_recall_request:
+garderobe_dim_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
     method: PUT
-    payload: '{"scene":"5bnWJJIACKjQ-Cf"}'
+    payload: '{"bri":100, "transitiontime":50}'
+
+#garderobe_lightonnight_recall_request:
+#    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/5/action
+#    method: PUT
+#    payload: '{"scene":"5bnWJJIACKjQ-Cf"}'
 
 gang_lightoff_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/6/action
