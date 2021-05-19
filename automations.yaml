@@ -1086,6 +1086,8 @@
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.bad_motion_off
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.bad_duschen
     - service: rest_command.bad_lighton_request
     - service: timer.cancel
       entity_id: timer.bad_debounce
