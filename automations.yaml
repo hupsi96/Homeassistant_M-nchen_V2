@@ -1060,7 +1060,12 @@
         {% else %}
           rest_command.bad_lighton_request
         {% endif %}
-    - service: input_boolean.turn_on
+    - service_template: >
+        {% if is_state('input_boolean.bad_duschen', 'on') %}
+          input_boolean.turn_on
+        {% else %}
+          input_boolean.turn_off
+        {% endif %}
       entity_id: input_boolean.bad_motion_off
 
 - alias: bad_dusch_modus_deactivation
