@@ -1041,6 +1041,9 @@
     - condition: state
       entity_id:  input_boolean.bad_motion_off
       state: 'off'
+    - condition: state
+      entity_id: input_boolean.party_mode
+      state: 'on'
   action:
     - service: rest_command.sonos_bad_leave_high_five
 
