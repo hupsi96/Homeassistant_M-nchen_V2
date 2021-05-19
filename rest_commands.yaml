@@ -175,6 +175,12 @@ bad_lighton_request_party_4:
     method: PUT
     payload: '{"scene":"6FWdPqo3PTo66wZ"}'
 
+bad_lighton_request_shower:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
+    method: PUT
+    payload: '{"scene":"uPwaaSfkG6XFduQ"}'
+
+
 bad_lightbright_request:
     url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/12/action
     method: PUT

@@ -1056,7 +1056,7 @@
       entity_id: timer.bad_duschen_timer
     - service_template: >
         {% if is_state('input_boolean.bad_duschen', 'on') %}
-          rest_command.bad_lighton_request_party_4
+          rest_command.bad_lighton_request_shower
         {% else %}
           rest_command.bad_lighton_request
         {% endif %}
@@ -1077,6 +1077,14 @@
     - service: input_boolean.turn_off
       entity_id: input_boolean.bad_motion_off
     - service: rest_command.bad_lighton_request
+    - service: timer.cancel
+      entity_id: timer.bad_debounce
+    - service: timer.start
+      entity_id: timer.bad_debounce
+    - service: timer.cancel
+      entity_id: timer.bad_debounce_dim
+    - service: timer.start
+      entity_id: timer.bad_debounce_dim
 
 
 ##################################################################################################
