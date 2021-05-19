@@ -875,6 +875,57 @@
         entity_id: input_number.party_scene_klo
         value: '{{ range(0, 4) | random | float }}'
 
+- alias: klo_dusch_modus_activation
+  trigger:
+    - platform: state
+      entity_id: input_boolean.klo_duschen
+  action:
+    - service_template: >
+        {% if is_state('input_boolean.klo_duschen', 'on') %}
+          timer.start
+        {% else %}
+          timer.cancel
+        {% endif %}
+      entity_id: timer.klo_duschen_timer
+    - service_template: >
+        {% if is_state('input_boolean.klo_duschen', 'on') %}
+          rest_command.klo_lighton_request_shower
+        {% else %}
+          rest_command.klo_lighton_request
+        {% endif %}
+    - service_template: >
+        {% if is_state('input_boolean.klo_duschen', 'on') %}
+          input_boolean.turn_on
+        {% else %}
+          input_boolean.turn_off
+        {% endif %}
+      entity_id: input_boolean.klo_motion_off
+
+- alias: klo_dusch_modus_deactivation
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.klo_duschen_timer
+  condition:
+    - condition: state
+      entity_id:  input_boolean.klo_duschen
+      state: 'on'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.klo_motion_off
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.klo_duschen
+    - service: rest_command.klo_lighton_request
+    - service: timer.cancel
+      entity_id: timer.klo_debounce
+    - service: timer.start
+      entity_id: timer.klo_debounce
+    - service: timer.cancel
+      entity_id: timer.klo_debounce_dim
+    - service: timer.start
+      entity_id: timer.klo_debounce_dim
+
 ##################################################################################################
 # Bad Motion Detection
 ##################################################################################################
