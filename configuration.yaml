@@ -1,5 +1,6 @@
 
 # Configure a default setup of Home Assistant (frontend, api, etc)
+# sudo journalctl -fau zigbee2mqtt
 default_config:
 
 #Custom switch for nighmode
@@ -154,7 +155,7 @@ timer:
   bad_debounce: # after 2 minute the light should be turned off in Garderobe
     duration: '00:01:30'
   klo_duschen_timer:
-    duration: '00:15:00'
+    duration: '00:20:00'
   bad_duschen_timer:
     duration: '00:20:00'
   kaffee_on_timer:

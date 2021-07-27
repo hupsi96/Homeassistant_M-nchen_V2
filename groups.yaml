@@ -294,6 +294,8 @@ kloSettings:
     - input_boolean.klo_motion_off
     - input_boolean.klo_nachtmodus
     - input_number.party_scene_klo
+    - input_boolean.party_mode
+    - input_boolean.klo_duschen
 
 kloRoom:
   name: Klo
@@ -325,6 +327,7 @@ badSettings:
     - input_boolean.bad_nachtmodus
     - input_number.party_scene_bad
     - input_boolean.party_mode
+    - input_boolean.bad_duschen
 
 badRoom:
   name: Bad
