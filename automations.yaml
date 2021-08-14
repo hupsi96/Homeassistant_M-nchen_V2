@@ -1007,6 +1007,21 @@
         {% endif %}
       entity_id: input_boolean.klo_kacken
 
+- alias: Klo_switch_action_down #Party Modus
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.0xb4e3f9fffe3aac1a_click
+      to: 'brightness_down'
+  action:
+    - service_template: >
+        {% if is_state('input_boolean.party_mode_klo', 'off') %}
+          input_boolean.turn_on
+        {% else %}
+          input_boolean.turn_off
+        {% endif %}
+      entity_id: input_boolean.party_mode_klo
+
 
 ##################################################################################################
 # Bad Motion Detection
