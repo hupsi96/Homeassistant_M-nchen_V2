@@ -926,6 +926,21 @@
     - service: timer.start
       entity_id: timer.klo_debounce_dim
 
+- alias: Klo_switch_action
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.0xb4e3f9fffe3aac1a_click
+  action:
+    - service_template: >
+        {% if is_device_attr('sensor.0xb4e3f9fffe3aac1a_click', 'click', 'on' %}
+          input_boolean.turn_on
+        {% else %}
+          input_boolean.turn_off
+        {% endif %}
+      entity_id: input_boolean.klo_duschen
+
+
 ##################################################################################################
 # Bad Motion Detection
 ##################################################################################################
