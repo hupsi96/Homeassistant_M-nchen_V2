@@ -926,6 +926,57 @@
     - service: timer.start
       entity_id: timer.klo_debounce_dim
 
+- alias: klo_kack_modus_activation
+  trigger:
+    - platform: state
+      entity_id: input_boolean.klo_kacken
+  action:
+    - service_template: >
+        {% if is_state('input_boolean.klo_kacken', 'on') %}
+          timer.start
+        {% else %}
+          timer.cancel
+        {% endif %}
+      entity_id: timer.klo_kacken_timer
+    - service_template: >
+        {% if is_state('input_boolean.klo_kacken', 'on') %}
+          rest_command.klo_lighton_request
+        {% else %}
+          rest_command.klo_lighton_request
+        {% endif %}
+    - service_template: >
+        {% if is_state('input_boolean.klo_kacken', 'on') %}
+          input_boolean.turn_on
+        {% else %}
+          input_boolean.turn_off
+        {% endif %}
+      entity_id: input_boolean.klo_motion_off
+
+- alias: klo_kack_modus_deactivation
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.klo_kacken_timer
+  condition:
+    - condition: state
+      entity_id:  input_boolean.klo_kacken
+      state: 'on'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.klo_motion_off
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.klo_kacken
+    - service: rest_command.klo_lighton_request
+    - service: timer.cancel
+      entity_id: timer.klo_debounce
+    - service: timer.start
+      entity_id: timer.klo_debounce
+    - service: timer.cancel
+      entity_id: timer.klo_debounce_dim
+    - service: timer.start
+      entity_id: timer.klo_debounce_dim
+
 - alias: Klo_switch_action_on
   initial_state: true
   trigger:
@@ -940,6 +991,21 @@
           input_boolean.turn_off
         {% endif %}
       entity_id: input_boolean.klo_duschen
+
+- alias: Klo_switch_action_off
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.0xb4e3f9fffe3aac1a_click
+      to: 'off'
+  action:
+    - service_template: >
+        {% if is_state('input_boolean.klo_kacken', 'off') %}
+          input_boolean.turn_on
+        {% else %}
+          input_boolean.turn_off
+        {% endif %}
+      entity_id: input_boolean.klo_kacken
 
 
 ##################################################################################################
