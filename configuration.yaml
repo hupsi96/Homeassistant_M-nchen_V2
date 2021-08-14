@@ -51,8 +51,11 @@ input_boolean:
   klo_motion_off:
     name: Klo Motion aus
     initial: off
-  party_mode:
-    name: Party Mode
+  party_mode_klo:
+    name: Party Mode Klo
+    initial: off
+  party_mode_bad:
+    name: Party Mode Bad
     initial: off
   bad_motion_off:
     name: Bad Motion aus
@@ -244,7 +247,8 @@ homekit:
     include_entities:
       - input_boolean.good_morning
       - switch.0x7cb03eaa0a0019d8_switch
-      - input_boolean.party_mode
+      - input_boolean.party_mode_klo
+      - input_boolean.party_mode_bad
 
 ifttt:
   key: 'm4Xva6B1PIB5O8Ag4zmot1EAipsIH91--mEjXXX-o4D'
