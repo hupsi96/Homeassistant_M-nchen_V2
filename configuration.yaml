@@ -60,6 +60,9 @@ input_boolean:
   klo_duschen:
     name: Klo Duschen
     initial: off
+  klo_kacken:
+    name: Klo Schüssel
+    initial: off
   bad_duschen:
     name: Bad Duschen
     initial: off
@@ -160,6 +163,8 @@ timer:
     duration: '00:20:00'
   kaffee_on_timer:
     duration: '01:00:00'
+  klo_kacken_timer:
+    duration: '00:05:00'
 
 # Text to speech
 tts:
