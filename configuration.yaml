@@ -69,6 +69,9 @@ input_boolean:
   bad_duschen:
     name: Bad Duschen
     initial: off
+  bad_kacken:
+    name: Bad Schüssel
+    initial: off
   kaffee_on:
     name: Magica On
     initial: on
@@ -167,6 +170,8 @@ timer:
   kaffee_on_timer:
     duration: '01:00:00'
   klo_kacken_timer:
+    duration: '00:05:00'
+  bad_kacken_timer:
     duration: '00:05:00'
 
 # Text to speech
