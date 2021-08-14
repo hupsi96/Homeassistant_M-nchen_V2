@@ -926,7 +926,7 @@
     - service: timer.start
       entity_id: timer.klo_debounce_dim
 
-- alias: Klo_switch_action
+- alias: Klo_switch_action_on
   initial_state: true
   trigger:
     - platform: state
