@@ -933,7 +933,7 @@
       entity_id: sensor.0xb4e3f9fffe3aac1a_click
   action:
     - service_template: >
-        {% if is_device_attr('sensor.0xb4e3f9fffe3aac1a_click', 'click', 'on') %}
+        {% if {{ is_device_attr('sensor.0xb4e3f9fffe3aac1a_click', 'click', 'on') }} %}
           input_boolean.turn_on
         {% else %}
           input_boolean.turn_off
