@@ -765,13 +765,13 @@
     - service_template: >
         {% if is_state('input_boolean.klo_nachtmodus', 'on') %}
           rest_command.klo_lightonnight_request
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '0.0') %}
+        {% elif is_state('input_boolean.party_mode_klo', 'on') and is_state('input_number.party_scene_klo', '0.0') %}
           rest_command.klo_lighton_request_party_1
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '1.0') %}
+        {% elif is_state('input_boolean.party_mode_klo', 'on') and is_state('input_number.party_scene_klo', '1.0') %}
           rest_command.klo_lighton_request_party_2
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '2.0') %}
+        {% elif is_state('input_boolean.party_mode_klo', 'on') and is_state('input_number.party_scene_klo', '2.0') %}
           rest_command.klo_lighton_request_party_3
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '3.0') %}
+        {% elif is_state('input_boolean.party_mode_klo', 'on') and is_state('input_number.party_scene_klo', '3.0') %}
           rest_command.klo_lighton_request_party_4
         {% else %}
           rest_command.klo_lighton_request
@@ -788,13 +788,13 @@
     - service_template: >
         {% if is_state('input_boolean.klo_nachtmodus', 'on') %}
           rest_command.klo_lightonnight_request
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '0.0') %}
+        {% elif is_state('input_boolean.party_mode_klo', 'on') and is_state('input_number.party_scene_klo', '0.0') %}
           rest_command.klo_lighton_request_party_1
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '1.0') %}
+        {% elif is_state('input_boolean.party_mode_klo', 'on') and is_state('input_number.party_scene_klo', '1.0') %}
           rest_command.klo_lighton_request_party_2
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '2.0') %}
+        {% elif is_state('input_boolean.party_mode_klo', 'on') and is_state('input_number.party_scene_klo', '2.0') %}
           rest_command.klo_lighton_request_party_3
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '3.0') %}
+        {% elif is_state('input_boolean.party_mode_klo', 'on') and is_state('input_number.party_scene_klo', '3.0') %}
           rest_command.klo_lighton_request_party_4
         {% else %}
           rest_command.klo_lighton_request
@@ -826,13 +826,13 @@
     - service_template: >
         {% if is_state('input_boolean.klo_nachtmodus', 'on') %}
           rest_command.klo_lightonnight_request
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '0.0') %}
+        {% elif is_state('input_boolean.party_mode_klo', 'on') and is_state('input_number.party_scene_klo', '0.0') %}
           rest_command.klo_lighton_request_party_1
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '1.0') %}
+        {% elif is_state('input_boolean.party_mode_klo', 'on') and is_state('input_number.party_scene_klo', '1.0') %}
           rest_command.klo_lighton_request_party_2
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '2.0') %}
+        {% elif is_state('input_boolean.party_mode_klo', 'on') and is_state('input_number.party_scene_klo', '2.0') %}
           rest_command.klo_lighton_request_party_3
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_klo', '3.0') %}
+        {% elif is_state('input_boolean.party_mode_klo', 'on') and is_state('input_number.party_scene_klo', '3.0') %}
           rest_command.klo_lighton_request_party_4
         {% else %}
           rest_command.klo_lighton_request
@@ -926,6 +926,103 @@
     - service: timer.start
       entity_id: timer.klo_debounce_dim
 
+- alias: klo_kack_modus_activation
+  trigger:
+    - platform: state
+      entity_id: input_boolean.klo_kacken
+  action:
+    - service_template: >
+        {% if is_state('input_boolean.klo_kacken', 'on') %}
+          timer.start
+        {% else %}
+          timer.cancel
+        {% endif %}
+      entity_id: timer.klo_kacken_timer
+    - service_template: >
+        {% if is_state('input_boolean.klo_kacken', 'on') %}
+          rest_command.klo_lighton_request
+        {% else %}
+          rest_command.klo_lighton_request
+        {% endif %}
+    - service_template: >
+        {% if is_state('input_boolean.klo_kacken', 'on') %}
+          input_boolean.turn_on
+        {% else %}
+          input_boolean.turn_off
+        {% endif %}
+      entity_id: input_boolean.klo_motion_off
+
+- alias: klo_kack_modus_deactivation
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.klo_kacken_timer
+  condition:
+    - condition: state
+      entity_id:  input_boolean.klo_kacken
+      state: 'on'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.klo_motion_off
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.klo_kacken
+    - service: rest_command.klo_lighton_request
+    - service: timer.cancel
+      entity_id: timer.klo_debounce
+    - service: timer.start
+      entity_id: timer.klo_debounce
+    - service: timer.cancel
+      entity_id: timer.klo_debounce_dim
+    - service: timer.start
+      entity_id: timer.klo_debounce_dim
+
+- alias: Klo_switch_action_on
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.0xb4e3f9fffe3aac1a_click
+      to: 'on'
+  action:
+    - service_template: >
+        {% if is_state('input_boolean.klo_duschen', 'off') %}
+          input_boolean.turn_on
+        {% else %}
+          input_boolean.turn_off
+        {% endif %}
+      entity_id: input_boolean.klo_duschen
+
+- alias: Klo_switch_action_off
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.0xb4e3f9fffe3aac1a_click
+      to: 'off'
+  action:
+    - service_template: >
+        {% if is_state('input_boolean.klo_kacken', 'off') %}
+          input_boolean.turn_on
+        {% else %}
+          input_boolean.turn_off
+        {% endif %}
+      entity_id: input_boolean.klo_kacken
+
+- alias: Klo_switch_action_down #Party Modus
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.0xb4e3f9fffe3aac1a_click
+      to: 'brightness_down'
+  action:
+    - service_template: >
+        {% if is_state('input_boolean.party_mode_klo', 'off') %}
+          input_boolean.turn_on
+        {% else %}
+          input_boolean.turn_off
+        {% endif %}
+      entity_id: input_boolean.party_mode_klo
+
+
 ##################################################################################################
 # Bad Motion Detection
 ##################################################################################################
@@ -949,13 +1046,13 @@
     - service_template: >
         {% if is_state('input_boolean.bad_nachtmodus', 'on') %}
           rest_command.bad_lightonnight_request
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '0.0') %}
+        {% elif is_state('input_boolean.party_mode_bad', 'on') and is_state('input_number.party_scene_bad', '0.0') %}
           rest_command.bad_lighton_request_party_1
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '1.0') %}
+        {% elif is_state('input_boolean.party_mode_bad', 'on') and is_state('input_number.party_scene_bad', '1.0') %}
           rest_command.bad_lighton_request_party_2
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '2.0') %}
+        {% elif is_state('input_boolean.party_mode_bad', 'on') and is_state('input_number.party_scene_bad', '2.0') %}
           rest_command.bad_lighton_request_party_3
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '3.0') %}
+        {% elif is_state('input_boolean.party_mode_bad', 'on') and is_state('input_number.party_scene_bad', '3.0') %}
           rest_command.bad_lighton_request_party_4
         {% else %}
           rest_command.bad_lighton_request
@@ -972,13 +1069,13 @@
     - service_template: >
         {% if is_state('input_boolean.bad_nachtmodus', 'on') %}
           rest_command.bad_lightonnight_request
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '0.0') %}
+        {% elif is_state('input_boolean.party_mode_bad', 'on') and is_state('input_number.party_scene_bad', '0.0') %}
           rest_command.bad_lighton_request_party_1
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '1.0') %}
+        {% elif is_state('input_boolean.party_mode_bad', 'on') and is_state('input_number.party_scene_bad', '1.0') %}
           rest_command.bad_lighton_request_party_2
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '2.0') %}
+        {% elif is_state('input_boolean.party_mode_bad', 'on') and is_state('input_number.party_scene_bad', '2.0') %}
           rest_command.bad_lighton_request_party_3
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '3.0') %}
+        {% elif is_state('input_boolean.party_mode_bad', 'on') and is_state('input_number.party_scene_bad', '3.0') %}
           rest_command.bad_lighton_request_party_4
         {% else %}
           rest_command.bad_lighton_request
@@ -1000,7 +1097,7 @@
       entity_id: input_boolean.bad_motion_off
       state: 'off'
     - condition: state
-      entity_id: input_boolean.party_mode
+      entity_id: input_boolean.party_mode_bad
       state: 'on'
   action:
     - service: rest_command.sonos_bad_volume_15
@@ -1032,13 +1129,13 @@
     - service_template: >
         {% if is_state('input_boolean.bad_nachtmodus', 'on') %}
           rest_command.bad_lightonnight_request
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '0.0') %}
+        {% elif is_state('input_boolean.party_mode_bad', 'on') and is_state('input_number.party_scene_bad', '0.0') %}
           rest_command.bad_lighton_request_party_1
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '1.0') %}
+        {% elif is_state('input_boolean.party_mode_bad', 'on') and is_state('input_number.party_scene_bad', '1.0') %}
           rest_command.bad_lighton_request_party_2
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '2.0') %}
+        {% elif is_state('input_boolean.party_mode_bad', 'on') and is_state('input_number.party_scene_bad', '2.0') %}
           rest_command.bad_lighton_request_party_3
-        {% elif is_state('input_boolean.party_mode', 'on') and is_state('input_number.party_scene_bad', '3.0') %}
+        {% elif is_state('input_boolean.party_mode_bad', 'on') and is_state('input_number.party_scene_bad', '3.0') %}
           rest_command.bad_lighton_request_party_4
         {% else %}
           rest_command.bad_lighton_request
@@ -1093,7 +1190,7 @@
       entity_id:  input_boolean.bad_motion_off
       state: 'off'
     - condition: state
-      entity_id: input_boolean.party_mode
+      entity_id: input_boolean.party_mode_bad
       state: 'on'
   action:
     - service: rest_command.sonos_bad_leave_high_five
@@ -1149,6 +1246,101 @@
     - service: timer.start
       entity_id: timer.bad_debounce_dim
 
+- alias: bad_kack_modus_activation
+  trigger:
+    - platform: state
+      entity_id: input_boolean.bad_kacken
+  action:
+    - service_template: >
+        {% if is_state('input_boolean.bad_kacken', 'on') %}
+          timer.start
+        {% else %}
+          timer.cancel
+        {% endif %}
+      entity_id: timer.bad_kacken_timer
+    - service_template: >
+        {% if is_state('input_boolean.bad_kacken', 'on') %}
+          rest_command.bad_lighton_request
+        {% else %}
+          rest_command.bad_lighton_request
+        {% endif %}
+    - service_template: >
+        {% if is_state('input_boolean.bad_kacken', 'on') %}
+          input_boolean.turn_on
+        {% else %}
+          input_boolean.turn_off
+        {% endif %}
+      entity_id: input_boolean.bad_motion_off
+
+- alias: bad_kack_modus_deactivation
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.bad_kacken_timer
+  condition:
+    - condition: state
+      entity_id:  input_boolean.bad_kacken
+      state: 'on'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.bad_motion_off
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.bad_kacken
+    - service: rest_command.bad_lighton_request
+    - service: timer.cancel
+      entity_id: timer.bad_debounce
+    - service: timer.start
+      entity_id: timer.bad_debounce
+    - service: timer.cancel
+      entity_id: timer.bad_debounce_dim
+    - service: timer.start
+      entity_id: timer.bad_debounce_dim
+
+- alias: Bad_switch_action_on
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.0xb4e3f9fffe3ee2a0_click
+      to: 'on'
+  action:
+    - service_template: >
+        {% if is_state('input_boolean.bad_duschen', 'off') %}
+          input_boolean.turn_on
+        {% else %}
+          input_boolean.turn_off
+        {% endif %}
+      entity_id: input_boolean.bad_duschen
+
+- alias: Bad_switch_action_off
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.0xb4e3f9fffe3ee2a0_click
+      to: 'off'
+  action:
+    - service_template: >
+        {% if is_state('input_boolean.bad_kacken', 'off') %}
+          input_boolean.turn_on
+        {% else %}
+          input_boolean.turn_off
+        {% endif %}
+      entity_id: input_boolean.bad_kacken
+
+- alias: Bad_switch_action_down #Party Modus
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.0xb4e3f9fffe3ee2a0_click
+      to: 'brightness_down'
+  action:
+    - service_template: >
+        {% if is_state('input_boolean.party_mode_bad', 'off') %}
+          input_boolean.turn_on
+        {% else %}
+          input_boolean.turn_off
+        {% endif %}
+      entity_id: input_boolean.party_mode_bad
 
 ##################################################################################################
 # Wifi Down automation
