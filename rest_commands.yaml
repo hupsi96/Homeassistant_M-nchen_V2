@@ -151,6 +151,11 @@ klo_lighton_request_shower:
     method: PUT
     payload: '{"scene":"hVQW2lRzsF00kNf"}'
 
+klo_lighton_request_shower_hell:
+    url: http://192.168.178.21/api/pJQD0c13D7F7Jt1BUVK6Tcw7kZ-eaEigF8mUUxD8/groups/11/action
+    method: PUT
+    payload: '{"scene":"7cxJDnsbFC6Vxp8"}'
+
 ##########################################################################
 ############################### BAD API CALLS ##########################################
 ##########################################################################

@@ -63,6 +63,9 @@ input_boolean:
   klo_duschen:
     name: Klo Duschen
     initial: off
+  klo_duschen_hell:
+    name: Klo Duschen hell
+    initial: off
   klo_kacken:
     name: Klo Schüssel
     initial: off
