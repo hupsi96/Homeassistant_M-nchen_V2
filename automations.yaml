@@ -901,6 +901,14 @@
         {% endif %}
       entity_id: input_boolean.klo_motion_off
 
+- alias: klo_dusch_modus_hell_activation
+  trigger:
+    - platform: state
+      entity_id: input_boolean.klo_duschen_hell
+      to: 'on'
+  action:
+    - service: rest_command.klo_lighton_request_shower_hell
+
 - alias: klo_dusch_modus_deactivation
   trigger:
     - platform: event
@@ -987,10 +995,18 @@
     - service_template: >
         {% if is_state('input_boolean.klo_duschen', 'off') %}
           input_boolean.turn_on
+        {% elif is_state('input_boolean.klo_duschen', 'on') and is_state('input_boolean.klo_duschen_hell', 'off') %}
+          input_boolean.turn_on
         {% else %}
           input_boolean.turn_off
         {% endif %}
-      entity_id: input_boolean.klo_duschen
+      data_template: 
+        entity_id: >
+          {% if is_state('input_boolean.klo_duschen', 'on') and is_state('input_boolean.klo_duschen_hell', 'off') %}
+            input_boolean.klo_duschen_hell
+          {% else %}
+            input_boolean.klo_duschen
+          {% endif %}
 
 - alias: Klo_switch_action_off
   initial_state: true
